@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+header{
+    background-color: #191919;
+    position: absolute;
+    margin: 0 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.website-logo{
+    display:inline-block;
+}
+
+.navbar{
+    display: inline-block;
+    color:white;
+}
+.navbar ul{
+    list-style: none;
+}
+
+.navbar li{
+    display: inline-block;
+}
+
+.open-cart-modal-btn{
+    background: none;
+    border: none;
+}
+
+.home-page-image-hero {
+    background-color: #191919; /*fills the whitespace to the left of the image*/
+    background-image: url("../assets/home/desktop/image-hero.jpg");
+    min-height: 770px;
+    max-font-size: 800px;
+
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center right;
+}
