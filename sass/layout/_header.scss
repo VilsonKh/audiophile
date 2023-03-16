@@ -1,0 +1,53 @@
+.header {
+   background-color: #141414;
+  
+  
+
+   &__container {
+      max-width: 111rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid rgba($color-white,.5);
+
+      @include respond(tab) {
+         max-width: 68.9rem;
+      }
+
+      @include respond(phone) {
+         max-width: 32.7rem;
+      }
+   }
+
+   &__burger {
+      width: 16px;
+      height: 2px;
+      background-color: $color-white;
+      position: relative;
+      display: none;
+
+      &::before,
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 2px;
+        background-color: $color-white;
+        position: absolute;
+      }
+
+      &::before {
+         top: -5px;
+      }
+
+      &::after {
+         top:5px;
+      }
+
+      @include respond(phone) {
+        display: block;
+     }
+   }
+}

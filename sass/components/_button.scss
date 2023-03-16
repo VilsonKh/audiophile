@@ -1,0 +1,54 @@
+.btn {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: 1px;
+  width: 16rem;
+
+  &-orange {
+    background-color: $color-orange;
+    transition: all .3s ease;
+    &:hover {
+      background-color: $color-light-orange;
+    }
+  }
+}
+
+.btn-shop {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  & svg {
+    margin-left: 5px;
+  }
+
+  &:hover {
+    color: $color-orange;
+  }
+}
+
+.btn-black {
+    background-color: $color-white;
+    color: $color-black;
+    outline: 1px solid $color-black;
+    transition: all .3s ease;
+
+  &:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+}

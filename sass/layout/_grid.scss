@@ -1,0 +1,79 @@
+.footer {
+   & > .container {
+      display: grid;
+      row-gap: 4rem;
+      column-gap: 14rem;
+      grid-template-areas:
+         "logo navbar"
+         "text contacts"
+         "copyright ......";
+   }
+
+   &__logo {
+      grid-area: logo;
+   }
+
+   &__text {
+      grid-area: text;
+   }
+
+   &__navbar {
+      grid-area: navbar;
+   }
+
+   &__contacts {
+      grid-area: contacts;
+      align-self: flex-end;
+      justify-self: end;
+   }
+
+   &__social {
+      display: flex;
+      justify-content: space-between;
+      width: 10rem;
+   }
+
+   &__copyright {
+      grid-area: copyright;
+   }
+}
+
+@include respond(tab) {
+   .footer {
+      & > .container {
+         row-gap: 4rem;
+         column-gap: normal;
+         grid-template-columns: 1fr;
+         grid-template-areas:
+         "logo logo"
+         "navbar navbar"
+         "text text" 
+         "copyright contacts";
+      }
+   }
+}
+
+@include respond(phone) {
+  .footer {
+     & > .container {
+        row-gap: 4rem;
+        column-gap: normal;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "logo logo"
+        "navbar navbar"
+        "text text" 
+        "copyright copyright"
+         "contacts contacts";
+     }
+
+     &__logo {
+      justify-self: center;
+   }
+
+     &__contacts {
+      justify-self: center;
+     }
+  }
+}
+

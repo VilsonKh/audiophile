@@ -1,0 +1,42 @@
+.navbar {
+   &__list {
+      display: flex;
+   }
+
+   &__item {
+      &:not(:last-child) {
+         margin-right: 3.4rem;
+      }
+
+      & > a {
+         transition: all 0.3s ease;
+
+         &:hover {
+            color: $color-orange;
+         }
+      }
+   }
+}
+.header {
+   & .navbar {
+      @include respond(phone) {
+         display: none;
+      }
+   }
+}
+
+.footer {
+  & .navbar__list {
+     @include respond(phone) {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        align-items: center;
+
+        .navbar__item {
+          margin: 0;
+        }
+
+     }
+  }
+}

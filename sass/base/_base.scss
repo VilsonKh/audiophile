@@ -1,0 +1,24 @@
+html {
+   font-size: 62.5%;
+}
+
+body {
+  min-width: 375px;
+}
+
+.container {
+  max-width: 111rem;
+  margin: 0 auto;
+
+  @include respond(tab) {
+     max-width: 68.9rem;
+     position: relative;
+  }
+
+  @include respond(phone) {
+     max-width: 32.7rem;
+  }
+}
+
+
+
