@@ -8,7 +8,7 @@
   & > .container {
      display: flex;
      column-gap: 12.5rem;
-
+ 
      @include respond(tab) {
        flex-direction: column-reverse;
      }
