@@ -3,22 +3,32 @@ html {
 }
 
 body {
-  min-width: 375px;
+   min-width: 375px;
 }
 
 .container {
-  max-width: 111rem;
-  margin: 0 auto;
+   max-width: 111rem;
+   margin: 0 auto;
 
-  @include respond(tab) {
-     max-width: 68.9rem;
-     position: relative;
-  }
+   @include respond(tab) {
+      max-width: 68.9rem;
+      position: relative;
+   }
 
-  @include respond(phone) {
-     max-width: 32.7rem;
-  }
+   @include respond(phone) {
+      max-width: 32.7rem;
+   }
 }
 
+//svg 
+path {
+  transition: all .3s ease;
 
+   &:hover {
+    fill: $color-orange;
+   }
+}
 
+.bg {
+   background-color: $color-black; 
+}

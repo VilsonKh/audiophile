@@ -1,19 +1,23 @@
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/variables';
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-@import 'base/base';
-@import 'base/reset';
-@import 'base/typography';
 
-@import 'components/navbar';
-@import 'components/logo';
-@import 'components/button';
 
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/grid';
+@import "components/navbar";
+@import "components/logo";
+@import "components/button";
+@import "components/category-head";
+@import "components/catalogue";
+@import "components/about";
 
-@import 'pages/home';
+@import "layout/header";
+@import "layout/footer";
+@import "layout/grid";
 
- 
+@import "pages/home";
+@import "pages/headphones";
+
+@import "base/base";
+@import "base/reset";
+@import "base/typography";
