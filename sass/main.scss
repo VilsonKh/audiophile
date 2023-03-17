@@ -2,21 +2,21 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
-
-
 @import "components/navbar";
 @import "components/logo";
 @import "components/button";
 @import "components/category-head";
 @import "components/catalogue";
 @import "components/about";
+@import "components/product";
+@import "components/popup-busket";
 
 @import "layout/header";
 @import "layout/footer";
 @import "layout/grid";
 
 @import "pages/home";
-@import "pages/headphones";
+@import "pages/product-details";
 
 @import "base/base";
 @import "base/reset";

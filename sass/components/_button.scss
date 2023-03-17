@@ -52,3 +52,24 @@
     color: $color-white;
   }
 }
+
+.back-button {
+  padding:3.3rem 0 2.4rem 0;
+}
+
+.product{
+  &__addCard{
+    display: flex;
+  }
+
+  &__counter {
+    background-color: $color-light-grey;
+    padding: 1.5rem;
+    width: 12rem;
+    display: flex;
+    justify-content: space-between;
+    margin-right:1.6rem;
+  }
+}
+
+

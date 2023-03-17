@@ -9,6 +9,7 @@ body {
 .container {
    max-width: 111rem;
    margin: 0 auto;
+   position: relative;
 
    @include respond(tab) {
       max-width: 68.9rem;

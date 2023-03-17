@@ -18,19 +18,72 @@
             </div>
             <nav class="navbar">
                <ul class="navbar__list">
-                  <li class="navbar__item"><a href="#">Home</a></li>
+                  <li class="navbar__item"><a href="index.html">Home</a></li>
                   <li class="navbar__item"><a href="headphones.html">Headphones</a></li>
-                  <li class="navbar__item"><a href="#">Speakers</a></li>
-                  <li class="navbar__item"><a href="#">Earphoness</a></li>
+                  <li class="navbar__item"><a href="speakers.html">Speakers</a></li>
+                  <li class="navbar__item"><a href="earphones.html">Earphoness</a></li>
                </ul>
             </nav>
             <button class="busket">
-              <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z" fill="#FFF" fill-rule="nonzero"/>
-              </svg>
+               <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                     d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
+                     fill="#FFF"
+                     fill-rule="nonzero"
+                  />
+               </svg>
             </button>
          </div>
       </header>
+
+   <div class="overlay">
+       <div class="container">
+          <div class="popup-busket">
+             <div class="pupup-busket__heading">
+                <p class="popup-busket__title">cart</p>
+                <button class="popup-busket__remove">Remove all</button>
+             </div>
+    
+             <ul class="popup-busket__list">
+                <li class="popup-busket__item">
+                   <div class="popup-busket__inner">
+                      <img class="popup-busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                      <div class="popup-busket__text">
+                         <p class="popup-busket__name">XX99 MK II</p>
+                         <p class="popup-busket__price">$ 2,999</p>
+                      </div>
+    
+                      <div class="product__counter">
+                         <button class="product__decrement">-</button>
+                         <p class="product__quantity">1</p>
+                         <button class="product__increment">+</button>
+                      </div>
+                   </div>
+                </li>
+    
+                <li class="popup-busket__item">
+                  <div class="popup-busket__inner">
+                     <img class="popup-busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                     <div class="popup-busket__text">
+                        <p class="popup-busket__name">XX99 MK II</p>
+                        <p class="popup-busket__price">$ 2,999</p>
+                     </div>
+    
+                     <div class="product__counter">
+                        <button class="product__decrement">-</button>
+                        <p class="product__quantity">1</p>
+                        <button class="product__increment">+</button>
+                     </div>
+                  </div>
+               </li>
+             </ul>
+             <div class="popup-busket__total">
+                <p class="popup-busket__totalText">total</p>
+                <p class="popup-busket__total-price">$ 2,999</p>
+             </div>
+          </div>
+       </div>
+   </div>
 
       <div class="first-screen">
          <div class="first-screen__container">
@@ -38,7 +91,7 @@
                <h1 class="first-screen__heading">New product</h1>
                <p class="first-screen__model">XX99 Mark II Headphones</p>
                <p class="first-screen__description">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-               <a href="#" class="btn btn-orange">See product</a>
+               <a href="product-details.html" class="btn btn-orange">See product</a>
             </div>
 
             <div class="first-screen__right">
@@ -59,7 +112,7 @@
                         <img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
                      </div>
                      <p class="catalogue__category">Headphones</p>
-                     <a href="#" class="btn-shop"
+                     <a href="headphones.html" class="btn-shop"
                         >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
                      </a>
                   </li>
@@ -68,18 +121,19 @@
                         <img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
                      </div>
                      <p class="catalogue__category">Speakers</p>
-                     <a href="#" class="btn-shop"
+                     <a href="speakers.html" class="btn-shop"
                         >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
-                      </a>
+                     </a>
                   </li>
                   <li class="catalogue__item item-3">
                      <div class="catalogue-img__container">
                         <img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
                      </div>
                      <p class="catalogue__category">Earphones</p>
-                     <a href="#" class="btn-shop">Shop 
+                     <a href="earphones.html" class="btn-shop"
+                        >Shop
                         <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
-                      </a>
+                     </a>
                   </li>
                </ul>
             </div>
@@ -89,9 +143,7 @@
             <div class="container">
                <div class="models__1">
                   <div class="models__1-left">
-                     <div class="circles-container">
-                       <svg width='944' height='944' class='circles'  xmlns="http://www.w3.org/2000/svg"><g stroke="#FFF" fill="none" fill-rule="evenodd" opacity="1"><circle cx="472" cy="472" r="235.5"/><circle cx="472" cy="472" r="270.5"/><circle cx="472" cy="472" r="471.5"/></g></svg>
-                    </div>
+                     <div class="circles-container"></div>
                      <img src="../assets/home/desktop/image-speaker-zx9.png" alt="Speakers" />
                   </div>
                   <div class="models__1-right">
@@ -111,7 +163,7 @@
                <div class="models__3">
                   <div class="models__3-left">
                      <picture>
-                        <source media="(min-width: 768px)" srcset="../assets/home/desktop//image-earphones-yx1.jpg" /> 
+                        <source media="(min-width: 768px)" srcset="../assets/home/desktop//image-earphones-yx1.jpg" />
                         <source media="(min-width: 375px)" srcset="../assets/home/tablet/image-earphones-yx1.jpg" />
                         <img src="../assets/home/mobile/image-earphones-yx1.jpg" alt="" />
                      </picture>
@@ -159,38 +211,44 @@
 
             <nav class="navbar footer__navbar">
                <ul class="navbar__list">
-                  <li class="navbar__item"><a href="#">Home</a></li>
-                  <li class="navbar__item"><a href="#">Headphones</a></li>
-                  <li class="navbar__item"><a href="#">Speakers</a></li>
-                  <li class="navbar__item"><a href="#">Earphoness</a></li>
+                  <li class="navbar__item"><a href="index.html">Home</a></li>
+                  <li class="navbar__item"><a href="headphones.html">Headphones</a></li>
+                  <li class="navbar__item"><a href="speakers.html">Speakers</a></li>
+                  <li class="navbar__item"><a href="earphones.html">Earphoness</a></li>
                </ul>
             </nav>
 
             <div class="footer__contacts">
                <div class="footer__social">
-                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                     <path
-                        d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"
-                        fill="#fff"
-                        fill-rule="nonzero"
-                     />
-                  </svg>
+                  <a href="https://www.facebook.com">
+                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"
+                           fill="#fff"
+                           fill-rule="nonzero"
+                        />
+                     </svg>
+                  </a>
 
-                  <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
-                     <path
-                        d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z"
-                        fill="#FFF"
-                        fill-rule="nonzero"
-                     />
-                  </svg>
+                  <a href="https://www.twitter.com">
+                     <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z"
+                           fill="#FFF"
+                           fill-rule="nonzero"
+                        />
+                     </svg>
+                  </a>
 
-                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                     <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                        fill="#FFF"
-                        fill-rule="nonzero"
-                     />
-                  </svg>
+                  <a href="https://www.instagram.com">
+                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                           fill="#FFF"
+                           fill-rule="nonzero"
+                        />
+                     </svg>
+                  </a>
                </div>
             </div>
          </div>

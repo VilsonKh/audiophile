@@ -1,0 +1,58 @@
+.popup-busket {
+  position: fixed;
+  background-color: $color-white;
+  margin-left: auto;
+  width: 40rem;
+  padding: 3rem;
+  z-index: 999;
+  border-radius: 8px;
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__heading {
+    display: flex;
+  }
+
+  &__img {
+    display: block;
+    width: 6.4rem;
+    height: 6.4rem;
+    margin-right: 1.6rem;
+  }
+
+&__list {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+  &__item {
+    
+  }
+
+  &__text {
+    margin-right: 6rem;
+  }
+
+  &__total {
+    display: flex;
+  }
+
+  & .product__counter {
+    margin-right: 0;
+    align-self: center;
+  }
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color:$color-black;
+  opacity: 0.1;
+}

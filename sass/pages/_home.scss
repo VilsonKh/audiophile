@@ -77,6 +77,9 @@
    }
    &__1 {
       background-color: $color-orange;
+      background-image: url(../assets/home/desktop/pattern-circles.svg);
+      background-position: -111% -5%;
+      background-repeat: no-repeat;
       display: flex;
       justify-content: space-around;
       border-radius: 8px;
@@ -86,11 +89,14 @@
       @include respond(tab) {
          flex-direction: column;
          padding: 5rem 17rem;
+         background-position: 50% 130%;
       }
 
       @include respond(phone) {
         flex-direction: column;
         padding: 5rem 2rem;
+        background-size: 170%;
+        background-position: 50% -110%;
      }
 
       &-left {
