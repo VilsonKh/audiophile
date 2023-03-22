@@ -8,6 +8,10 @@
       <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
       <link rel="stylesheet" href="../css/style.css" />
       <title>Audiophile e-commerce website</title>
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+      <script type="module" src="../js/const.js" defer></script>
+      <script type="module" src="../js/index.js" defer></script>
    </head>
    <body>
       <header class="header">
@@ -19,12 +23,12 @@
             <nav class="navbar">
                <ul class="navbar__list">
                   <li class="navbar__item"><a href="index.html">Home</a></li>
-                  <li class="navbar__item"><a href="headphones.html">Headphones</a></li>
-                  <li class="navbar__item"><a href="speakers.html">Speakers</a></li>
-                  <li class="navbar__item"><a href="earphones.html">Earphoness</a></li>
+                  <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
+                  <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
+                  <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
                </ul>
             </nav>
-            <button class="busket">
+            <button class="btn-busket">
                <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
                   <path
                      d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
@@ -36,54 +40,83 @@
          </div>
       </header>
 
-   <div class="overlay">
-       <div class="container">
-          <div class="popup-busket">
-             <div class="pupup-busket__heading">
-                <p class="popup-busket__title">cart</p>
-                <button class="popup-busket__remove">Remove all</button>
-             </div>
-    
-             <ul class="popup-busket__list">
-                <li class="popup-busket__item">
-                   <div class="popup-busket__inner">
-                      <img class="popup-busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                      <div class="popup-busket__text">
-                         <p class="popup-busket__name">XX99 MK II</p>
-                         <p class="popup-busket__price">$ 2,999</p>
-                      </div>
-    
-                      <div class="product__counter">
-                         <button class="product__decrement">-</button>
-                         <p class="product__quantity">1</p>
-                         <button class="product__increment">+</button>
-                      </div>
-                   </div>
-                </li>
-    
-                <li class="popup-busket__item">
-                  <div class="popup-busket__inner">
-                     <img class="popup-busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                     <div class="popup-busket__text">
-                        <p class="popup-busket__name">XX99 MK II</p>
-                        <p class="popup-busket__price">$ 2,999</p>
-                     </div>
-    
-                     <div class="product__counter">
-                        <button class="product__decrement">-</button>
-                        <p class="product__quantity">1</p>
-                        <button class="product__increment">+</button>
-                     </div>
+      <div class="popup-busket">
+         <div class="overlay">
+            <div class="container">
+               <div class="busket__inner">
+                  <div class="busket__heading">
+                     <p class="busket__title">cart (<span class="busket-count">0</span>)</p>
+                     <button class="busket__remove">Remove all</button>
                   </div>
-               </li>
-             </ul>
-             <div class="popup-busket__total">
-                <p class="popup-busket__totalText">total</p>
-                <p class="popup-busket__total-price">$ 2,999</p>
-             </div>
-          </div>
-       </div>
-   </div>
+
+                  <ul class="busket__list">
+                     <template class="template__busket-item">
+                        <li class="busket__item">
+                           <div class="busket__itemInner">
+                              <img class="busket__img" src="" alt="" />
+                              <div class="busket__text">
+                                 <p class="busket__name"></p>
+                                 <p class="busket__price">$ <span class="busket-price"></span></p>
+                              </div>
+
+                              <div class="product__counter">
+                                 <button class="product__decrement">-</button>
+                                 <input class="product__quantity busket__quantity" ></input>
+                                 <button class="product__increment">+</button>
+                              </div>
+                           </div>
+                        </li>
+                     </template>
+                  </ul>
+                  <div class="busket__total">
+                     <p class="busket__totalText">total</p>
+                     <p class="busket__total-price">$ 0</p>
+                  </div>
+
+                  <a class="btn btn-orange" href="">chechout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="burger__menu">
+         <div class="overlay">
+            <section class="catalogue">
+               <div class="container">
+                  <ul class="catalogue__list">
+                     <li class="catalogue__item item-1">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
+                        </div>
+                        <p class="catalogue__category">Headphones</p>
+                        <a href="catalogue.html" class="btn-shop catalogue__headphones"
+                           >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+                        </a>
+                     </li>
+                     <li class="catalogue__item item-2">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
+                        </div>
+                        <p class="catalogue__category">Speakers</p>
+                        <a href="catalogue.html" class="btn-shop catalogue__speakers"
+                           >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+                        </a>
+                     </li>
+                     <li class="catalogue__item item-3">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
+                        </div>
+                        <p class="catalogue__category">Earphones</p>
+                        <a href="catalogue.html" class="btn-shop catalogue__earphones"
+                           >Shop
+                           <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </section>
+         </div>
+      </div>
 
       <div class="first-screen">
          <div class="first-screen__container">
@@ -91,7 +124,7 @@
                <h1 class="first-screen__heading">New product</h1>
                <p class="first-screen__model">XX99 Mark II Headphones</p>
                <p class="first-screen__description">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-               <a href="product-details.html" class="btn btn-orange">See product</a>
+               <a id='xx99-mark-two-headphones' href="product-details.html" class="btn btn-orange">See product</a>
             </div>
 
             <div class="first-screen__right">
@@ -112,7 +145,7 @@
                         <img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
                      </div>
                      <p class="catalogue__category">Headphones</p>
-                     <a href="headphones.html" class="btn-shop"
+                     <a href="catalogue-headphones.html" class="btn-shop"
                         >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
                      </a>
                   </li>
@@ -121,7 +154,7 @@
                         <img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
                      </div>
                      <p class="catalogue__category">Speakers</p>
-                     <a href="speakers.html" class="btn-shop"
+                     <a href="catalogue-speakers.html" class="btn-shop "
                         >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
                      </a>
                   </li>
@@ -130,7 +163,7 @@
                         <img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
                      </div>
                      <p class="catalogue__category">Earphones</p>
-                     <a href="earphones.html" class="btn-shop"
+                     <a href="catalogue-earphones.html" class="btn-shop"
                         >Shop
                         <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
                      </a>
@@ -149,14 +182,14 @@
                   <div class="models__1-right">
                      <p class="models__1-name">ZX9 speaker</p>
                      <p class="models__1-description">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-                     <a href="#" class="btn-black btn">see product</a>
+                     <a id='zx9-speaker' href="product-details.html" class="btn-black btn">see product</a>
                   </div>
                </div>
 
                <div class="models__2">
                   <div class="models__2-left">
                      <p class="models__2-name">ZX7 speaker</p>
-                     <a href="#" class="btn-black btn">See product</a>
+                     <a id='zx7-speaker' href="product-details.html" class="btn-black btn">See product</a>
                   </div>
                </div>
 
@@ -169,8 +202,8 @@
                      </picture>
                   </div>
                   <div class="models__3-right">
-                     <p class="models__3-name">YX1 speaker</p>
-                     <a href="#" class="btn-black btn">See product</a>
+                     <p class="models__3-name">YX1 earphones</p>
+                     <a id='yx1-earphones' href="product-details.html" class="btn-black btn">See product</a>
                   </div>
                </div>
             </div>
@@ -212,9 +245,9 @@
             <nav class="navbar footer__navbar">
                <ul class="navbar__list">
                   <li class="navbar__item"><a href="index.html">Home</a></li>
-                  <li class="navbar__item"><a href="headphones.html">Headphones</a></li>
-                  <li class="navbar__item"><a href="speakers.html">Speakers</a></li>
-                  <li class="navbar__item"><a href="earphones.html">Earphoness</a></li>
+                  <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
+                  <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
+                  <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
                </ul>
             </nav>
 

@@ -1,0 +1,15 @@
+.burger__menu {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  & .catalogue {
+    background-color: $color-white;
+    padding-top: 10rem ;
+    padding-bottom: 7rem;
+
+    @include respond (phone) {
+      padding-top: 8rem;
+      padding-bottom: 3.5rem;
+    }
+  } 
+}

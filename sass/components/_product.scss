@@ -15,14 +15,14 @@
          flex-direction: column;
       }
    }
-   &__rightside {
-      flex-direction: column-reverse;
-   }
 
    &__img {
       flex-basis: 50%;
       overflow: hidden;
 
+      & img {
+         border-radius: 8px;
+      }
       @include respond(tab) {
          margin-bottom: 5rem;
       }
@@ -57,7 +57,7 @@
 
    &__name {
       margin-bottom: 3.2rem;
-      max-width: 50%;
+      max-width: 60%;
 
       @include respond (phone) {
          max-width: 70%;

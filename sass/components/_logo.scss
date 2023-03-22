@@ -4,4 +4,12 @@
   &__img {
     width: 100%;
   }
+
+  @include respond (tab) {
+    margin-right: auto;
+  }
+  
+  @include respond (phone) {
+    margin: 0 auto;
+  }
 } 

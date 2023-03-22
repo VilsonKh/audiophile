@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="product-details">
+<html lang="en" id="catalogue-earphones">
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +8,8 @@
       <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
       <link rel="stylesheet" href="../css/style.css" />
       <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-      <script type="module" src="../js/const.js" defer></script>
-      <script type="module" src="../js/index.js" defer></script>
+      <script type="module" src="../js/const.js"  defer></script>
+      <script type='module' src="../js/index.js" defer></script>
       <title>Frontend Mentor | Audiophile e-commerce website</title>
    </head>
 
@@ -40,81 +40,46 @@
          </div>
       </header>
 
+      <div class="category">earphones</div>
+
       <main>
-         <div class="back-button container">
-            <a href="#" class="back">Go Back</a>
-         </div>
-
-         <section class="product-details container">
-            <template class="template__product-details">
-               <div class="product product__leftside">
-                  <div class="product__img">
-                     <div class="product__container">
-                        <img src="../assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" alt="" />
+         <section class="products">
+            <div class="container">
+               <template class="template__catalogue-item-left">
+                  <div class="product product__leftside">
+                     <div class="product__img">
+                           <img src="" alt="" />
+                     </div>
+                     <div class="product__description">
+                        <p class="product__name">XX99 Mark II Headphones</p>
+                        <p class="product__text">
+                           The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of
+                           studio-quality sound.
+                        </p>
+                        <a href="product-details.html" class="btn btn-orange">see product</a>
                      </div>
                   </div>
-
-                  <div class="product__description">
-                     <p class="product__name">XX99 Mark II Headphones</p>
-                     <p class="product__text">
-                        The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of
-                        studio-quality sound.
-                     </p>
-                     <p class="product__price">$ <span class="product-price">2.999</span></p>
-                     <div class="product__addCard">
-                        <div class="product__counter">
-                           <button class="product__decrement">-</button>
-                           <input class="product__quantity" value="1"></input>
-                           <button class="product__increment">+</button>
-                        </div>
-                        <a href="" class="btn btn-orange">add to card</a>
-                     </div>
-                  </div>
-               </div>
-            </template>
-         </section>
-
-         <section class="info container">
-            <div class="info__features">
-               <h2 class="info__heading">features</h2>
-               <p class="info__text">
-                  Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls
-                  designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.
-               </p>
-            </div>
-            <div class="info__box">
-               <h2 class="info__heading">in the box</h2>
-               <ul class="info__list">
-                  <template class="template-complectation">
-                     <li class="info__item">
-                        <span class="accessory-quant accent">1x</span>
-                        <span class="accessory-unit">Headphone Unit</span>
-                     </li>
-                  </template>
-               </ul>
-            </div>
-         </section>
-
-         <section class="gallery container">
-               <img class="gallery__1" src="" alt="" />
-
-               <img class="gallery__2" src="" alt="" />
-
-               <img class="gallery__3" src="" alt="" />
-
-         </section>
-
-         <section class="selection container">
-            <h2 class="selection__title">you may also like</h2>
-            <ul class="selection__list">
-               <template class="template-selection">
-                  <li class="selection__item">
-                           <img class='selection__img' src="" alt="" />
-                     <p class="selection__name">XX59</p>
-                     <a href="product-details.html" class="btn btn-orange">see product</a>
-                  </li>
                </template>
-            </ul>
+
+               <template class="template__catalogue-item-right">
+                  <div class="product product__rightside">
+                     <div class="product__description">
+                        <p class="product__name">XX99 Mark I Headphones</p>
+                        <p class="product__text">
+                           As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike
+                           in studios and on the go.
+                        </p>
+                        <a href="product-details.html" class="btn btn-orange">see product</a>
+                     </div>
+
+                     <div class="product__img">
+
+                              <img src="#" alt="" />
+
+                     </div>
+                  </div>
+               </template>
+            </div>
          </section>
 
          <section class="catalogue">

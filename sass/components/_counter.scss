@@ -1,0 +1,30 @@
+.product{
+  &__addCard{
+    display: flex;
+  }
+
+  &__counter {
+    background-color: $color-light-grey;
+    padding: 7px 11px;
+    width: 9.6rem;
+    display: flex;
+    justify-content: space-between;
+    margin-right:1.6rem;
+    align-items: center;
+  }
+
+  &__quantity {
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  &__increment,
+  &__decrement {
+    font-size: 1.6rem;
+
+    &:hover {
+      color: $color-orange;
+      opacity: 1;
+    }
+  }
+}

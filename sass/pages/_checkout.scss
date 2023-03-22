@@ -1,0 +1,199 @@
+.checkout-bg {
+   background-color: $color-dark-grey;
+}
+
+.checkout {
+   display: flex;
+   justify-content: space-between;
+   background-color: $color-dark-grey;
+   border-radius: 8px;
+   margin-bottom: 14rem;
+   align-items: start;
+
+   @include respond (tab) {
+      flex-direction: column;
+      row-gap:3rem;
+      align-items: stretch;
+   }
+
+   &__block {
+      flex-basis: 66%;
+      border-radius: 8px;
+      background-color: $color-white;
+      padding: 5rem;
+
+      @include respond (phone) {
+         padding: 2.4rem;
+      }
+   }
+
+   &__heading {
+      margin-bottom: 4rem;
+   }
+
+   &__legend {
+      margin-bottom: 1.6rem;
+   }
+
+   &__input {
+      padding: 1.8rem 2.4rem;
+      border: 1px solid $color-dark-grey;
+      border-radius: 8px;
+   }
+
+   &__billing,
+   &__shipping {
+      margin-bottom: 5rem;
+   }
+
+   &__box {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      flex-basis: 48%;
+
+      @include respond (phone) {
+         flex-basis: 100%;
+      }
+   }
+
+   &__field {
+      display: flex;
+      column-gap: 1.6rem;
+      row-gap: 2.4rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &:last-child {
+         margin-bottom: 3rem;
+      }
+   }
+
+   &__radio-label {
+      position: relative;
+      cursor: pointer;
+   }
+
+   &__radio-btn {
+      display: inline-block;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid $color-dark-grey;
+      position: absolute;
+      left: -3.6rem;
+      top: -1px;
+
+      &::after {
+         content: "";
+         display: block;
+         height: 1rem;
+         width: 1rem;
+         border-radius: 50%;
+         position: relative;
+         top: 50%;
+         left: 50%;
+         background-color: $color-orange;
+         opacity: 0;
+         transition: all 0.2s;
+         transform: translate(-50%, -50%) scale(0);
+         backface-visibility: hidden;
+      }
+   }
+
+   &__radio-input:checked ~ &__radio-label &__radio-btn::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+   }
+
+   &__method {
+      display: flex;
+      flex-basis: 100%;
+      column-gap: 1rem;
+      justify-content: space-between;
+
+      @include respond (phone) {
+         flex-direction: column;
+      }
+   }
+
+   &__left {
+      flex-basis: 48%;
+   }
+
+   &__right {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 48%;
+      row-gap: 1.6rem;
+   }
+
+   &__icon {
+      background-image: url(../assets/shared/icon__form.svg);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 10%;
+      flex-basis: 20%;
+   }
+
+   &__caution {
+      display: flex;
+      column-gap: 3rem;
+      display: none;
+   }
+
+   &__payment {
+
+   }
+
+   &__payment-info {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: space-between;
+
+      @include respond (phone) {
+         flex-direction: column;
+         row-gap: inherit;
+      }
+   }
+
+   & .busket__text {
+      margin-right: auto;
+   }
+}
+
+#address-box {
+   flex-basis: 100%;
+}
+
+.radio-box {
+   flex-basis: 100%;
+   border: 1px solid $color-dark-grey;
+   padding: 1.8rem 1.8rem 1.8rem 5rem;
+   border-radius: 8px;
+}
+
+#eMoney,
+#cash {
+   display: none;
+}
+
+.busket__summary {
+   flex-basis: 31%;
+   border-radius: 8px;
+   background-color: $color-white;
+
+   .busket__inner {
+      margin-top: 0;
+      max-width: 35rem;
+
+      @include respond (tab) {
+         max-width: none;
+         width: 100%;
+      }
+   }
+
+   .btn-orange {
+      width: 100%;
+   }
+}

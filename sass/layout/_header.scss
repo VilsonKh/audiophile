@@ -1,6 +1,7 @@
 .header {
    background-color: #141414;
-
+   position: relative;
+   
    &__container {
       max-width: 111rem;
       margin: 0 auto;
@@ -17,7 +18,7 @@
       @include respond(phone) {
          max-width: 32.7rem;
       }
-   }
+   } 
 
    &__burger {
       width: 16px;
@@ -25,6 +26,7 @@
       background-color: $color-white;
       position: relative;
       display: none;
+      margin-right: 4rem;
 
       &::before,
       &::after {
@@ -44,8 +46,12 @@
          top: 5px;
       }
 
-      @include respond(phone) {
+      @include respond(tab) {
          display: block;
+      }
+
+      @include respond (phone) {
+         margin-right: 0;
       }
    }
 }

@@ -10,6 +10,9 @@
 @import "components/about";
 @import "components/product";
 @import "components/popup-busket";
+@import "components/popup-confirmation";
+@import "components/counter";
+@import "components/burger-menu";
 
 @import "layout/header";
 @import "layout/footer";
@@ -17,6 +20,7 @@
 
 @import "pages/home";
 @import "pages/product-details";
+@import "pages/checkout";
 
 @import "base/base";
 @import "base/reset";

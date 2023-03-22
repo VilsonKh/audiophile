@@ -19,7 +19,7 @@
 }
 .header {
    & .navbar {
-      @include respond(phone) {
+      @include respond(tab) {
          display: none;
       }
    }
