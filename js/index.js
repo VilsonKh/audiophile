@@ -1,8 +1,6 @@
-// Записывает данные из json в переменную goods
 import { goods } from "./const.js";
-console.log(goods);
 
-$(function () {
+$(document).ready(function () {
    //ОТКРЫВАЕТ КОРЗИНУ ИЗ МЕНЮ
    $(".btn-busket").click(function (evt) {
       $(".popup-busket").css("visibility", "visible");
@@ -82,15 +80,18 @@ $(function () {
             $("#product-details").find(".info__text").text(goods[i].features);
 
             //  Добавляет интерактивность счетчику товаров
-            let quantity = parseFloat($(".product__quantity").attr('value'));
-            $(".product__increment").on("click", function () {
-               $(".product__quantity").attr('value',++quantity);
-            });
+            $(document).ready(function () {
+               let quantity = parseFloat($("#busket-quantity").attr("value"));
 
-            $(".product__decrement").on("click", function () {
-               if (quantity > 0) {
-                  $(".product__quantity").attr('value',--quantity);
-               }
+               $(".product__increment").on("click", function () {
+                  $(".product__quantity").attr("value", ++quantity);
+               });
+
+               $(".product__decrement").on("click", function () {
+                  if (quantity > 0) {
+                     $(".product__quantity").attr("value", --quantity);
+                  }
+               });
             });
 
             // $('.product__quantity').on("change", function () {
@@ -102,6 +103,7 @@ $(function () {
             //       $("#product-details .product .btn").css("background-color", "#D87D4A");
             //    }
             // });
+
             //Добавляет комлектующие
             for (let j in goods[i].includes) {
                let complectationUnit = $.parseHTML($(".template-complectation").clone().html());
@@ -136,7 +138,7 @@ $(function () {
                return randNumbArr;
             }
 
-            let randIndexes = getRandomNum()
+            let randIndexes = getRandomNum();
 
             //Добавляет рандомные карточки
 
@@ -175,56 +177,61 @@ $(function () {
    $("#product-details .product .btn").on("click", function (evt) {
       evt.preventDefault();
       let modelName = $(this).attr("id");
-      let modelQuantity = $(".product__quantity").attr('value');
+      let modelQuantity = $(".product__quantity").attr("value");
       localStorage.setItem("busket-" + modelName, modelQuantity);
    });
 
    function createBusketItems() {
       for (let j = 0; j < localStorage.length; j++) {
-        let busketKey = localStorage.key(j).slice(7);
-        let busketValue = localStorage.getItem(localStorage.key(j))
-      
-         for (let i in goods) {     
+         let busketKey = localStorage.key(j).slice(7);
+         let busketValue = localStorage.getItem(localStorage.key(j));
+
+         for (let i in goods) {
             if (goods[i].slug === busketKey) {
-              let newBusketItem = $.parseHTML($(".template__busket-item").clone().html());
-              $(newBusketItem).find(".busket__img").attr("src",goods[i].busketImg.src );
-              $(newBusketItem).find(".busket__name").text(goods[i].busketName)
-              $(newBusketItem).find(".busket-price").text(goods[i].price)
-              $(newBusketItem).find(".busket__quantity").attr('value',busketValue)
-              // $(newBusketItem).find(".busket-count").text()
+               let newBusketItem = $.parseHTML($(".template__busket-item").clone().html());
+               $(newBusketItem).find(".busket__img").attr("src", goods[i].busketImg.src);
+               $(newBusketItem).find(".busket__name").text(goods[i].busketName);
+               $(newBusketItem).find(".busket-price").text(goods[i].price);
+               $(newBusketItem).find(".busket__quantity").attr("value", busketValue);
+               $(document).ready(function () {
+                  $('.busket__heading').find(".busket-count").text(findTotalQuantity());
+                  console.log(findTotalQuantity())
+               });
 
-                //Находит количество товаров в корзине
-                function findTotalQuantity (){
-                  let total = 0;
-                  let inputs = $('.busket__quantity')
-                  console.log(inputs)
-                }
+               // $(newBusketItem).find(".busket-count").text()
 
-                function findTotalSum(){
-                  let sum = 0;
-                  $('.busket-price:visible').each(function(){
-                    $(this).css('background-color','red')
-                  })
+               //Находит количество товаров в корзине
 
-                }
-
-                findTotalSum()
-              $(".busket__list").append(newBusketItem)
-              
-         
+               $(".busket__list").append(newBusketItem);
             }
          }
       }
    }
 
-   //Очищает localStorage по нажатию на кнопку
-   $('.busket__remove').on('click',function(){
-    localStorage.clear();
-    $(".busket__item").each(function(){
-      $(this).remove()
-    })
+   function findTotalQuantity() {
+      let total = 0;
+      let inputs = $(".busket__quantity");
+      inputs.each(function () {
+         total += parseFloat($(this).val());
+        });
+        return total
+   }
 
-   })
+   function findTotalSum() {
+      let sum = 0;
+      $(".busket-price").each(function () {
+         // sum+=parseFloat($(this).text()) * parseFloat($(this).parent('.busket__innerItem').find('.busket__quantity').val())
+         $(this).css("background-color", "red");
+      });
+   }
+
+   //Очищает localStorage по нажатию на кнопку
+   $(".busket__remove").on("click", function () {
+      localStorage.clear();
+      $(".busket__item").each(function () {
+         $(this).remove();
+      });
+   });
 
    createBusketItems();
 });

@@ -41,7 +41,44 @@
       </header>
 
       <div class="category">earphones</div>
+      <div class="popup-busket">
+         <div class="overlay">
+            <div class="container">
+               <div class="busket__inner">
+                  <div class="busket__heading">
+                     <p class="busket__title">cart (<span class="busket-count">0</span>)</p>
+                     <button class="busket__remove">Remove all</button>
+                  </div>
 
+                  <ul class="busket__list">
+                     <template class="template__busket-item">
+                        <li class="busket__item">
+                           <div class="busket__itemInner">
+                              <img class="busket__img" src="" alt="" />
+                              <div class="busket__text">
+                                 <p class="busket__name"></p>
+                                 <p class="busket__price">$ <span class="busket-price"></span></p>
+                              </div>
+
+                              <div class="product__counter">
+                                 <button class="product__decrement">-</button>
+                                 <input class="product__quantity busket__quantity" ></input>
+                                 <button class="product__increment">+</button>
+                              </div>
+                           </div>
+                        </li>
+                     </template>
+                  </ul>
+                  <div class="busket__total">
+                     <p class="busket__totalText">total</p>
+                     <p class="busket__total-price">$ 0</p>
+                  </div>
+
+                  <a class="btn btn-orange" href="">chechout</a>
+               </div>
+            </div>
+         </div>
+      </div>
       <main>
          <section class="products">
             <div class="container">
