@@ -1,13 +1,16 @@
 import { goods } from "./const.js";
 
 $(document).ready(function () {
+   const newProd = $('<p class="product__heading-new accent">new product</p>');
    //ОТКРЫВАЕТ КОРЗИНУ ИЗ МЕНЮ
-   $(".btn-busket").click(function (evt) {
+
+   $(".btn-busket").click(function () {
       $(".popup-busket").css("visibility", "visible");
       $(".popup-busket").css("opacity", "1");
    });
 
    //ЗАКРЫВАЕТ POPUP ПО НАЖАТИЮ ВОКРУГ
+
    $("body").click(function (evt) {
       if (evt.target.classList.contains("overlay")) {
          $(".popup-busket").css("visibility", "hidden");
@@ -25,34 +28,12 @@ $(document).ready(function () {
    //Создает карточку товара в каталоге
    function createCard(category, id) {
       let isLeft = true;
-      let newProd = $('<p class="product__heading-new accent">new product</p>');
+
       for (let i in goods) {
          if (goods[i].category == category) {
-            if (isLeft == true) {
-               let newCardLeft = $.parseHTML($(`${id} .template__catalogue-item-left`).clone().html());
-               $(newCardLeft).find("img").attr("src", goods[i].categoryImage.desktop);
-               $(newCardLeft).find(".product__name").text(goods[i].name);
-               $(newCardLeft).find(".product__text").text(goods[i].description);
-               $(newCardLeft).find("a").attr("id", goods[i].slug);
-
-               if (goods[i].new == true) {
-                  $(newCardLeft).find(".product__description").prepend(newProd);
-               }
-               $(`${id} .products .container`).append(newCardLeft);
-               isLeft = false;
-            } else if (isLeft == false) {
-               let newCardRight = $.parseHTML($(`${id} .template__catalogue-item-right`).clone().html());
-               $(newCardRight).find("img").attr("src", goods[i].categoryImage.desktop);
-               $(newCardRight).find(".product__name").text(goods[i].name);
-               $(newCardRight).find(".product__text").text(goods[i].description);
-               $(newCardRight).find("a").attr("id", goods[i].slug);
-
-               if (goods[i].new == true) {
-                  $(newCardRight).find(".product__description").prepend(newProd);
-               }
-               $(`${id} .products .container`).append(newCardRight);
-               isLeft = true;
-            }
+            let newCard = isLeft ? $.parseHTML($(`${id} .template__catalogue-item-left`).clone().html()) : $.parseHTML($(`${id} .template__catalogue-item-right`).clone().html());
+            createNewCard(id, newCard, goods[i]);
+            isLeft = !isLeft;
          }
       }
    }
@@ -62,47 +43,64 @@ $(document).ready(function () {
       localStorage.setItem("currentProduct", $(this).attr("id"));
    });
 
+   function createNewCard(id, template, data, isDetailed = false) {
+      $(template).find("img").attr("src", data.categoryImage.desktop);
+      $(template).find(".product__name").text(data.name);
+      $(template).find(".product__text").text(data.description);
+      $(template).find("a").attr("id", data.slug);
+      if (data.new == true) {
+         $(template).find(".product__description").prepend(newProd);
+      }
+      if (!isDetailed) {
+         $(`${id} .products .container`).append(template);
+      } else {
+         $(template).find(".product-price").text(data.price);
+         $(`${id} .product-details`).append(template);
+         $("#product-details").find(".info__text").text(data.features);
+      }
+   }
+
+   //  Добавляет интерактивность счетчику товаров
+   let quantityDetailed=0;
+   let quantityBasket;
+
+   $(document).on("click", "#detailed__increment", function () {
+      quantityDetailed = parseFloat($("#detailed__input").attr("value"));
+      $(".product__quantity").attr("value", ++quantityDetailed);
+   });
+
+   $(document).on("click", "#detailed__decrement", function () {
+      if (quantityDetailed > 0) {
+        quantityDetailed = parseFloat($("#detailed__input").attr("value"));
+         $(".product__quantity").attr("value", --quantityDetailed);
+      }
+   });
+
+   $(document).on("click", "#busket__increment", function () {
+      console.log("I'm increment");
+      //$(this).parent('.product__counter').children('#busket__input').attr('value')
+      quantityBasket = parseFloat($("#busket__input").attr("value"));
+      $(".product__quantity").attr("value", ++quantityBasket);
+
+   });
+   $(document).on("click", "#busket__decrement", function () {
+      if (quantityBasket > 0) {
+        quantityBasket = parseFloat($("#busket__input").attr("value"));
+         $(".product__quantity").attr("value", --quantityBasket);
+      }
+   });
+
+
+   for (let i = 0; i<$('.busket__item').lenght;i++){
+    console.log($('.busket__item')[i])
+   }
    //  Изменяет карточку каждого товара
    function createDetailedCard(id) {
-      let newProd = $('<p class="product__heading-new accent">new product</p>');
       for (let i in goods) {
          if (goods[i].slug == localStorage.getItem("currentProduct")) {
             let newCard = $.parseHTML($(`${id} .template__product-details`).clone().html());
-            $(newCard).find("img").attr("src", goods[i].categoryImage.desktop);
-            $(newCard).find(".product__name").text(goods[i].name);
-            $(newCard).find(".product__text").text(goods[i].description);
-            $(newCard).find(".product-price").text(goods[i].price);
-            $(newCard).find("a").attr("id", goods[i].slug);
-            if (goods[i].new == true) {
-               $(newCard).find(".product__description").prepend(newProd);
-            }
-            $(`${id} .product-details`).append(newCard);
-            $("#product-details").find(".info__text").text(goods[i].features);
 
-            //  Добавляет интерактивность счетчику товаров
-            $(document).ready(function () {
-               let quantity = parseFloat($("#busket-quantity").attr("value"));
-
-               $(".product__increment").on("click", function () {
-                  $(".product__quantity").attr("value", ++quantity);
-               });
-
-               $(".product__decrement").on("click", function () {
-                  if (quantity > 0) {
-                     $(".product__quantity").attr("value", --quantity);
-                  }
-               });
-            });
-
-            // $('.product__quantity').on("change", function () {
-            //    if (quantity === 0) {
-            //     console.log(quantity)
-            //       $("#product-details .product .btn").css("background-color", "#fbaf85");
-            //    }
-            //    if (quantity > 0) {
-            //       $("#product-details .product .btn").css("background-color", "#D87D4A");
-            //    }
-            // });
+            createNewCard(id, newCard, goods[i], true);
 
             //Добавляет комлектующие
             for (let j in goods[i].includes) {
@@ -119,60 +117,46 @@ $(document).ready(function () {
             $(".gallery__2").attr("src", goods[i].gallery.second.desktop);
             $(".gallery__3").attr("src", goods[i].gallery.third.desktop);
 
-            //Генерирует массив из 3 рандомный чисел от 1 до 6
-            function getRandomNum() {
-               let randNumbArr = [];
-               while (randNumbArr.length < 3) {
-                  let randNumb = Math.floor(Math.random() * goods.length);
-                  let found = false;
-                  for (let i = 0; i < randNumbArr.length; i++) {
-                     if (randNumbArr[i] === randNumb) {
-                        found = true;
-                        break;
-                     }
-                  }
-                  if (!found) {
-                     randNumbArr[randNumbArr.length] = randNumb;
-                  }
-               }
-               return randNumbArr;
-            }
-
-            let randIndexes = getRandomNum();
-
-            //Добавляет рандомные карточки
-
-            for (let index of randIndexes) {
-               let selectionItem = $.parseHTML($(".template-selection").clone().html());
-
-               $(selectionItem).find(".selection__img").attr("src", goods[index].categoryImage.desktop);
-               $(selectionItem).find(".selection__name").text(goods[index].name);
-               $(selectionItem).find("a").attr("id", goods[index].slug);
-
-               $(".selection__list").append(selectionItem);
-            }
+            addRandomCards();
          }
       }
    }
+
+   function addRandomCards() {
+      let randIndexes = getRandomNum();
+
+      //Добавляет рандомные карточки
+
+      for (let index of randIndexes) {
+         let selectionItem = $.parseHTML($(".template-selection").clone().html());
+
+         $(selectionItem).find(".selection__img").attr("src", goods[index].categoryImage.desktop);
+         $(selectionItem).find(".selection__name").text(goods[index].name);
+         $(selectionItem).find("a").attr("id", goods[index].slug);
+
+         $(".selection__list").append(selectionItem);
+      }
+   }
+
+   function getRandomNum() {
+      let randNumbArr = [];
+      while (randNumbArr.length < 3) {
+         let randNumb = Math.floor(Math.random() * goods.length);
+         let found = false;
+         for (let i = 0; i < randNumbArr.length; i++) {
+            if (randNumbArr[i] === randNumb) {
+               found = true;
+               break;
+            }
+         }
+         if (!found) {
+            randNumbArr[randNumbArr.length] = randNumb;
+         }
+      }
+      return randNumbArr;
+   }
+
    createDetailedCard("#product-details");
-
-   //Добавляет товары для корзины в localStorage
-
-   //  let busketProduct = [];
-   //  let i = 1;
-   //  $('#product-details .product .btn').on('click',function(evt){
-   //    evt.preventDefault()
-   //    let modelName = $(this).attr('id')
-   //    let modelPrice = $('.product-price').text()
-   //    let modelQuantity = $('.product__quantity').val()
-   //   busketProduct.push({ name:modelName,
-   //                        quantity:parseFloat(modelQuantity),
-   //                        price:parseFloat(modelPrice)
-   //                       })
-
-   //    localStorage.setItem('busketProduct-'+i,JSON.stringify(busketProduct));
-   //    i+=1
-   //  })
 
    $("#product-details .product .btn").on("click", function (evt) {
       evt.preventDefault();
@@ -181,6 +165,7 @@ $(document).ready(function () {
       localStorage.setItem("busket-" + modelName, modelQuantity);
    });
 
+   //Добавляет элемент в корзину
    function createBusketItems() {
       for (let j = 0; j < localStorage.length; j++) {
          let busketKey = localStorage.key(j).slice(7);
@@ -189,18 +174,14 @@ $(document).ready(function () {
          for (let i in goods) {
             if (goods[i].slug === busketKey) {
                let newBusketItem = $.parseHTML($(".template__busket-item").clone().html());
+               $(newBusketItem).attr('id',`busketItem__${goods[i].slug}`)
                $(newBusketItem).find(".busket__img").attr("src", goods[i].busketImg.src);
                $(newBusketItem).find(".busket__name").text(goods[i].busketName);
                $(newBusketItem).find(".busket-price").text(goods[i].price);
                $(newBusketItem).find(".busket__quantity").attr("value", busketValue);
                $(document).ready(function () {
-                  $('.busket__heading').find(".busket-count").text(findTotalQuantity());
-                  console.log(findTotalQuantity())
+                  $(".busket__heading").find(".busket-count").text(findTotalQuantity());
                });
-
-               // $(newBusketItem).find(".busket-count").text()
-
-               //Находит количество товаров в корзине
 
                $(".busket__list").append(newBusketItem);
             }
@@ -213,8 +194,8 @@ $(document).ready(function () {
       let inputs = $(".busket__quantity");
       inputs.each(function () {
          total += parseFloat($(this).val());
-        });
-        return total
+      });
+      return total;
    }
 
    function findTotalSum() {
