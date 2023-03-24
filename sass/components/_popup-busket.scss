@@ -80,6 +80,7 @@
 .overlay {
    position: absolute;
    z-index: 100;
+   //pointer-events: none;
    width: 100vw;
    height: 100vh;
    background-color: rgba($color-black, 0.5);
@@ -88,4 +89,11 @@
 
 .checkout__busket {
    margin-bottom: 8px;
+}
+
+#busket-count {
+   width: 1.5rem;
+   text-align: center;
+   font-size: inherit;
+   font-weight: inherit;
 }

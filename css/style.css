@@ -315,6 +315,12 @@
 .checkout__busket {
   margin-bottom: 8px; }
 
+#busket-count {
+  width: 1.5rem;
+  text-align: center;
+  font-size: inherit;
+  font-weight: inherit; }
+
 .popup-confirmation {
   position: relative;
   visibility: visible;

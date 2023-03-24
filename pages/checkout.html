@@ -7,6 +7,8 @@
       <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
       <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
       <link rel="stylesheet" href="../css/style.css" />
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
       <title>Audiophile e-commerce website</title>
    </head>
    <body class="checkout-bg">
@@ -84,17 +86,17 @@
                         <legend class="checkout__legend">billing details</legend>
                         <div class="checkout__box">
                            <label class="checkout__label" for="name">Name</label>
-                           <input id="name" class="checkout__input" type="text" placeholder="Alexei Ward" />
+                           <input name="name" class="checkout__input" type="text" placeholder="Alexei Ward" required/>
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="email">Email Address</label>
-                           <input id="email" class="checkout__input" type="email" placeholder="alexei@mail.com" />
+                           <input name="email" class="checkout__input" type="email" placeholder="alexei@mail.com" required/>
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="number">Phone Number</label>
-                           <input id="number" class="checkout__input" type="tel" placeholder="+1 202-555-0136" />
+                           <input name="number" class="checkout__input" type="tel" placeholder="+1 202-555-0136" required/>
                         </div>
                      </fieldset>
 
@@ -102,22 +104,22 @@
                         <legend class="checkout__legend">shipping info</legend>
                         <div class="checkout__box" id="address-box">
                            <label class="checkout__label" for="address">Address</label>
-                           <input id="address" class="checkout__input" type="text" placeholder="1137 Williams Avenue" />
+                           <input name="address" class="checkout__input" type="text" placeholder="1137 Williams Avenue" required/>
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="zip">ZIP Code</label>
-                           <input id="zip" class="checkout__input" type="text" placeholder="10001" />
+                           <input name="zip" class="checkout__input" type="text" placeholder="10001" required/>
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="city">City</label>
-                           <input id="city" class="checkout__input" type="text" placeholder="New York" />
+                           <input name="city" class="checkout__input" type="text" placeholder="New York" required/>
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="country">Country</label>
-                           <input id="country" class="checkout__input" type="text" placeholder="United States" />
+                           <input name="country" class="checkout__input" type="text" placeholder="United States" required/>
                         </div>
                      </fieldset>
 
@@ -130,10 +132,10 @@
                            <div class="checkout__right">
                               <div class="checkout__box radio-box">
                                  <input name="method" id="eMoney" class="checkout__input checkout__radio-input" type="radio" value="e-Money" checked />
-                                 <label class="checkout__label checkout__radio-label" for="eMoney"><span class="checkout__radio-btn"></span> e-Money</label>
+                                 <label class="checkout__label checkout__radio-label" for="method"><span class="checkout__radio-btn"></span> e-Money</label>
                               </div>
                               <div class="checkout__box radio-box">
-                                 <input name="method" id="cash" class="checkout__input checkout__radio-input" type="radio" value="Cash on Delivery" />
+                                 <input name="method" name="cash" class="checkout__input checkout__radio-input" type="radio" value="Cash on Delivery" />
                                  <label class="checkout__label checkout__radio-label" for="cash"><span class="checkout__radio-btn"></span> Cash on Delivery</label>
                               </div>
                            </div>
@@ -142,12 +144,12 @@
                         <div class="checkout__payment-info">
                            <div class="checkout__box">
                               <label class="checkout__label" for="moneyNumber">e-Money Number</label>
-                              <input id="moneyNumber" class="checkout__input" type="text" placeholder="238521993" maxlength="9" />
+                              <input id="moneyNumber" name="moneyNumber" class="checkout__input" type="text" placeholder="238521993" maxlength="9" required/>
                            </div>
 
                            <div class="checkout__box">
                               <label class="checkout__label" for="pin">e-Money PIN</label>
-                              <input id="pin" class="checkout__input" type="password" placeholder="6891" maxlength="4" />
+                              <input id="pin" name='pin' class="checkout__input" type="password" placeholder="6891" maxlength="4" required/>
                            </div>
                         </div>
                      </fieldset>
@@ -212,7 +214,7 @@
                         <p class="busket__total-price accent">$ 2,999</p>
                      </div>
 
-                     <a class="btn btn-orange" href="">continue</a>
+                     <button class="btn btn-orange" id="checkout">continue</button>
                   </div>
                </sidebar>
             </div>
@@ -276,5 +278,8 @@
             </div>
          </div>
       </footer>
+      <script type="module" src="../js/const.js" defer></script>
+      <script type='module' src="index.js" defer></script>
+      <script type='module' src="validation.js"></script>
    </body>
 </html>

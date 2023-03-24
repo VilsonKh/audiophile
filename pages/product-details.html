@@ -45,7 +45,7 @@
             <div class="container">
                <div class="busket__inner">
                   <div class="busket__heading">
-                     <p class="busket__title">cart (<span class="busket-count">0</span>)</p>
+                     <p class="busket__title">cart (<input id="busket-count" value="0"></input>)</p>
                      <button class="busket__remove">Remove all</button>
                   </div>
 
@@ -61,7 +61,7 @@
 
                               <div class="product__counter">
                                  <button id="busket__decrement" class="product__decrement">-</button>
-                                 <input id='busket__input' class="product__quantity busket__input" value="1"></input>
+                                 <input id='busket__input' class="product__quantity busket__input" value="1" type="text"></input>
                                  <button  id='busket__increment' class="product__increment">+</button>
                               </div>
                            </div>
@@ -70,10 +70,10 @@
                   </ul>
                   <div class="busket__total">
                      <p class="busket__totalText">total</p>
-                     <p class="busket__total-price">$ 0</p>
+                     <p class="busket__total-price">$ <span id="busket-totalPrice">0</span></p>
                   </div>
 
-                  <a class="btn btn-orange" href="">chechout</a>
+                  <a class="btn btn-orange" href="checkout.html">chechout</a>
                </div>
             </div>
          </div>
