@@ -89,20 +89,22 @@
                <div class="confirmation__review">
                   <div class="confirmation__goods">
                      <div class="busket__inner confirmation__list">
-                        <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                        <div class="busket__text">
-                           <p class="busket__name">XX99 MK II</p>
-                           <p class="busket__price">$ 2,999</p>
-                        </div>
-
-                        <p class="busket__finalCount">x<span class="busket__finalNumber">1</span></p>
+                      <template class="template__finalCard">
+                           <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                           <div class="busket__text">
+                              <p class="busket__name"></p>
+                              <p class="busket__price">$ <span class="confirmation__price"></spn ></p>
+                           </div>
+   
+                           <p class="busket__finalCount">x<span class="busket__finalNumber"></span></p>
+                      </template>
                      </div>
-                     <p class="confirmation__hiddenList">and over <span class="busket-count">2</span> other item(s)</p>
+                     <p class="confirmation__hiddenList">and over <span class="confirmation-count">2</span> other item(s)</p>
                   </div>
 
                   <div class="confirmation__total">
                      <p class="confirmation__text">grand total</p>
-                     <p class="confirmation__totalPrice">$ 5,446</p>
+                     <p class="confirmation__totalPrice">$ <span class="confirmation__grandTotal">5,446</span></p>
                   </div>
                </div>
                <a class="btn btn-orange" href="index.html">back to home</a>
@@ -139,7 +141,7 @@
                         </div>
                      </fieldset>
 
-                     <fieldset class="checkout__field checkout__shipping">
+                     <fieldset class="checkout__field checkout__shippingData">
                         <legend class="checkout__legend">shipping info</legend>
                         <div class="checkout__box" id="address-box">
                            <label class="checkout__label" for="address">Address</label>
@@ -208,7 +210,7 @@
                         <p class="busket__title">summary</p>
                      </div>
 
-                     <ul class="busket__list">
+                     <ul class="busketSummary__list">
                        <template class="template__checkout-listItem">
                            <li class="busket__item">
                               <div class="busket__itemInner">

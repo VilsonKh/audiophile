@@ -4,12 +4,15 @@ $.validator.addMethod('numberValidator',function(value) {
 },'Wrong format');
 
 $.validator.addMethod('pinValidator', function(value) {
-  return parseInt(value) === 4
+  return parseInt(value.length) === 4
 },'PIN must be 4 characters');
 
-$.validator.addMethod('zipValidator',function(value){return /^\d{5}(?:[-\s]\d{4})?$/.text(value)}, 'Wrong format');
+$.validator.addMethod('zipValidator',function(value){
+  return /^\d{5}(?:[-\s]\d{4})?$/.test(value)
+}, 'Wrong format');
 
-$.validator.addMethod('moneyValidator',function(value) {return parseInt(value) === 9}, 'e-Number must be 9 characters')
+$.validator.addMethod('moneyValidator',function(value) {
+  return parseInt(value.length) === 9}, 'e-Number must be 9 characters')
 
   $('.checkout__form').validate({
     rules: {

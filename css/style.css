@@ -876,7 +876,7 @@ input.valid {
     padding: 1.8rem 2.4rem;
     border: 1px solid #f1f1f1;
     border-radius: 8px; }
-  .checkout__billing, .checkout__shipping {
+  .checkout__billing, .checkout__shippingData {
     margin-bottom: 5rem; }
   .checkout__box {
     display: flex;
@@ -986,6 +986,14 @@ input.valid {
         width: 100%; } }
   .busket__summary .btn-orange {
     width: 100%; }
+
+.busketSummary__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+  margin-bottom: 3.2rem; }
+  .busketSummary__list .busket__img {
+    border-radius: 8px; }
 
 html {
   font-size: 62.5%; }

@@ -42,7 +42,7 @@
    }
 
    &__billing,
-   &__shipping {
+   &__shippingData {
       margin-bottom: 5rem;
    }
 
@@ -192,5 +192,16 @@
 
    .btn-orange {
       width: 100%;
+   }
+}
+
+.busketSummary__list {
+   display: flex;
+   flex-direction: column;
+   row-gap: 2.5rem;
+   margin-bottom: 3.2rem;
+
+   & .busket__img {
+      border-radius: 8px;
    }
 }
