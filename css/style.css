@@ -452,6 +452,24 @@
         padding-top: 8rem;
         padding-bottom: 3.5rem; } }
 
+label.error {
+  color: #cd2c2c;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+input:focus {
+  border: 1px solid #D87D4A; }
+
+input.error {
+  outline: 2px solid #cd2c2c; }
+
+input.valid {
+  border: 1px solid #D87D4A; }
+
 .header {
   background-color: #141414;
   position: relative; }
@@ -864,7 +882,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    flex-basis: 48%; }
+    flex-basis: 48%;
+    position: relative; }
     @media only screen and (max-width: 23.5em) {
       .checkout__box {
         flex-basis: 100%; } }

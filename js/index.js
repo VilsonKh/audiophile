@@ -233,7 +233,7 @@ $(document).ready(function () {
    }
 
    //Добавляет элемент в корзину
-   function createBusketItems(isUpdate = false, name = null) {
+   function createBusketItems(isUpdate = false, name = null,) {
       if (!isUpdate) {
          for (let j = 0; j < localStorage.length; j++) {
             let busketKey = localStorage.key(j).slice(7);
@@ -285,7 +285,27 @@ $(document).ready(function () {
             }
          }
       }
+      //  else if (location === 'checkout') {
+      //   for (let i in goods) {
+      //     if (goods[i].slug === name) {
+      //       let checkoutItem = $.parseHTML($('.template__checkout-listItem').clone().html())
+      //       $(checkoutItem).find(".busket__img").attr("src", goods[i].busketImg.src);
+      //       $(checkoutItem).find(".busket__name").text(goods[i].busketName);
+      //       $(checkoutItem).find(".busket-price").text(goods[i].price);
+      //       $(checkoutItem).find('.busket__finalNumber').text(localStorage.getItem(`busket-${goods[i].slug}`))
+      //       $('#checkout busket__list').append(checkoutItem)
+      //     }
+      //   }
+      // }
    }
+
+$(document).on("click", "#btn-checkout", function () {
+  console.log('test')
+$('.busket__item .busket__itemInner .product__counter').remove()
+})
+
+
+
 
    function findTotalQuantity() {
       let total = 0;
@@ -296,14 +316,7 @@ $(document).ready(function () {
       return total;
    }
 
-   function findTotalSum() {
-      let sum = 0;
-      $(".busket-price").each(function () {
-         // sum+=parseFloat($(this).text()) * parseFloat($(this).parent('.busket__innerItem').find('.busket__quantity').val())
-         $(this).css("background-color", "red");
-      });
-   }
-
+   
    //Очищает localStorage по нажатию на кнопку
    $(".busket__remove").on("click", function () {
       localStorage.clear();

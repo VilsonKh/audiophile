@@ -51,6 +51,7 @@
       flex-direction: column;
       row-gap: 1rem;
       flex-basis: 48%;
+      position: relative;
 
       @include respond (phone) {
          flex-basis: 100%;
@@ -140,10 +141,6 @@
       display: flex;
       column-gap: 3rem;
       display: none;
-   }
-
-   &__payment {
-
    }
 
    &__payment-info {

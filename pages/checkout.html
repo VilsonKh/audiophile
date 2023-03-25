@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="checkout">
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
       <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
       <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
       <link rel="stylesheet" href="../css/style.css" />
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+      <script type='module' src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+      <script type="module" src="../js/jquery.validate.js"></script>
       <title>Audiophile e-commerce website</title>
    </head>
    <body class="checkout-bg">
@@ -21,12 +21,12 @@
             <nav class="navbar">
                <ul class="navbar__list">
                   <li class="navbar__item"><a href="index.html">Home</a></li>
-                  <li class="navbar__item"><a href="catalogue.html">Headphones</a></li>
-                  <li class="navbar__item"><a href="catalogue.html">Speakers</a></li>
-                  <li class="navbar__item"><a href="catalogue.html">Earphoness</a></li>
+                  <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
+                  <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
+                  <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
                </ul>
             </nav>
-            <button class="busket">
+            <button class="btn-busket">
                <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
                   <path
                      d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
@@ -37,6 +37,45 @@
             </button>
          </div>
       </header>
+
+      <div class="popup-busket">
+         <div class="overlay">
+            <div class="container">
+               <div class="busket__inner">
+                  <div class="busket__heading">
+                     <p class="busket__title">cart (<input id="busket-count" value="0"></input>)</p>
+                     <button class="busket__remove">Remove all</button>
+                  </div>
+
+                  <ul class="busket__list">
+                     <template class="template__busket-item">
+                        <li class="busket__item">
+                           <div class="busket__itemInner">
+                              <img class="busket__img" src="" alt="" />
+                              <div class="busket__text">
+                                 <p class="busket__name"></p>
+                                 <p class="busket__price">$ <span class="busket-price"></span></p>
+                              </div>
+
+                              <div class="product__counter">
+                                 <button id="busket__decrement" class="product__decrement">-</button>
+                                 <input id='busket__input' class="product__quantity busket__input" value="1"></input>
+                                 <button  id='busket__increment' class="product__increment">+</button>
+                              </div>
+                           </div>
+                        </li>
+                     </template>
+                  </ul>
+                  <div class="busket__total">
+                     <p class="busket__totalText">total</p>
+                     <p class="busket__total-price">$<span id="busket-totalPrice"></p>
+                  </div>
+
+                  <a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
+               </div>
+            </div>
+         </div>
+      </div>
 
       <div class="popup-confirmation">
         
@@ -86,17 +125,17 @@
                         <legend class="checkout__legend">billing details</legend>
                         <div class="checkout__box">
                            <label class="checkout__label" for="name">Name</label>
-                           <input name="name" class="checkout__input" type="text" placeholder="Alexei Ward" required/>
+                           <input name="name" class="checkout__input" type="text" placeholder="Alexei Ward" />
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="email">Email Address</label>
-                           <input name="email" class="checkout__input" type="email" placeholder="alexei@mail.com" required/>
+                           <input name="email" class="checkout__input" type="email" placeholder="alexei@mail.com" />
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="number">Phone Number</label>
-                           <input name="number" class="checkout__input" type="tel" placeholder="+1 202-555-0136" required/>
+                           <input name="number" class="checkout__input" type="text" placeholder="+7 (916) 202-555-0136" />
                         </div>
                      </fieldset>
 
@@ -104,22 +143,22 @@
                         <legend class="checkout__legend">shipping info</legend>
                         <div class="checkout__box" id="address-box">
                            <label class="checkout__label" for="address">Address</label>
-                           <input name="address" class="checkout__input" type="text" placeholder="1137 Williams Avenue" required/>
+                           <input name="address" class="checkout__input" type="text" placeholder="1137 Williams Avenue" />
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="zip">ZIP Code</label>
-                           <input name="zip" class="checkout__input" type="text" placeholder="10001" required/>
+                           <input name="zip" class="checkout__input" type="text" placeholder="10001" />
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="city">City</label>
-                           <input name="city" class="checkout__input" type="text" placeholder="New York" required/>
+                           <input name="city" class="checkout__input" type="text" placeholder="New York" />
                         </div>
 
                         <div class="checkout__box">
                            <label class="checkout__label" for="country">Country</label>
-                           <input name="country" class="checkout__input" type="text" placeholder="United States" required/>
+                           <input name="country" class="checkout__input" type="text" placeholder="United States" />
                         </div>
                      </fieldset>
 
@@ -132,10 +171,10 @@
                            <div class="checkout__right">
                               <div class="checkout__box radio-box">
                                  <input name="method" id="eMoney" class="checkout__input checkout__radio-input" type="radio" value="e-Money" checked />
-                                 <label class="checkout__label checkout__radio-label" for="method"><span class="checkout__radio-btn"></span> e-Money</label>
+                                 <label class="checkout__label checkout__radio-label" for="eMoney"><span class="checkout__radio-btn"></span> e-Money</label>
                               </div>
                               <div class="checkout__box radio-box">
-                                 <input name="method" name="cash" class="checkout__input checkout__radio-input" type="radio" value="Cash on Delivery" />
+                                 <input name="method" id="cash" name="cash" class="checkout__input checkout__radio-input" type="radio" value="Cash on Delivery" />
                                  <label class="checkout__label checkout__radio-label" for="cash"><span class="checkout__radio-btn"></span> Cash on Delivery</label>
                               </div>
                            </div>
@@ -144,12 +183,12 @@
                         <div class="checkout__payment-info">
                            <div class="checkout__box">
                               <label class="checkout__label" for="moneyNumber">e-Money Number</label>
-                              <input id="moneyNumber" name="moneyNumber" class="checkout__input" type="text" placeholder="238521993" maxlength="9" required/>
+                              <input id="moneyNumber" name="moneyNumber" class="checkout__input" type="text" placeholder="238521993" maxlength="9" />
                            </div>
 
                            <div class="checkout__box">
                               <label class="checkout__label" for="pin">e-Money PIN</label>
-                              <input id="pin" name='pin' class="checkout__input" type="password" placeholder="6891" maxlength="4" required/>
+                              <input id="pin" name='pin' class="checkout__input" type="password" placeholder="6891"  length="4" />
                            </div>
                         </div>
                      </fieldset>
@@ -170,51 +209,41 @@
                      </div>
 
                      <ul class="busket__list">
-                        <li class="busket__item">
-                           <div class="busket__itemInner">
-                              <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                              <div class="busket__text">
-                                 <p class="busket__name">XX99 MK II</p>
-                                 <p class="busket__price">$ 2,999</p>
+                       <template class="template__checkout-listItem">
+                           <li class="busket__item">
+                              <div class="busket__itemInner">
+                                 <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                                 <div class="busket__text">
+                                    <p class="busket__name">XX99 MK II</p>
+                                    <p class="busket__price">$ 2,999</p>
+                                 </div>
+   
+                                 <p class="busket__finalCount">x<span class="busket__finalNumber">1</span></p>
                               </div>
-
-                              <p class="busket__finalCount">x<span class="busket__finalNumber">1</span></p>
-                           </div>
-                        </li>
-
-                        <li class="busket__item">
-                           <div class="busket__itemInner">
-                              <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                              <div class="busket__text">
-                                 <p class="busket__name">XX99 MK II</p>
-                                 <p class="busket__price">$ 2,999</p>
-                              </div>
-
-                              <p class="busket__finalCount">x<span class="busket__finalNumber">1</span></p>
-                           </div>
-                        </li>
+                           </li>
+                       </template>
                      </ul>
                      <div class="busket__total checkout__busket">
                         <p class="busket__totalText">total</p>
-                        <p class="busket__total-price">$ 2,999</p>
+                        <p class="busket__total-price">$ <span class="checkout__sum">2,999</spn ></p>
                      </div>
 
                      <div class="busket__total checkout__busket">
                         <p class="busket__totalText">shipping</p>
-                        <p class="busket__total-price">$ 50</p>
+                        <p class="busket__total-price">$<span class="checkout__shipping"> 50</span></p>
                      </div>
 
                      <div class="busket__total">
                         <p class="busket__totalText">vat (included)</p>
-                        <p class="busket__total-price">$ 999</p>
+                        <p class="busket__total-price">$ <span class="checkout__vat">999</span></p>
                      </div>
 
                      <div class="busket__total">
                         <p class="busket__totalText">grand total</p>
-                        <p class="busket__total-price accent">$ 2,999</p>
+                        <p class="busket__total-price accent">$ <span class="checkout__grandTotal">2,999</span></p>
                      </div>
 
-                     <button class="btn btn-orange" id="checkout">continue</button>
+                     <button class="btn btn-orange" id="confirm">continue</button>
                   </div>
                </sidebar>
             </div>
@@ -278,8 +307,8 @@
             </div>
          </div>
       </footer>
-      <script type="module" src="../js/const.js" defer></script>
-      <script type='module' src="index.js" defer></script>
-      <script type='module' src="validation.js"></script>
+      <script type="module" src="../js/const.js" ></script>
+      <script type='module' src="../js/index.js"></script>
+      <script type='module' src="../js/validation.js"></script>
    </body>
 </html>

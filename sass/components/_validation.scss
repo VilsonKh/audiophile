@@ -1,0 +1,21 @@
+label.error {
+   color: $color-red;
+   font-weight: 500;
+   font-size: 1.2rem;
+   line-height: 1.6rem;
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+
+input:focus {
+  border: 1px solid $color-orange;
+}
+
+input.error {
+   outline: 2px solid $color-red;
+}
+
+input.valid {
+   border: 1px solid $color-orange;
+}
