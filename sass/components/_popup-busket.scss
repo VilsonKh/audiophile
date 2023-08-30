@@ -1,19 +1,16 @@
 .popup-busket {
-   visibility: hidden;
-   opacity: 0;
+   display: none;
 }
 
 .busket {
    &__inner {
-      position: sticky;
+      position: absolute;
       background-color: $color-white;
       border-radius: 8px;
       width: 40rem;
       padding: 3rem;
       z-index: 999;
-      margin-top: 13rem;
-      margin-left: auto;
-
+      right: 10%;
       @include respond(phone) {
          width: 100%;
       }
@@ -81,10 +78,9 @@
    position: absolute;
    z-index: 100;
    //pointer-events: none;
-   width: 100vw;
+   width: 100%;
    height: 100vh;
    background-color: rgba($color-black, 0.5);
-   top: 0;
 }
 
 .checkout__busket {

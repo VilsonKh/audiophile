@@ -5,6 +5,8 @@ html {
 body {
    min-width: 375px;
    background-color: $color-white;
+   max-width: 144rem;
+   margin: 0 auto;
 }
 
 .container {
@@ -25,10 +27,6 @@ body {
 //svg 
 path {
   transition: all .3s ease;
-
-   &:hover {
-    fill: $color-orange;
-   }
 }
 
 .bg {

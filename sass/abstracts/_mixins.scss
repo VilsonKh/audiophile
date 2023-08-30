@@ -10,5 +10,11 @@
         @content;
      }
   }
+
+  @if $breakpoint == desktop {
+   @media only screen and (max-width: 144rem) {
+      @content
+   }
+  }
 }
 

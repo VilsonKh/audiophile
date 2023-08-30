@@ -1,13 +1,16 @@
 .first-screen {
-   background-color: #141414;
-
+   background-color: #121212;
    overflow: hidden;
 
    &__container {
-      max-width: 111rem;
+      max-width: 110rem;
+      padding: 2rem;
+      padding-top: 0;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      box-sizing: content-box;
 
       @include respond(tab) {
          max-width: 68.9rem;
@@ -24,16 +27,15 @@
       display: flex;
       flex-direction: column;
       row-gap: 2.4rem;
-      padding: 12.8rem 0 0 0;
 
       @include respond(tab) {
-         max-width: 55%;
+         max-width: 60%;
          text-align: center;
          margin: 0 auto;
-         padding-bottom: 15rem;
-         position: relative;
+         min-height: 55rem;
          z-index: 1;
          align-items: center;
+         justify-content: center;
       }
 
       @include respond(phone) {
@@ -43,26 +45,24 @@
    }
 
    &__right {
-      height: 60rem;
+      width: 60rem;
       overflow: hidden;
-      position: relative;
-      top: -5rem;
 
       & picture img {
-         height: 100%;
+         width: 100%;
       }
 
       @include respond(tab) {
          position: absolute;
-         transform: translateX(5rem) scale(1);
+         left: 50%;
+         transform: translateX(-50%);
       }
 
       @include respond(phone) {
          width: 375px;
          height: auto;
          transform: none;
-         top: -8rem;
-         left: -2.5rem;
+         left: 0;
       }
    }
 }
@@ -75,6 +75,12 @@
    @include respond(tab) {
     margin-bottom: 10rem;
    }
+
+   & .container {
+      padding: 0 2rem;
+      box-sizing: content-box;
+   }
+
    &__1 {
       background-color: $color-orange;
       background-image: url(../assets/home/desktop/pattern-circles.svg);

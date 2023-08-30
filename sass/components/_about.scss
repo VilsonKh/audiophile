@@ -1,6 +1,10 @@
 .about {
   margin-bottom: 20rem;
 
+  & .container {
+    padding: 0 2rem; 
+    box-sizing: content-box;
+  }
   @include respond(tab) {
    margin-bottom: 10rem;
   }

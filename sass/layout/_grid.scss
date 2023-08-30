@@ -1,5 +1,5 @@
 .footer {
-   & > .container {
+   & .container {
       display: grid;
       row-gap: 4rem;
       column-gap: 14rem;
@@ -7,6 +7,8 @@
          "logo navbar"
          "text contacts"
          "copyright ......";
+      padding: 0 2rem;
+      box-sizing: content-box;
    }
 
    &__logo {
