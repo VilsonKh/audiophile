@@ -1,3 +1,7 @@
+.products {
+   padding: 0 2rem;
+}
+
 .product {
    &:not(:last-child) {
       margin-bottom: 16rem;

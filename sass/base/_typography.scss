@@ -70,10 +70,14 @@ body {
    &-name {
       font-weight: 700;
       color: $color-white;
-      font-size: 5.6rem;
-      line-height: 5.8rem;
+      font-size: 4rem;
+      line-height: 1.2;
       letter-spacing: 2px;
       text-transform: uppercase;
+
+      @media screen and (min-width: 767px) {
+         font-size: 5.6rem;
+      }
    }
 
    &-description {

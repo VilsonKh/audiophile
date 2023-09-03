@@ -98,7 +98,7 @@
          background-position: 50% 130%;
       }
 
-      @include respond(phone) {
+      @media screen and (max-width: 600px) {
         flex-direction: column;
         padding: 5rem 2rem;
         background-size: 170%;
@@ -160,7 +160,7 @@
         background-image: url("../assets/home/tablet/image-speaker-zx7.jpg");
       }
 
-      @include respond(phone) {
+      @media screen and (max-width: 450px) {
         background-image: url("../assets/home/mobile/image-speaker-zx7.jpg");
         background-size: cover;
       }
@@ -183,7 +183,7 @@
         column-gap: 1rem;
       }
 
-      @include respond (phone) {
+      @media screen and (max-width: 600px) {
         flex-direction: column;
         row-gap: 2.4rem;
       }

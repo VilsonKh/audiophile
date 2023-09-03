@@ -21,7 +21,7 @@
 		display: flex;
 		justify-content: space-between;
 
-		@include respond(phone) {
+		@media screen and (max-width: 600px) {
 			flex-direction: column;
 		}
 	}
@@ -45,7 +45,7 @@
 			height: 16rem;
 		}
 
-		@include respond(phone) {
+	@media screen and (max-width: 600px) {
 			max-width: none;
 			padding: 8.8rem 10rem 5rem 10rem;
 			&:not(:last-child) {
