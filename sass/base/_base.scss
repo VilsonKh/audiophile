@@ -10,8 +10,11 @@ body {
 }
 
 .container {
-   max-width: 111rem;
+   max-width: 110rem;
    margin: 0 auto;
+   padding-left: 2rem;
+   padding-right: 2rem;
+   box-sizing: content-box;
    position: relative;
 
    @include respond(tab) {
@@ -32,3 +35,7 @@ path {
 .bg {
    background-color: $color-black; 
 }
+
+input[type=number] {
+   -moz-appearance: textfield;
+ }

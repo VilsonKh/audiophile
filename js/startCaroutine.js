@@ -1,4 +1,3 @@
-import { goods } from "./const.js";
 import {
 	onBurgerMenuOpen,
 	onBurgerMenuClose,
@@ -16,6 +15,8 @@ import {
 	onConfirmClick,
 } from "./index.js";
 
+import { onBackButtonClick } from "./helpers.js";
+
 $(function () {
 	//opens and closes burger menu
 	$(".header__burger").on("click", onBurgerMenuOpen);
@@ -28,7 +29,7 @@ $(function () {
 	//preloads pages
 	createCard("headphones", "#catalogue-headphones");
 	createCard("speakers", "#catalogue-speakers");
-	createCard("earphones", "#catalogue-earpƒhones");
+	createCard("earphones", "#catalogue-earphones");
 
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
@@ -50,4 +51,6 @@ $(function () {
 	createSummaryBasketItem();
 
 	$("#confirm").on("click", onConfirmClick);
+
+	$(".back").on("click", onBackButtonClick);
 });

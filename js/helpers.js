@@ -24,3 +24,7 @@ export function findTotalQuantity() {
 	});
 	return total;
 }
+
+export function onBackButtonClick() {
+	window.history.back();
+}

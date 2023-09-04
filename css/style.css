@@ -82,7 +82,7 @@
     fill: #D87D4A; }
 
 .back-button {
-  padding: 3.3rem 0 2.4rem 0; }
+  padding: 3.3rem 2rem 2.4rem 2rem; }
   .back-button:hover {
     color: #D87D4A;
     opacity: 1; }
@@ -824,7 +824,7 @@ input.valid {
       grid-template-columns: 38% 57%; } }
   @media only screen and (max-width: 23.5em) {
     .gallery {
-      grid-template-areas: 'first' 'second' 'third';
+      grid-template-areas: "first" "second" "third";
       grid-template-columns: 1fr;
       padding-bottom: 12rem; } }
   .gallery__1 {
@@ -832,7 +832,10 @@ input.valid {
   .gallery__2 {
     grid-area: second; }
   .gallery__3 {
-    grid-area: third; }
+    grid-area: third;
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
   .gallery img {
     border-radius: 8px; }
 
@@ -1021,8 +1024,11 @@ body {
   margin: 0 auto; }
 
 .container {
-  max-width: 111rem;
+  max-width: 110rem;
   margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: content-box;
   position: relative; }
   @media only screen and (max-width: 48em) {
     .container {
@@ -1037,6 +1043,9 @@ path {
 
 .bg {
   background-color: #000000; }
+
+input[type=number] {
+  -moz-appearance: textfield; }
 
 /* Reset and base styles  */
 * {

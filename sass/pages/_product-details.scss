@@ -1,200 +1,201 @@
 @include respond(tab) {
-   .product-details {
-      & .product {
-         flex-direction: row;
+	.product-details {
+		& .product {
+			flex-direction: row;
 
-         gap: 7rem;
-         &__name {
-            max-width: 100%;
-         }
+			gap: 7rem;
+			&__name {
+				max-width: 100%;
+			}
 
-         &__description {
-            text-align: left;
-            align-items: start;
-         }
+			&__description {
+				text-align: left;
+				align-items: start;
+			}
 
-         &__heading-new {
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-         }
+			&__heading-new {
+				font-size: 1.2rem;
+				line-height: 1.6rem;
+			}
 
-         &__name {
-            font-size: 2.8rem;
-            line-height: 3.2rem;
-         }
+			&__name {
+				font-size: 2.8rem;
+				line-height: 3.2rem;
+			}
 
-         &__text {
-            text-align: left;
-         }
-      }
-   }
+			&__text {
+				text-align: left;
+			}
+		}
+	}
 }
 
 @include respond(phone) {
-   .product-details {
-      & .product {
-         flex-direction: column;
-         gap: 0rem;
-         &__name {
-            max-width: 100%;
-         }
+	.product-details {
+		& .product {
+			flex-direction: column;
+			gap: 0rem;
+			&__name {
+				max-width: 100%;
+			}
 
-         &__description {
-            text-align: left;
-            align-items: start;
-         }
+			&__description {
+				text-align: left;
+				align-items: start;
+			}
 
-         &__heading-new {
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-         }
+			&__heading-new {
+				font-size: 1.2rem;
+				line-height: 1.6rem;
+			}
 
-         &__name {
-            font-size: 2.8rem;
-            line-height: 3.2rem;
-         }
+			&__name {
+				font-size: 2.8rem;
+				line-height: 3.2rem;
+			}
 
-         &__text {
-            text-align: left;
-         }
-      }
-   }
+			&__text {
+				text-align: left;
+			}
+		}
+	}
 }
 
 .info {
-   display: flex;
-   justify-content: space-between;
-   padding-top: 16rem;
-   padding-bottom: 16rem;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 16rem;
+	padding-bottom: 16rem;
 
-   @include respond (tab) {
-      padding-top: 10rem;
-      padding-bottom: 12rem;
-      flex-direction: column;
-   }
+	@include respond(tab) {
+		padding-top: 10rem;
+		padding-bottom: 12rem;
+		flex-direction: column;
+	}
 
-   @include respond (phone) {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-      flex-direction: column;
-   }
+	@include respond(phone) {
+		padding-top: 8rem;
+		padding-bottom: 8rem;
+		flex-direction: column;
+	}
 
-   &__features {
-      flex-basis: 60%;
+	&__features {
+		flex-basis: 60%;
 
-      @include respond (tab) {
+		@include respond(tab) {
+		}
+	}
 
-      }
-   }
+	&__box {
+		flex-basis: 30%;
 
-   &__box {
-      flex-basis: 30%;
+		@include respond(tab) {
+			display: flex;
+			justify-content: start;
+			margin-top: 12rem;
+		}
 
-      @include respond (tab) {
-         display: flex;
-         justify-content: start;
-         margin-top: 12rem;
-      }
+		@include respond(phone) {
+			justify-content: start;
+			flex-direction: column;
+			margin-top: 8rem;
+		}
+	}
 
-      @include respond (phone) {
-         justify-content: start;
-         flex-direction: column;
-         margin-top: 8rem;
-         
-      }
+	&__heading {
+		margin-bottom: 3.2rem;
+		@include respond(tab) {
+			margin-right: 16rem;
+		}
 
-   }
+		@include respond(phone) {
+			margin-right: 0;
+		}
+	}
 
-   &__heading {
-      margin-bottom: 3.2rem;
-      @include respond (tab) {
-         margin-right: 16rem;
-      }
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 0.8rem;
+		}
 
-      @include respond (phone) {
-         margin-right: 0;
-      }
-   }
-
-   &__item {
-      &:not(:last-child) {
-         margin-bottom: 0.8rem;
-      }
-
-      & span {
-         margin-right: 2.4rem;
-      }
-   }
+		& span {
+			margin-right: 2.4rem;
+		}
+	}
 }
 
 .gallery {
-   display: grid;
-   padding-bottom: 16rem;
-   gap: 3rem;
-  
-   grid-template-areas:
-      "first third"
-      "second third";
+	display: grid;
+	padding-bottom: 16rem;
+	gap: 3rem;
 
-   @include respond (tab) {
-      grid-template-columns: 38% 57%;
-   }
+	grid-template-areas:
+		"first third"
+		"second third";
 
-   @include respond (phone) {
-      grid-template-areas: 'first'
-                           'second'
-                           'third';
-      grid-template-columns: 1fr;
-      padding-bottom: 12rem;
-   }
-   &__1 {
-      grid-area: first;
-   }
+	@include respond(tab) {
+		grid-template-columns: 38% 57%;
+	}
 
-   &__2 {
-      grid-area: second;
-   }
+	@include respond(phone) {
+		grid-template-areas:
+			"first"
+			"second"
+			"third";
+		grid-template-columns: 1fr;
+		padding-bottom: 12rem;
+	}
+	&__1 {
+		grid-area: first;
+	}
 
-   &__3 {
-      grid-area: third;
-   }
+	&__2 {
+		grid-area: second;
+	}
 
-   & img {
-      border-radius: 8px;
-   }
+	&__3 {
+		grid-area: third;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+	}
+
+	& img {
+		border-radius: 8px;
+	}
 }
 
 .selection {
-   &__title {
-      margin-bottom: 6.4rem;
-   }
+	&__title {
+		margin-bottom: 6.4rem;
+	}
 
-   &__list {
-      display: flex;
-      gap: 3rem;
+	&__list {
+		display: flex;
+		gap: 3rem;
 
-      @include respond (phone) {
-         flex-direction: column;
-         gap:5rem;
-      }
-   }
+		@include respond(phone) {
+			flex-direction: column;
+			gap: 5rem;
+		}
+	}
 
-   &__item {
-      overflow: hidden;
-      flex-basis: 30%;
+	&__item {
+		overflow: hidden;
+		flex-basis: 30%;
 
-      & img {
-         border-radius: 8px;
-      }
+		& img {
+			border-radius: 8px;
+		}
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-   }
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-   &__name {
-      margin-top: 4rem;
-      margin-bottom: 3rem;
-      height: 6.6rem;
-   }
+	&__name {
+		margin-top: 4rem;
+		margin-bottom: 3rem;
+		height: 6.6rem;
+	}
 }

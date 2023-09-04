@@ -114,49 +114,32 @@ export function addBusketItemsToLocalStorage(evt) {
 	let currentModelName = localStorage.getItem("currentProduct"); //undefined
 	console.log(currentModelName);
 	let modelQuantity = $("#detailed__input").attr("value");
-	let checkName = "busket-" + currentModelName;
-
-	// for (let i = 0; i < localStorage.length; i++) {
-	// 	let key = localStorage.key(i);
-	// 	let value = localStorage.getItem(key);
-	// 	console.log(key === checkName);
-	// 	//update
-	// 	if (key === checkName) {
-	// 		console.log(key, checkName);
-	// 		console.log(key === checkName);
-	// 		console.log(key);
-	// 		localStorage.setItem("busket-" + modelName, modelQuantity);
-	// 		$("#busket-count").attr("value", getBusketItemSum());
-	// 		$("#busket-totalPrice").text(getBusketSum());
-	// 		//add new
-	// 	}
-	// }
 
 	let isNew = false;
+
+	localStorage.setItem("busket-" + currentModelName, modelQuantity);
 
 	for (let i = 0; i < $(".busket__list > li").length; i++) {
 		if ($(".busket__list > li")[i].id.slice(12) === currentModelName) {
 			$(".busket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
-			localStorage.setItem("busket-" + currentModelName, modelQuantity);
 			isNew = true;
+			$("#busket-count").attr("value", getBusketItemSum());
+			$("#busket-totalPrice").text(getBusketSum());
 		}
 	}
 
 	if (!isNew) {
 		createBusketItems(true, currentModelName);
+		getBusketSum();
+		$("#busket-count").attr("value", getBusketItemSum());
+		$("#busket-totalPrice").text(getBusketSum());
 	}
-
-	// if (localStorage.getItem(checkName) == null) {
-	// 	localStorage.setItem("busket-" + modelName, modelQuantity);
-	// 	createBusketItems(true, modelName);
-	// 	$("#busket-count").attr("value", getBusketItemSum());
-	// 	$("#busket-totalPrice").text(getBusketSum());
-	// }
 }
 
 export function itemIncrement() {
 	let quantityDetailed = parseFloat($("#detailed__input").attr("value"));
-	$("#detailed__input").attr("value", ++quantityDetailed);
+	console.log(quantityDetailed);
+	if (quantityDetailed < 9) $("#detailed__input").attr("value", ++quantityDetailed);
 }
 
 export function itemDecrement() {
@@ -202,6 +185,8 @@ export function createSummaryBasketItem() {
 		}
 	}
 }
+
+createSummaryBasketItem();
 
 // Считает итоговую сумму в корзине
 function getBusketSum() {
@@ -301,18 +286,24 @@ export function createBusketItems(isUpdate = false, name = null) {
 	}
 }
 
+//busket item increment
 function addListenersToBusketCards(id) {
 	$(document).on("click", "#busket__increment-" + id, function () {
 		//$(this).parent('.product__counter').children('#busket__input').attr('value')
 		let key = $(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
 		let value = parseFloat(localStorage.getItem(key));
 
-		localStorage.setItem(key, ++value);
-		$("#busket__input-" + id).attr("value", value);
-		$("#busket-count").attr("value", ++totalQuantityBusket);
-		$("#busket-totalPrice").text(getBusketSum());
+		if (value < 9) {
+			totalQuantityBusket += 1;
+			localStorage.setItem(key, ++value);
+			$("#busket__input-" + id).attr("value", +value);
+			$("#busket-totalPrice").text(getBusketSum());
+		}
+		$("#busket-count").attr("value", totalQuantityBusket);
+		console.log(totalQuantityBusket);
 	});
 
+	//busket item increment
 	$(document).on("click", "#busket__decrement-" + id, function () {
 		let key = $(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
 		let value = parseFloat(localStorage.getItem(key));
@@ -320,7 +311,7 @@ function addListenersToBusketCards(id) {
 		localStorage.setItem(key, --value);
 
 		if (value > 0) {
-			$("#busket__input-" + id).attr("value", value);
+			$("#busket__input-" + id).attr("value", +value);
 			$("#busket-count").attr("value", --totalQuantityBusket);
 			$("#busket-totalPrice").text(getBusketSum());
 		}
@@ -328,6 +319,7 @@ function addListenersToBusketCards(id) {
 			$(this).closest(".busket__item").remove();
 			localStorage.removeItem($(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
 			$("#busket-totalPrice").text(getBusketSum());
+			$("#busket-count").attr("value", --totalQuantityBusket);
 		}
 	});
 
