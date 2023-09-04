@@ -10,7 +10,6 @@ const newProd = $('<p class="product__heading-new accent">new product</p>');
 export function onBurgerMenuOpen() {
 	$("body").css("overflow", "hidden");
 	$(".burger__menu").toggle();
-	console.log("burgerMenu open");
 }
 
 //closes burger menu
@@ -18,14 +17,12 @@ export function onBurgerMenuClose(e) {
 	if (e.target.classList.value === "overlay") {
 		$(".burger__menu").hide();
 		$("body").css("overflow", "visible");
-		console.log("burgerMenu closed");
 	}
 }
 
 //opens busket
 export function onBusketOpen() {
 	$(".popup-busket").show();
-	console.log("busket opened");
 }
 
 //closes busket popup
@@ -37,7 +34,6 @@ export function onBusketClose(e) {
 
 //creates catalog with items
 export function createCard(category, id) {
-	console.log("createCard start");
 	let isLeft = true;
 
 	for (let i in goods) {
@@ -50,7 +46,6 @@ export function createCard(category, id) {
 }
 
 function createNewCard(id, template, data, isDetailed = false) {
-	console.log("createNewCard start");
 	$(template).find("img").attr("src", data.categoryImage.desktop);
 	$(template).find(".product__name").text(data.name);
 	$(template).find(".product__text").text(data.description);
@@ -114,23 +109,41 @@ export function setCurrentProduct() {
 }
 
 export function addBusketItemsToLocalStorage(evt) {
+	console.log("addBusketItems");
 	evt.preventDefault();
-	let modelName = $(this).attr("id");
+	let currentModelName = localStorage.getItem("currentProduct"); //undefined
+	console.log(currentModelName);
 	let modelQuantity = $("#detailed__input").attr("value");
-	let checkName = "busket-" + $(this).attr("id");
+	let checkName = "busket-" + currentModelName;
 
-	for (let i = 0; i < localStorage.length; i++) {
-		let key = localStorage.key(i);
-		let value = localStorage.getItem(key);
-		if (key === checkName) {
-			console.log(key, checkName);
-			localStorage.setItem("busket-" + modelName, modelQuantity);
+	// for (let i = 0; i < localStorage.length; i++) {
+	// 	let key = localStorage.key(i);
+	// 	let value = localStorage.getItem(key);
+	// 	console.log(key === checkName);
+	// 	//update
+	// 	if (key === checkName) {
+	// 		console.log(key, checkName);
+	// 		console.log(key === checkName);
+	// 		console.log(key);
+	// 		localStorage.setItem("busket-" + modelName, modelQuantity);
+	// 		$("#busket-count").attr("value", getBusketItemSum());
+	// 		$("#busket-totalPrice").text(getBusketSum());
+	// 		//add new
+	// 	}
+	// }
 
-			$("#busket-count").attr("value", getBusketItemSum());
-			$("#busket-totalPrice").text(getBusketSum());
-		} else {
-			createBusketItems(true, modelName);
+	let isNew = false;
+
+	for (let i = 0; i < $(".busket__list > li").length; i++) {
+		if ($(".busket__list > li")[i].id.slice(12) === currentModelName) {
+			$(".busket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
+			localStorage.setItem("busket-" + currentModelName, modelQuantity);
+			isNew = true;
 		}
+	}
+
+	if (!isNew) {
+		createBusketItems(true, currentModelName);
 	}
 
 	// if (localStorage.getItem(checkName) == null) {
@@ -219,7 +232,6 @@ function getBusketItemSum() {
 		let key = localStorage.key(i);
 		let value = localStorage.getItem(key);
 		if (key.startsWith("busket")) {
-			console.log(key, " - ", value);
 			totalQuantityBusket += parseFloat(value);
 		}
 	}
@@ -288,6 +300,7 @@ export function createBusketItems(isUpdate = false, name = null) {
 		}
 	}
 }
+
 function addListenersToBusketCards(id) {
 	$(document).on("click", "#busket__increment-" + id, function () {
 		//$(this).parent('.product__counter').children('#busket__input').attr('value')
@@ -327,25 +340,18 @@ function addListenersToBusketCards(id) {
 	// });
 }
 
+export function onConfirmClick() {
+	if (!$(".checkout__form").valid()) {
+		$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
+	}
+}
+
 //???????????????????????????????????????????????????????????????????////
 $(function () {
 	//  Изменяет карточку каждого товара
-
 	//Добавляет в localStorage товар для корзины
-
 	//Добавляет интерактивность каунтеру в detailed card
-
 	//Добавляет слушателей на кнопки количества товаров в корзине
-
 	//Добавляет элемент в корзину
-
-	$("#confirm").on("click", onConfirmClick);
-
-	function onConfirmClick() {
-		if (!$(".checkout__form").valid()) {
-			$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
-		}
-	}
-
 	//Очищает localStorage по нажатию на кнопку
 });

@@ -13,6 +13,7 @@ import {
 	createSummaryBasketItem,
 	cleanLocalStorage,
 	createBusketItems,
+	onConfirmClick,
 } from "./index.js";
 
 $(function () {
@@ -27,14 +28,14 @@ $(function () {
 	//preloads pages
 	createCard("headphones", "#catalogue-headphones");
 	createCard("speakers", "#catalogue-speakers");
-	createCard("earphones", "#catalogue-earphones");
+	createCard("earphones", "#catalogue-earpƒhones");
 
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
 
 	createDetailedCard("#product-details");
 
-	$("#product-details .product .btn").on("click", addBusketItemsToLocalStorage);
+	$(".product-details .product .btn").on("click", addBusketItemsToLocalStorage);
 
 	$(document).on("click", "#detailed__increment", itemIncrement);
 
@@ -47,4 +48,6 @@ $(function () {
 	createBusketItems();
 
 	createSummaryBasketItem();
+
+	$("#confirm").on("click", onConfirmClick);
 });
