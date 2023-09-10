@@ -2,7 +2,7 @@ import { goods } from "./const.js";
 import "../node_modules/jquery/dist/jquery.js";
 window.jQuery = jQuery;
 window.$ = jQuery;
-import { getRandomNum, findTotalQuantity } from "./helpers.js";
+import { getRandomNum, findTotalQuantity, countTotalQuantityFromLocalStorage } from "./helpers.js";
 
 const newProd = $('<p class="product__heading-new accent">new product</p>');
 let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
@@ -177,8 +177,7 @@ export function createSummaryBasketItem() {
 				$(".confirmation__grandTotal").text(grandTotal);
 				//Добавляет последний выбранный элемент в confirmation
 				if (j == localStorage.length - 1) {
-					$(".busketSummary__list").append(checkoutItem);
-					$(".confirmation__list").append(checkoutItem); //последний элемент не добавляется в конзину перед конфирмэйшн
+					$(".confirmation__list").append($(checkoutItem).clone()); //последний элемент не добавляется в конзину перед конфирмэйшн
 				}
 
 				$(".confirmation-count").text(getBusketItemSum() - 1);
@@ -236,6 +235,13 @@ export function cleanLocalStorage() {
 }
 
 export function createBusketItems(isUpdate = false, name = null) {
+	console.log(countTotalQuantityFromLocalStorage() > 0);
+	if (countTotalQuantityFromLocalStorage() > 0) {
+		$(".busket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
+	} else {
+		$(".busket-indicator").css("display", "none");
+	}
+
 	if (!isUpdate) {
 		for (let j = 0; j < localStorage.length; j++) {
 			let busketKey = localStorage.key(j).slice(7);
@@ -341,6 +347,15 @@ $(function () {
 	//Добавляет элемент в корзину
 	//Очищает localStorage по нажатию на кнопку
 
+	const checkbox = document.querySelector(".checkout__right");
+	checkbox.addEventListener("click", function (e) {
+		if (e.target.getAttribute("for") === "cash") {
+			$(".checkout__payment-info").hide();
+		} else if (e.target.getAttribute("for") === "eMoney") {
+			$(".checkout__payment-info").show();
+		}
+	});
+
 	function onConfirmClick() {
 		if ($(".checkout__form").valid()) {
 			$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
@@ -348,4 +363,10 @@ $(function () {
 	}
 
 	$("#confirm").on("click", onConfirmClick);
+
+	$(".popup-confirmation").on("click", function (e) {
+		if (e.target.className === "overlay") {
+			$(".popup-confirmation").css("visibility", "hidden").css("opacity", "0");
+		}
+	});
 });

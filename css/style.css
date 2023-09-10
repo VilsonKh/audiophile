@@ -80,6 +80,8 @@
       color: #ffffff; }
   .btn-busket:hover svg path {
     fill: #D87D4A; }
+  .btn-busket {
+    position: relative; }
 
 .back-button {
   padding: 3.3rem 2rem 2.4rem 2rem; }
@@ -90,6 +92,24 @@
 .popup-busket__remove:hover {
   color: #D87D4A;
   opacity: 1; }
+
+.busket-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: orange;
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none; }
 
 .category {
   padding: 10rem 0;
@@ -399,7 +419,8 @@
   display: flex;
   width: auto;
   margin-top: 0;
-  padding: 0; }
+  padding: 0;
+  position: unset; }
   @media only screen and (max-width: 23.5em) {
     .confirmation__list .busket__text {
       margin-right: auto; } }
@@ -721,18 +742,22 @@ input.valid {
         .models__3-left img {
           object-fit: cover;
           width: 100%; } }
+    .models__3-text {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 2.4rem; }
+      @media screen and (min-width: 767px) {
+        .models__3-text {
+          margin-left: 4rem; } }
+      @media screen and (min-width: 1440px) {
+        .models__3-text {
+          margin-left: 9.5rem; } }
     .models__3-right {
       background-color: #fafafa;
       flex-basis: 50%;
-      padding: 10rem 20rem 10rem 9.5rem;
       border-radius: 8px;
       flex-basis: 50%; }
-      @media only screen and (max-width: 48em) {
-        .models__3-right {
-          padding: 10rem 5rem 10rem 4rem; } }
-      @media only screen and (max-width: 48em) {
-        .models__3-right {
-          padding: 4rem 5.5rem 4rem 2rem; } }
     .models__3-name {
       margin-bottom: 3rem; }
 
@@ -1093,7 +1118,7 @@ h1, h2, h3, h4, h5, h6, p {
   font-size: inherit;
   font-weight: inherit; }
 
-ul, ul li {
+ul, li {
   list-style: none; }
 
 img {

@@ -57,6 +57,10 @@
       fill: $color-orange;
     }
    }
+
+   &-busket {
+      position: relative;
+   }
 }
 
 .back-button {
@@ -73,4 +77,23 @@
       color: $color-orange;
       opacity: 1;
    }
+}
+
+.busket-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: orange;
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }

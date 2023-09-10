@@ -28,3 +28,16 @@ export function findTotalQuantity() {
 export function onBackButtonClick() {
 	window.history.back();
 }
+
+export function countTotalQuantityFromLocalStorage() {
+	let total = 0;
+	for (let j = 0; j < localStorage.length; j++) {
+		let busketKey = localStorage.key(j);
+		let busketValue = localStorage.getItem(localStorage.key(j));
+		if (busketKey.startsWith("busket")) {
+			total += parseFloat(busketValue);
+		}
+	}
+
+	return total;
+}
