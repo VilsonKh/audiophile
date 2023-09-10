@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/VilsonKh/audiophile/issues"
   },
-  "homepage": "https://github.com/VilsonKh/audiophile#readme"
+  "homepage": "https://github.com/VilsonKh/audiophile#readme",
+  "dependencies": {
+    "jquery-validation": "^1.19.5"
+  }
 }

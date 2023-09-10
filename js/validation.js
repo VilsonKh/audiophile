@@ -1,71 +1,87 @@
-$(document).ready(function () {
-$.validator.addMethod('numberValidator',function(value) {
-  return /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(value)
-},'Wrong format');
+import "../node_modules/jquery-validation/dist/jquery.validate.min.js";
 
-$.validator.addMethod('pinValidator', function(value) {
-  return parseInt(value.length) === 4
-},'PIN must be 4 characters');
+$(function () {
+	$.validator.addMethod(
+		"numberValidator",
+		function (value) {
+			return /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(value);
+		},
+		"Wrong format"
+	);
 
-$.validator.addMethod('zipValidator',function(value){
-  return /^\d{5}(?:[-\s]\d{4})?$/.test(value)
-}, 'Wrong format');
+	$.validator.addMethod(
+		"pinValidator",
+		function (value) {
+			return parseInt(value.length) === 4;
+		},
+		"PIN must be 4 characters"
+	);
 
-$.validator.addMethod('moneyValidator',function(value) {
-  return parseInt(value.length) === 9}, 'e-Number must be 9 characters')
+	$.validator.addMethod(
+		"zipValidator",
+		function (value) {
+			return /^\d{5}(?:[-\s]\d{4})?$/.test(value);
+		},
+		"Wrong format"
+	);
 
-  $('.checkout__form').validate({
-    rules: {
+	$.validator.addMethod(
+		"moneyValidator",
+		function (value) {
+			return parseInt(value.length) === 9;
+		},
+		"e-Number must be 9 characters"
+	);
 
-      name: {
-        required: true
-      },
+	$(".checkout__form").validate({
+		rules: {
+			name: {
+				required: true,
+			},
 
-      email: {
-        required: true
-      },
+			email: {
+				required: true,
+			},
 
-      number: {
-        required: true,
-        numberValidator: true
-      },
+			number: {
+				required: true,
+				numberValidator: true,
+			},
 
-      address: {
-        required: true
-      },
+			address: {
+				required: true,
+			},
 
-      zip: {
-        required: true,
-        number: true,
-        zipValidator: true
-      },
+			zip: {
+				required: true,
+				number: true,
+				zipValidator: true,
+			},
 
-      city: {
-        required: true
-      },
+			city: {
+				required: true,
+			},
 
-      country: {
-        required: true
-      },
+			country: {
+				required: true,
+			},
 
-      moneyNumber: {
-        required: true,
-        digits: true,
-        moneyValidator: true
-      },
+			moneyNumber: {
+				required: true,
+				digits: true,
+				moneyValidator: true,
+			},
 
-      pin: {
-        required: true,
-        digits: true,
-        pinValidator: true
-      }
-    },
+			pin: {
+				required: true,
+				digits: true,
+				pinValidator: true,
+			},
+		},
 
-    messages: {
-      
-    }
-  });
-  $('#checkout').on('click', function() {
-    console.log($('.checkout__form').valid())
-  })
-})
+		messages: {},
+	});
+	$("#confirm").on("click", function () {
+		console.log($(".checkout__form").valid());
+	});
+});

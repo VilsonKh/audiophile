@@ -1,11 +1,11 @@
 import { goods } from "./const.js";
 import "../node_modules/jquery/dist/jquery.js";
-import { getRandomNum, findTotalQuantity } from "./helpers.js";
 window.jQuery = jQuery;
 window.$ = jQuery;
+import { getRandomNum, findTotalQuantity } from "./helpers.js";
 
 const newProd = $('<p class="product__heading-new accent">new product</p>');
-
+let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
 //open burger menu
 export function onBurgerMenuOpen() {
 	$("body").css("overflow", "hidden");
@@ -159,9 +159,11 @@ export function createSummaryBasketItem() {
 				$(checkoutItem).find(".busket__img").attr("src", goods[i].busketImg.src);
 				$(checkoutItem).find(".busket__name").text(goods[i].busketName);
 				$(checkoutItem).find(".busket-price").text(goods[i].price);
+				console.log(checkoutItem);
 				$(checkoutItem)
 					.find(".busket__finalNumber")
 					.text(localStorage.getItem(`busket-${goods[i].slug}`));
+
 				$(".busketSummary__list").append(checkoutItem);
 
 				let total = getBusketSum();
@@ -173,10 +175,10 @@ export function createSummaryBasketItem() {
 				$(".checkout__vat").text(vat);
 				$(".checkout__grandTotal").text(grandTotal);
 				$(".confirmation__grandTotal").text(grandTotal);
-
 				//Добавляет последний выбранный элемент в confirmation
 				if (j == localStorage.length - 1) {
-					$(".confirmation__list").append(checkoutItem);
+					$(".busketSummary__list").append(checkoutItem);
+					$(".confirmation__list").append(checkoutItem); //последний элемент не добавляется в конзину перед конфирмэйшн
 				}
 
 				$(".confirmation-count").text(getBusketItemSum() - 1);
@@ -208,7 +210,6 @@ function getBusketSum() {
 	return totalSum;
 }
 
-let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
 //Считает количество товара в корзине из localStorage
 function getBusketItemSum() {
 	totalQuantityBusket = 0;
@@ -254,7 +255,6 @@ export function createBusketItems(isUpdate = false, name = null) {
 					$(function () {
 						$(".busket__heading").find(".busket-count").text(findTotalQuantity());
 					});
-
 					$(".busket__list").append(newBusketItem);
 					addListenersToBusketCards(i);
 				}
@@ -332,12 +332,6 @@ function addListenersToBusketCards(id) {
 	// });
 }
 
-export function onConfirmClick() {
-	if (!$(".checkout__form").valid()) {
-		$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
-	}
-}
-
 //???????????????????????????????????????????????????????????????????////
 $(function () {
 	//  Изменяет карточку каждого товара
@@ -346,4 +340,12 @@ $(function () {
 	//Добавляет слушателей на кнопки количества товаров в корзине
 	//Добавляет элемент в корзину
 	//Очищает localStorage по нажатию на кнопку
+
+	function onConfirmClick() {
+		if ($(".checkout__form").valid()) {
+			$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
+		}
+	}
+
+	$("#confirm").on("click", onConfirmClick);
 });

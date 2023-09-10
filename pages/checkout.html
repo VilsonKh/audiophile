@@ -7,7 +7,6 @@
       <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
       <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
       <link rel="stylesheet" href="../css/style.css" />
-      <script type="module" src="../js/jquery.validate.js"></script>
       <title>Audiophile e-commerce website</title>
    </head>
    <body class="checkout-bg">
@@ -163,7 +162,7 @@
                         </div>
                      </fieldset>
 
-                     <fieldset class="checkout__field checkout__payment">
+                     <fieldset class="checkout__field">
                         <legend class="checkout__legend">payment details</legend>
                         <div class="checkout__method">
                            <div class="checkout__left">
@@ -203,8 +202,8 @@
                   </div>
                </div>
 
-               <sidebar class="busket__summary">
-                  <div class="busket__inner">
+               <sidebar class="checkout__busket">
+                  <div class="checkout__busket-inner">
                      <div class="busket__heading">
                         <p class="busket__title">summary</p>
                      </div>
@@ -224,24 +223,24 @@
                            </li>
                        </template>
                      </ul>
-                     <div class="busket__total checkout__busket">
+                     <div class="busket__total">
                         <p class="busket__totalText">total</p>
-                        <p class="busket__total-price">$ <span class="checkout__sum">2,999</spn ></p>
+                        <p class="busket__total-price">$ <span class="checkout__sum">0</spn ></p>
                      </div>
 
-                     <div class="busket__total checkout__busket">
+                     <div class="busket__total">
                         <p class="busket__totalText">shipping</p>
                         <p class="busket__total-price">$<span class="checkout__shipping"> 50</span></p>
                      </div>
 
                      <div class="busket__total">
                         <p class="busket__totalText">vat (included)</p>
-                        <p class="busket__total-price">$ <span class="checkout__vat">999</span></p>
+                        <p class="busket__total-price">$ <span class="checkout__vat">0</span></p>
                      </div>
 
                      <div class="busket__total">
                         <p class="busket__totalText">grand total</p>
-                        <p class="busket__total-price accent">$ <span class="checkout__grandTotal">2,999</span></p>
+                        <p class="busket__total-price accent">$ <span class="checkout__grandTotal">0</span></p>
                      </div>
 
                      <button class="btn btn-orange" id="confirm">continue</button>
@@ -308,6 +307,8 @@
             </div>
          </div>
       </footer>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script type="module" src="../js/const.js" ></script>
       <script type='module' src="../js/index.js"></script>
       <script type='module' src="../js/validation.js"></script>

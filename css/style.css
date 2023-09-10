@@ -874,7 +874,7 @@ input.valid {
   border-radius: 8px;
   margin-bottom: 14rem;
   align-items: start; }
-  @media only screen and (max-width: 48em) {
+  @media screen and (max-width: 1000px) {
     .checkout {
       flex-direction: column;
       row-gap: 3rem;
@@ -901,11 +901,8 @@ input.valid {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    flex-basis: 48%;
-    position: relative; }
-    @media only screen and (max-width: 23.5em) {
-      .checkout__box {
-        flex-basis: 100%; } }
+    position: relative;
+    width: 100%; }
   .checkout__field {
     display: flex;
     column-gap: 1.6rem;
@@ -945,10 +942,10 @@ input.valid {
     transform: translate(-50%, -50%) scale(1); }
   .checkout__method {
     display: flex;
-    flex-basis: 100%;
     column-gap: 1rem;
-    justify-content: space-between; }
-    @media only screen and (max-width: 23.5em) {
+    justify-content: space-between;
+    width: 100%; }
+    @media screen and (max-width: 1000px) {
       .checkout__method {
         flex-direction: column; } }
   .checkout__left {
@@ -970,20 +967,34 @@ input.valid {
     display: none; }
   .checkout__payment-info {
     display: flex;
-    flex-basis: 100%;
-    justify-content: space-between; }
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem; }
+    @media screen and (max-width: 636px) {
+      .checkout__payment-info {
+        flex-direction: column;
+        row-gap: 2rem; } }
     @media only screen and (max-width: 23.5em) {
       .checkout__payment-info {
         flex-direction: column;
         row-gap: inherit; } }
   .checkout .busket__text {
     margin-right: auto; }
+  .checkout__busket {
+    min-width: 327px;
+    max-width: 350px; }
+    @media screen and (max-width: 1000px) {
+      .checkout__busket {
+        max-width: unset; } }
+  .checkout__busket-inner {
+    background: white;
+    border-radius: 8px;
+    padding: 32px 24px; }
 
 #address-box {
   flex-basis: 100%; }
 
 .radio-box {
-  flex-basis: 100%;
   border: 1px solid #f1f1f1;
   padding: 1.8rem 1.8rem 1.8rem 5rem;
   border-radius: 8px; }

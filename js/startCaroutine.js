@@ -12,7 +12,6 @@ import {
 	createSummaryBasketItem,
 	cleanLocalStorage,
 	createBusketItems,
-	onConfirmClick,
 } from "./index.js";
 
 import { onBackButtonClick } from "./helpers.js";
@@ -48,9 +47,7 @@ $(function () {
 
 	createBusketItems();
 
-	createSummaryBasketItem();
-
-	$("#confirm").on("click", onConfirmClick);
+	// createSummaryBasketItem();
 
 	$(".back").on("click", onBackButtonClick);
 });
