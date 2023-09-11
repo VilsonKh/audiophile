@@ -8,21 +8,13 @@ const newProd = $('<p class="product__heading-new accent">new product</p>');
 let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
 //open burger menu
 export function onBurgerMenuOpen() {
-	$("body").css("overflow", "hidden");
-	$(".burger__menu").toggle();
-}
-
-//closes burger menu
-export function onBurgerMenuClose(e) {
-	if (e.target.classList.value === "overlay") {
-		$(".burger__menu").hide();
-		$("body").css("overflow", "visible");
-	}
+	$("body").toggleClass("scrollLock");
+	$(".burger__menu").show();
 }
 
 //opens busket
 export function onBusketOpen() {
-	$(".popup-busket").show();
+	$(".popup-busket").toggle();
 }
 
 //closes busket popup
@@ -34,6 +26,7 @@ export function onBusketClose(e) {
 
 //creates catalog with items
 export function createCard(category, id) {
+	$(".skeleton").hide();
 	let isLeft = true;
 
 	for (let i in goods) {
@@ -336,6 +329,13 @@ function addListenersToBusketCards(id) {
 	//    $(".busket-count").text(sum);
 	//    console.log('test')
 	// });
+}
+
+export function closeConfirmationPopup(e) {
+	console.log(e.target.className);
+	if (e.target.className === "popup-confirmation") {
+		$(".popup-confirmation").css("visibility", "hidden").css("opacity", "0");
+	}
 }
 
 //???????????????????????????????????????????????????????????????????////

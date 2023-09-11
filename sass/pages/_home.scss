@@ -206,7 +206,7 @@
 
       &-text {
         
-         position: relative;
+         position: absolute;
          top: 50%;
          transform: translateY(-50%);
          margin-left: 2.4rem;
@@ -225,9 +225,10 @@
       &-right {
          background-color: $color-light-grey;
          flex-basis: 50%;
-
+         min-height: 200px;
          border-radius: 8px;
          flex-basis: 50%;
+         position: relative;
       }
 
       &-name {

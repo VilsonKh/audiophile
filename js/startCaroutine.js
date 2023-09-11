@@ -1,6 +1,5 @@
 import {
 	onBurgerMenuOpen,
-	onBurgerMenuClose,
 	onBusketOpen,
 	onBusketClose,
 	createCard,
@@ -12,6 +11,7 @@ import {
 	createSummaryBasketItem,
 	cleanLocalStorage,
 	createBusketItems,
+	closeConfirmationPopup,
 } from "./index.js";
 
 import { onBackButtonClick } from "./helpers.js";
@@ -19,11 +19,10 @@ import { onBackButtonClick } from "./helpers.js";
 $(function () {
 	//opens and closes burger menu
 	$(".header__burger").on("click", onBurgerMenuOpen);
-	$(document).on("click", onBurgerMenuClose);
 
 	//opens and closes busket menu
 	$(".btn-busket").on("click", onBusketOpen);
-	$(".popup-busket").on("click", onBusketClose);
+	$(".popup-busket").on("click", (e) => onBusketClose(e));
 
 	//preloads pages
 	createCard("headphones", "#catalogue-headphones");
@@ -44,6 +43,8 @@ $(function () {
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
 	$(".busket__remove").on("click", cleanLocalStorage);
+
+	$(".popup-confirmation").on("click", (e) => closeConfirmationPopup(e));
 
 	createBusketItems();
 

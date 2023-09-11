@@ -1,99 +1,97 @@
 .btn {
-   display: inline-block;
-   padding: 1.5rem 3rem;
-   text-decoration: none;
-   color: white;
-   text-align: center;
-   text-transform: uppercase;
-   font-weight: 700;
-   font-size: 1.3rem;
-   line-height: 1.8rem;
-   letter-spacing: 1px;
-   width: 16rem;
+	display: inline-block;
+	padding: 1.5rem 3rem;
+	text-decoration: none;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.3rem;
+	line-height: 1.8rem;
+	letter-spacing: 1px;
+	width: 16rem;
 
-   &-orange {
-      background-color: $color-orange;
-      transition: all 0.3s ease;
-      &:hover {
-         background-color: $color-light-orange;
-      }
-   }
+	&-orange {
+		background-color: $color-orange;
+		transition: all 0.3s ease;
+		&:hover {
+			background-color: $color-light-orange;
+		}
+	}
 
-   &-shop {
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
+	&-shop {
+		font-size: 1.3rem;
+		font-weight: 700;
+		line-height: 1.8rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		align-items: center;
+		transition: all 0.3s ease;
 
-      & svg {
-         margin-left: 5px;
-      }
+		& svg {
+			margin-left: 5px;
+		}
 
-      &:hover {
-         color: $color-orange;
-      }
-   }
+		&:hover {
+			color: $color-orange;
+		}
+	}
 
-   &-black {
-      background-color: $color-white;
-      color: $color-black;
-      outline: 1px solid $color-black;
-      transition: all 0.3s ease;
+	&-black {
+		background-color: $color-white;
+		color: $color-black;
+		outline: 1px solid $color-black;
+		transition: all 0.3s ease;
 
-      &:hover {
-         background-color: $color-black;
-         color: $color-white;
-      }
-   }
+		&:hover {
+			background-color: $color-black;
+			color: $color-white;
+		}
+	}
 
-   &-busket {
-    &:hover svg path{
-      fill: $color-orange;
-    }
-   }
-
-   &-busket {
-      position: relative;
-   }
+	&-busket {
+		position: relative;
+		right: 5%;
+		&:hover svg path {
+			fill: $color-orange;
+		}
+	}
 }
 
 .back-button {
-   padding: 3.3rem 2rem 2.4rem 2rem;
+	padding: 3.3rem 2rem 2.4rem 2rem;
 
-   &:hover {
-      color: $color-orange;
-      opacity: 1;
-   }
+	&:hover {
+		color: $color-orange;
+		opacity: 1;
+	}
 }
 
 .popup-busket__remove {
-   &:hover {
-      color: $color-orange;
-      opacity: 1;
-   }
+	&:hover {
+		color: $color-orange;
+		opacity: 1;
+	}
 }
 
 .busket-indicator {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: orange;
-  position: absolute;
-  bottom: 100%;
-  left: 100%;
-  text-align: center;
-  color: white;
-  font-weight: 700;
-  line-height: 1;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: orange;
+	position: absolute;
+	bottom: 100%;
+	left: 100%;
+	text-align: center;
+	color: white;
+	font-weight: 700;
+	line-height: 1;
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
 }

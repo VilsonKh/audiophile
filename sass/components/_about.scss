@@ -20,7 +20,7 @@
   }
   &-left {
      flex-basis: 50%;
-     padding: 13.5rem 0;
+    //  padding: 13.5rem 0;
 
      @include respond(tab) {
        padding: 6rem 6rem 0 6rem;

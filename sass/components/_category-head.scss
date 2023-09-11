@@ -1,15 +1,9 @@
 .category {
-  padding: 10rem 0;
+  padding: 3.2rem 0;
   background-color: $color-black;
-  margin-bottom: 16rem;
 
-  @include respond (tab) {
-    margin-bottom: 12rem;
-  }
-
-  @include respond(phone) {
-    padding: 3rem 0;
-    margin-bottom: 6.4rem;
+  @media screen and (min-width: 767px) {
+    padding: 10rem 0;
   }
 
 }

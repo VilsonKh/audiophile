@@ -14,7 +14,7 @@
 
 	& .container {
 		padding: 0 2rem;
-      box-sizing: content-box;
+		box-sizing: content-box;
 	}
 
 	&__list {
@@ -45,7 +45,7 @@
 			height: 16rem;
 		}
 
-	@media screen and (max-width: 600px) {
+		@media screen and (max-width: 600px) {
 			max-width: none;
 			padding: 8.8rem 10rem 5rem 10rem;
 			&:not(:last-child) {
@@ -74,5 +74,52 @@
 
 	&__category {
 		margin-bottom: 1.5rem;
+	}
+}
+
+.skeleton {
+
+		margin-bottom: 60px;
+	
+		@media screen and (min-width: 767px) {
+			display: flex;
+			gap: 2rem;
+		}
+
+	& div {
+		display: block;
+		background: #e4e4e4;
+		background-repeat: repeat;
+		background-image: none;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: placeHolderShimmer;
+		animation-timing-function: linear;
+		background-image: linear-gradient(to right, #e4e4e4 0%, rgb(233, 234, 235) 20%, #e4e4e4 40%, #e4e4e4 100%);
+		background-repeat: no-repeat;
+		border-radius: 10px;
+		width: 100%;
+		height: 340px;
+		background-size: 1000px;
+
+		&:first-child {
+			margin-bottom: 40px;
+		}
+
+
+
+		@media screen and (min-width: 1180px) {
+			height: 561px;
+		}
+	}
+}
+
+@keyframes placeHolderShimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
 	}
 }

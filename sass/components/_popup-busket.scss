@@ -4,21 +4,27 @@
    height: 100vh;
    position: absolute;
    z-index: 100;
+   top: 106px;
 }
 
 .busket {
    &__inner {
-      position: absolute;
       background-color: $color-white;
       border-radius: 8px;
-      width: 40rem;
       padding: 3rem;
-      z-index: 999;
-      right: 10%;
+      margin-left: auto;
+      max-width: 40rem;
       @include respond(phone) {
          width: 100%;
-         right: 0%;
+
       }
+
+      @include respond(tab) {
+      }
+   }
+
+   &__item {
+      width: 100%;
    }
 
    &__itemInner {
@@ -97,4 +103,10 @@
    text-align: center;
    font-size: inherit;
    font-weight: inherit;
+}
+
+.busket-category {
+   & .busket__inner {
+      box-shadow: 0px 0px 73px -6px rgba(0,0,0,0.75);
+   }
 }

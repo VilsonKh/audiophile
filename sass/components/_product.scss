@@ -1,5 +1,16 @@
 .products {
    padding: 0 2rem;
+   margin-top: 6.5rem;
+
+   @media screen and (min-width: 767px) {
+      margin: 12rem 0;
+      
+    }
+
+   @media screen and (min-width: 1440px) {
+      margin: 16rem 0;
+   }
+
 }
 
 .product {
@@ -13,10 +24,17 @@
    &__leftside,
    &__rightside {
       display: flex;
-      column-gap: 12.5rem;
+      justify-content: space-between;
+      // column-gap: 5.5rem;
 
       @include respond(tab) {
          flex-direction: column;
+      }
+   }
+
+   &__rightside {
+      @include respond(tab) {
+         flex-direction: column-reverse;
       }
    }
 
@@ -45,7 +63,6 @@
       justify-content: center;
 
       @include respond(tab) {
-         max-width: 80%;
          margin: 0 auto;
          align-items: center;
       }
@@ -61,11 +78,6 @@
 
    &__name {
       margin-bottom: 3.2rem;
-      max-width: 60%;
-
-      @include respond (phone) {
-         max-width: 70%;
-      }
    }
 
    &__text {

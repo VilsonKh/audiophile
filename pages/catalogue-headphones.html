@@ -1,238 +1,247 @@
 <!DOCTYPE html>
 <html lang="en" id="catalogue-headphones">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<script type="module" src="../js/const.js" defer></script>
+		<script type="module" src="../js/index.js" defer></script>
+		<script type="module" src="../js/startCaroutine.js" defer></script>
+		<title>Audiophile</title>
+	</head>
 
-      <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
-      <link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
-      <link rel="stylesheet" href="../css/style.css" />
-      <script type="module" src="../js/const.js"  defer></script>
-      <script type="module" src="../js/index.js" defer></script>
-      <title>Frontend Mentor | Audiophile e-commerce website</title>
-   </head>
+	<body>
+		<header class="header bg">
+			<div class="header__container">
+				<div class="header__burger">
+					<div class="burger-line"></div>
+					<div class="burger-line"></div>
+					<div class="burger-line"></div>
+				</div>
+				<div class="header__logo">
+					<img class="header__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" />
+				</div>
+				<nav class="navbar">
+					<ul class="navbar__list">
+						<li class="navbar__item"><a href="index.html">Home</a></li>
+						<li class="navbar__item category__headphones"><a href="catalogue-headphones.html">Headphones</a></li>
+						<li class="navbar__item category__speakers"><a href="catalogue-speakers.html">Speakers</a></li>
+						<li class="navbar__item category__earphones"><a href="catalogue-earphones.html">Earphoness</a></li>
+					</ul>
+				</nav>
+				<button class="btn-busket">
+					<svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
+							fill="#FFF"
+							fill-rule="nonzero"
+						/>
+					</svg>
+					<div class="busket-indicator"></div>
+				</button>
+			</div>
+		</header>
 
-   <body>
-      <header class="header bg">
-         <div class="header__container">
-            <div class="header__burger"></div>
-            <div class="header__logo">
-               <img class="header__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" />
-            </div>
-            <nav class="navbar">
-               <ul class="navbar__list">
-                  <li class="navbar__item"><a href="index.html">Home</a></li>
-                  <li class="navbar__item category__headphones"><a href="catalogue-headphones.html">Headphones</a></li>
-                  <li class="navbar__item category__speakers"><a href="catalogue-speakers.html">Speakers</a></li>
-                  <li class="navbar__item category__earphones"><a href="catalogue-earphones.html">Earphoness</a></li>
-               </ul>
-            </nav>
-            <button class="btn-busket">
-               <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                     d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
-                     fill="#FFF"
-                     fill-rule="nonzero"
-                  />
-               </svg>
-            </button>
-         </div>
-      </header>
+		<div class="category">headphones</div>
 
-      <div class="category">headphones</div>
+		<div class="popup-busket busket-category">
+			<div class="container">
+				<div class="busket__inner">
+					<div class="busket__heading">
+						<p class="busket__title">cart (<input id="busket-count" value="0" />)</p>
+						<button class="busket__remove">Remove all</button>
+					</div>
+					<ul class="busket__list">
+						<template class="template__busket-item">
+							<li class="busket__item">
+								<div class="busket__itemInner">
+									<img class="busket__img" src="" alt="" />
+									<div class="busket__text">
+										<p class="busket__name"></p>
+										<p class="busket__price">$ <span class="busket-price"></span></p>
+									</div>
 
-      <div class="popup-busket">
-         <div class="overlay">
-            <div class="container">
-               <div class="busket__inner">
-                  <div class="busket__heading">
-                     <p class="busket__title">cart (<input id="busket-count" value="0"></input>)</p>
-                     <button class="busket__remove">Remove all</button>
-                  </div>
+									<div class="product__counter">
+										<button id="busket__decrement" class="product__decrement">-</button>
+										<input id="busket__input" class="product__quantity busket__input" value="1" />
+										<button id="busket__increment" class="product__increment">+</button>
+									</div>
+								</div>
+							</li>
+						</template>
+					</ul>
+					<div class="busket__total">
+						<p class="busket__totalText">total</p>
+						<p class="busket__total-price">$<span id="busket-totalPrice"></span></p>
+					</div>
+					<a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
+				</div>
+			</div>
+		</div>
 
-                  <ul class="busket__list">
-                     <template class="template__busket-item">
-                        <li class="busket__item">
-                           <div class="busket__itemInner">
-                              <img class="busket__img" src="" alt="" />
-                              <div class="busket__text">
-                                 <p class="busket__name"></p>
-                                 <p class="busket__price">$ <span class="busket-price"></span></p>
-                              </div>
+		<main>
+			<section class="products">
+				<div class="container">
+					<template class="template__catalogue-item-left">
+						<div class="product product__leftside">
+							<div class="product__img">
+								<img src="" alt="" />
+							</div>
+							<div class="product__description">
+								<p class="product__name">XX99 Mark II Headphones</p>
+								<p class="product__text">
+									The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of
+									studio-quality sound.
+								</p>
+								<a href="product-details.html" class="btn btn-orange">see product</a>
+							</div>
+						</div>
+					</template>
 
-                              <div class="product__counter">
-                                 <button id="busket__decrement" class="product__decrement">-</button>
-                                 <input id='busket__input' class="product__quantity busket__input" value="1"></input>
-                                 <button  id='busket__increment' class="product__increment">+</button>
-                              </div>
-                           </div>
-                        </li>
-                     </template>
-                  </ul>
-                  <div class="busket__total">
-                     <p class="busket__totalText">total</p>
-                     <p class="busket__total-price">$<span id="busket-totalPrice"></p>
-                  </div>
+					<template class="template__catalogue-item-right">
+						<div class="product product__rightside">
+							<div class="product__description">
+								<p class="product__name">XX99 Mark I Headphones</p>
+								<p class="product__text">
+									As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music
+									aficionados alike in studios and on the go.
+								</p>
+								<a href="product-details.html" class="btn btn-orange">see product</a>
+							</div>
 
-                  <a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
-               </div>
-            </div>
-         </div>
-      </div>
+							<div class="product__img">
+								<img src="#" alt="" />
+							</div>
+						</div>
+					</template>
+					<div class="skeleton">
+						<div></div>
+						<div></div>
+					</div>
 
-      <main>
-         <section class="products">
-            <div class="container">
-               <template class="template__catalogue-item-left">
-                  <div class="product product__leftside">
-                     <div class="product__img">
-                           <img src="" alt="" />
-                     </div>
-                     <div class="product__description">
-                        <p class="product__name">XX99 Mark II Headphones</p>
-                        <p class="product__text">
-                           The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of
-                           studio-quality sound.
-                        </p>
-                        <a href="product-details.html" class="btn btn-orange">see product</a>
-                     </div>
-                  </div>
-               </template>
+					<div class="skeleton">
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</section>
 
-               <template class="template__catalogue-item-right">
-                  <div class="product product__rightside">
-                     <div class="product__description">
-                        <p class="product__name">XX99 Mark I Headphones</p>
-                        <p class="product__text">
-                           As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike
-                           in studios and on the go.
-                        </p>
-                        <a href="product-details.html" class="btn btn-orange">see product</a>
-                     </div>
+			<section class="catalogue">
+				<div class="container">
+					<h2 class="catalogue__heading">Catalogue</h2>
+					<ul class="catalogue__list">
+						<li class="catalogue__item item-1">
+							<div class="catalogue-img__container">
+								<img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
+							</div>
+							<p class="catalogue__category">Headphones</p>
+							<a href="catalogue-headphones.html" class="btn-shop"
+								>Shop
+								<svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+							</a>
+						</li>
+						<li class="catalogue__item item-2">
+							<div class="catalogue-img__container">
+								<img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
+							</div>
+							<p class="catalogue__category">Speakers</p>
+							<a href="catalogue-speakers.html" class="btn-shop"
+								>Shop
+								<svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+							</a>
+						</li>
+						<li class="catalogue__item item-3">
+							<div class="catalogue-img__container">
+								<img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
+							</div>
+							<p class="catalogue__category">Earphones</p>
+							<a href="catalogue-earphones.html" class="btn-shop"
+								>Shop
+								<svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
 
-                     <div class="product__img">
+			<section class="about">
+				<div class="container">
+					<div class="about-left">
+						<h2 class="about__heading">Bringing you the <span class="accent">best</span> audio gear</h2>
+						<p class="about__text">
+							Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and
+							luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make
+							Audiophile the best place to buy your portable audio equipment.
+						</p>
+					</div>
+					<div class="about-right">
+						<picture>
+							<source media="(min-width: 768px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
+							<source media="(min-width: 375px)" srcset="../assets/shared/tablet/image-best-gear.jpg" />
+							<img src="../assets/shared/mobile/image-best-gear.jpg" alt="" />
+						</picture>
+					</div>
+				</div>
+			</section>
+		</main>
 
-                              <img src="#" alt="" />
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__logo">
+					<img class="footer__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" />
+				</div>
 
-                     </div>
-                  </div>
-               </template>
-            </div>
-         </section>
+				<p class="footer__text">
+					Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal
+					audio. Come and visit our demo facility - we’re open 7 days a week.
+				</p>
 
-         <section class="catalogue">
-            <div class="container">
-               <ul class="catalogue__list">
-                  <li class="catalogue__item item-1">
-                     <div class="catalogue-img__container">
-                        <img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
-                     </div>
-                     <p class="catalogue__category">Headphones</p>
-                     <a href="catalogue-headphones.html" class="btn-shop"
-                        >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
-                     </a>
-                  </li>
-                  <li class="catalogue__item item-2">
-                     <div class="catalogue-img__container">
-                        <img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
-                     </div>
-                     <p class="catalogue__category">Speakers</p>
-                     <a href="catalogue-speakers.html" class="btn-shop"
-                        >Shop <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
-                     </a>
-                  </li>
-                  <li class="catalogue__item item-3">
-                     <div class="catalogue-img__container">
-                        <img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
-                     </div>
-                     <p class="catalogue__category">Earphones</p>
-                     <a href="catalogue-earphones.html" class="btn-shop"
-                        >Shop
-                        <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" /></svg>
-                     </a>
-                  </li>
-               </ul>
-            </div>
-         </section>
+				<p class="footer__copyright">&#169; Copyright 2023. Vilson Khechikiants</p>
 
-         <section class="about">
-            <div class="container">
-               <div class="about-left">
-                  <h2 class="about__heading">Bringing you the <span class="accent">best</span> audio gear</h2>
-                  <p class="about__text">
-                     Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury
-                     demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best
-                     place to buy your portable audio equipment.
-                  </p>
-               </div>
-               <div class="about-right">
-                  <picture>
-                     <source media="(min-width: 768px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
-                     <source media="(min-width: 375px)" srcset="../assets/shared/tablet/image-best-gear.jpg" />
-                     <img src="../assets/shared/mobile/image-best-gear.jpg" alt="" />
-                  </picture>
-               </div>
-            </div>
-         </section>
-      </main>
+				<nav class="navbar footer__navbar">
+					<ul class="navbar__list">
+						<li class="navbar__item"><a href="index.html">Home</a></li>
+						<li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
+						<li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
+						<li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
+					</ul>
+				</nav>
 
-      <footer class="footer">
-         <div class="container">
-            <div class="footer__logo">
-               <img class="footer__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" />
-            </div>
+				<div class="footer__contacts">
+					<div class="footer__social">
+						<a href="https://www.facebook.com">
+							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"
+									fill="#fff"
+									fill-rule="nonzero"
+								/>
+							</svg>
+						</a>
 
-            <p class="footer__text">
-               Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio.
-               Come and visit our demo facility - we’re open 7 days a week.
-            </p>
+						<a href="https://www.twitter.com">
+							<svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z"
+									fill="#FFF"
+									fill-rule="nonzero"
+								/>
+							</svg>
+						</a>
 
-            <p class="footer__copyright">&#169; Copyright 2023. Vilson Khechikiants</p>
-
-            <nav class="navbar footer__navbar">
-               <ul class="navbar__list">
-                  <li class="navbar__item"><a href="index.html">Home</a></li>
-                  <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
-                  <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
-                  <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
-               </ul>
-            </nav>
-
-            <div class="footer__contacts">
-               <div class="footer__social">
-                  <a href="https://www.facebook.com">
-                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"
-                           fill="#fff"
-                           fill-rule="nonzero"
-                        />
-                     </svg>
-                  </a>
-
-                  <a href="https://www.twitter.com">
-                     <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z"
-                           fill="#FFF"
-                           fill-rule="nonzero"
-                        />
-                     </svg>
-                  </a>
-
-                  <a href="https://www.instagram.com">
-                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                           fill="#FFF"
-                           fill-rule="nonzero"
-                        />
-                     </svg>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <script type="module" src="../js/startCaroutine.js"></script>
-   </body>
+						<a href="https://www.instagram.com">
+							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+									fill="#FFF"
+									fill-rule="nonzero"
+								/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>

@@ -86,35 +86,37 @@
 				</div>
 			</div>
 			<div class="popup-busket">
-				<div class="busket__inner">
-					<div class="busket__heading">
-						<p class="busket__title">cart (<input id="busket-count" value="0" />)</p>
-						<button class="busket__remove">Remove all</button>
-					</div>
-					<ul class="busket__list">
-						<template class="template__busket-item">
-							<li class="busket__item">
-								<div class="busket__itemInner">
-									<img class="busket__img" src="" alt="" />
-									<div class="busket__text">
-										<p class="busket__name"></p>
-										<p class="busket__price">$ <span class="busket-price"></span></p>
-									</div>
+				<div class="container">
+					<div class="busket__inner">
+						<div class="busket__heading">
+							<p class="busket__title">cart (<input id="busket-count" value="0" />)</p>
+							<button class="busket__remove">Remove all</button>
+						</div>
+						<ul class="busket__list">
+							<template class="template__busket-item">
+								<li class="busket__item">
+									<div class="busket__itemInner">
+										<img class="busket__img" src="" alt="" />
+										<div class="busket__text">
+											<p class="busket__name"></p>
+											<p class="busket__price">$ <span class="busket-price"></span></p>
+										</div>
 
-									<div class="product__counter">
-										<button id="busket__decrement" class="product__decrement">-</button>
-										<input id="busket__input" class="product__quantity busket__input" value="1" />
-										<button id="busket__increment" class="product__increment">+</button>
+										<div class="product__counter">
+											<button id="busket__decrement" class="product__decrement">-</button>
+											<input id="busket__input" class="product__quantity busket__input" value="1" />
+											<button id="busket__increment" class="product__increment">+</button>
+										</div>
 									</div>
-								</div>
-							</li>
-						</template>
-					</ul>
-					<div class="busket__total">
-						<p class="busket__totalText">total</p>
-						<p class="busket__total-price">$<span id="busket-totalPrice"></span></p>
+								</li>
+							</template>
+						</ul>
+						<div class="busket__total">
+							<p class="busket__totalText">total</p>
+							<p class="busket__total-price">$<span id="busket-totalPrice"></span></p>
+						</div>
+						<a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
 					</div>
-					<a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
 				</div>
 			</div>
 		</header>
@@ -137,6 +139,7 @@
 		<main>
 			<section class="catalogue">
 				<div class="container">
+					<h2 class="catalogue__heading">Catalogue</h2>
 					<ul class="catalogue__list">
 						<li class="catalogue__item item-1">
 							<div class="catalogue-img__container">
