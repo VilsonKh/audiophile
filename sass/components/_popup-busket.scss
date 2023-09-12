@@ -14,13 +14,6 @@
       padding: 3rem;
       margin-left: auto;
       max-width: 40rem;
-      @include respond(phone) {
-         width: 100%;
-
-      }
-
-      @include respond(tab) {
-      }
    }
 
    &__item {
@@ -99,7 +92,7 @@
 }
 
 #busket-count {
-   width: 1.5rem;
+   width: 1.8rem;
    text-align: center;
    font-size: inherit;
    font-weight: inherit;

@@ -73,7 +73,13 @@
    }
 
    &__heading-new {
+      margin: 0 auto;
       margin-bottom: 1.6rem;
+
+      @media screen and (min-width: 767px) {
+         margin-right: auto;
+         margin-left: 0;
+      }
    }
 
    &__name {

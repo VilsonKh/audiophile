@@ -24,7 +24,7 @@
             </div>
             <nav class="navbar">
                <ul class="navbar__list">
-                  <li class="navbar__item"><a href="index.html">Home</a></li>
+                  <li class="navbar__item"><a href="main.html">Home</a></li>
                   <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
                   <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
                   <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
@@ -42,7 +42,52 @@
             </button>
          </div>
       </header>
-
+      <div class="burger__menu">
+         <div class="overlay">
+            <section class="catalogue">
+               <div class="container">
+                  <ul class="catalogue__list">
+                     <li class="catalogue__item item-1">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-headphones.png" alt="Headphones" />
+                        </div>
+                        <p class="catalogue__category">Headphones</p>
+                        <a href="catalogue-headphones.html" class="btn-shop catalogue__headphones"
+                           >Shop
+                           <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" />
+                           </svg>
+                        </a>
+                     </li>
+                     <li class="catalogue__item item-2">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-speakers.png" alt="Speakers" />
+                        </div>
+                        <p class="catalogue__category">Speakers</p>
+                        <a href="catalogue-speakers.html" class="btn-shop catalogue__speakers"
+                           >Shop
+                           <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" />
+                           </svg>
+                        </a>
+                     </li>
+                     <li class="catalogue__item item-3">
+                        <div class="catalogue-img__container">
+                           <img src="../assets/shared/desktop/image-category-thumbnail-earphones.png" alt="" />
+                        </div>
+                        <p class="catalogue__category">Earphones</p>
+                        <a href="catalogue-earphones.html" class="btn-shop catalogue__earphones"
+                           >Shop
+                           <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.322 1l5 5-5 5" stroke="#D87D4A" stroke-width="2" fill="none" fill-rule="evenodd" />
+                           </svg>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </section>
+         </div>
+      </div>
       <div class="popup-busket busket-category">
 <div class="container">
             <div class="busket__inner">
@@ -110,6 +155,10 @@
                   </div>
                </div>
             </template>
+            <div class="skeleton">
+               <div></div>
+               <div></div>
+            </div>
          </section>
 
          <section class="info container">
@@ -203,7 +252,7 @@
                </div>
                <div class="about-right">
                   <picture>
-                     <source media="(min-width: 768px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
+                     <source media="(min-width: 1440px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
                      <source media="(min-width: 375px)" srcset="../assets/shared/tablet/image-best-gear.jpg" />
                      <img src="../assets/shared/mobile/image-best-gear.jpg" alt="" />
                   </picture>
@@ -227,7 +276,7 @@
 
             <nav class="navbar footer__navbar">
                <ul class="navbar__list">
-                  <li class="navbar__item"><a href="index.html">Home</a></li>
+                  <li class="navbar__item"><a href="main.html">Home</a></li>
                   <li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
                   <li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
                   <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
@@ -269,8 +318,12 @@
             </div>
          </div>
       </footer>
-      <script type="module" src="../js/const.js"></script>
-      <script type="module" src="../js/index.js" ></script>
-      <script type="module" src="../js/startCaroutine.js"></script>
+      <script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+      <script type="module" src="../js/product-details.js"></script>
    </body>
 </html>

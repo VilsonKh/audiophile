@@ -13,6 +13,11 @@
 
    &__logo {
       grid-area: logo;
+      text-align: center;
+
+      @media screen and (min-width: 400px) {
+         text-align: left;
+      }
    }
 
    &__text {

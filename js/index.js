@@ -1,7 +1,4 @@
 import { goods } from "./const.js";
-import "../node_modules/jquery/dist/jquery.js";
-window.jQuery = jQuery;
-window.$ = jQuery;
 import { getRandomNum, findTotalQuantity, countTotalQuantityFromLocalStorage } from "./helpers.js";
 
 const newProd = $('<p class="product__heading-new accent">new product</p>');
@@ -9,7 +6,7 @@ let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
 //open burger menu
 export function onBurgerMenuOpen() {
 	$("body").toggleClass("scrollLock");
-	$(".burger__menu").show();
+	$(".burger__menu").toggle();
 }
 
 //opens busket
@@ -56,6 +53,7 @@ function createNewCard(id, template, data, isDetailed = false) {
 }
 
 export function createDetailedCard(id) {
+	$(".skeleton").hide();
 	for (let i in goods) {
 		if (goods[i].slug == localStorage.getItem("currentProduct")) {
 			let newCard = $.parseHTML($(`${id} .template__product-details`).clone().html());
@@ -102,7 +100,6 @@ export function setCurrentProduct() {
 }
 
 export function addBusketItemsToLocalStorage(evt) {
-	console.log("addBusketItems");
 	evt.preventDefault();
 	let currentModelName = localStorage.getItem("currentProduct"); //undefined
 	console.log(currentModelName);
@@ -127,6 +124,12 @@ export function addBusketItemsToLocalStorage(evt) {
 		$("#busket-count").attr("value", getBusketItemSum());
 		$("#busket-totalPrice").text(getBusketSum());
 	}
+
+	$(".product__addCard .btn").text("ADDED");
+
+	setTimeout(() => {
+		$(".product__addCard .btn").text("ADD TO CARD");
+	}, 2000);
 }
 
 export function itemIncrement() {
@@ -169,12 +172,11 @@ export function createSummaryBasketItem() {
 				$(".checkout__grandTotal").text(grandTotal);
 				$(".confirmation__grandTotal").text(grandTotal);
 				//Добавляет последний выбранный элемент в confirmation
-				if (j == localStorage.length - 1) {
+				if (j == localStorage.length - 1 || localStorage.length === 1) {
 					$(".confirmation__list").append($(checkoutItem).clone()); //последний элемент не добавляется в конзину перед конфирмэйшн
 				}
 
 				$(".confirmation-count").text(getBusketItemSum() - 1);
-				// console.log(getBusketItemSum() - 1);
 			}
 		}
 	}
@@ -217,7 +219,12 @@ function getBusketItemSum() {
 }
 
 export function cleanLocalStorage() {
-	localStorage.clear();
+	for (let j = 0; j < localStorage.length; j++) {
+		console.log(localStorage.key(j));
+		if (localStorage.key(j) !== "currentProduct") {
+			localStorage.removeItem(localStorage.key(j));
+		}
+	}
 
 	$(".busket__item").each(function () {
 		$(this).remove();
@@ -225,6 +232,7 @@ export function cleanLocalStorage() {
 
 	$("#busket-count").attr("value", 0);
 	$("#busket-totalPrice").text(getBusketSum());
+	$(".busket-indicator").hide();
 }
 
 export function createBusketItems(isUpdate = false, name = null) {
@@ -297,12 +305,13 @@ function addListenersToBusketCards(id) {
 			localStorage.setItem(key, ++value);
 			$("#busket__input-" + id).attr("value", +value);
 			$("#busket-totalPrice").text(getBusketSum());
+			$(".busket-indicator").text(totalQuantityBusket);
 		}
 		$("#busket-count").attr("value", totalQuantityBusket);
 		console.log(totalQuantityBusket);
 	});
 
-	//busket item increment
+	//busket item decrement
 	$(document).on("click", "#busket__decrement-" + id, function () {
 		let key = $(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
 		let value = parseFloat(localStorage.getItem(key));
@@ -313,12 +322,14 @@ function addListenersToBusketCards(id) {
 			$("#busket__input-" + id).attr("value", +value);
 			$("#busket-count").attr("value", --totalQuantityBusket);
 			$("#busket-totalPrice").text(getBusketSum());
+			$(".busket-indicator").text(totalQuantityBusket);
 		}
 		if (value == 0) {
 			$(this).closest(".busket__item").remove();
 			localStorage.removeItem($(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
 			$("#busket-totalPrice").text(getBusketSum());
 			$("#busket-count").attr("value", --totalQuantityBusket);
+			$(".busket-indicator").text(totalQuantityBusket).hide();
 		}
 	});
 
@@ -346,15 +357,6 @@ $(function () {
 	//Добавляет слушателей на кнопки количества товаров в корзине
 	//Добавляет элемент в корзину
 	//Очищает localStorage по нажатию на кнопку
-
-	const checkbox = document.querySelector(".checkout__right");
-	checkbox.addEventListener("click", function (e) {
-		if (e.target.getAttribute("for") === "cash") {
-			$(".checkout__payment-info").hide();
-		} else if (e.target.getAttribute("for") === "eMoney") {
-			$(".checkout__payment-info").show();
-		}
-	});
 
 	function onConfirmClick() {
 		if ($(".checkout__form").valid()) {

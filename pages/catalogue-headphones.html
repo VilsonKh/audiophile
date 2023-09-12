@@ -5,9 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
 		<link rel="stylesheet" href="../css/style.css" />
-		<script type="module" src="../js/const.js" defer></script>
-		<script type="module" src="../js/index.js" defer></script>
-		<script type="module" src="../js/startCaroutine.js" defer></script>
+
 		<title>Audiophile</title>
 	</head>
 
@@ -20,12 +18,12 @@
 					<div class="burger-line"></div>
 				</div>
 				<div class="header__logo">
-					<img class="header__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" />
+					<a href="main.html"><img class="header__img" src="../assets/shared/desktop/logo.svg" alt="Website-logo" /></a>
 				</div>
 				<nav class="navbar">
 					<ul class="navbar__list">
-						<li class="navbar__item"><a href="index.html">Home</a></li>
-						<li class="navbar__item category__headphones"><a href="catalogue-headphones.html">Headphones</a></li>
+						<li class="navbar__item"><a href="main.html">Home</a></li>
+						<li class="navbar__item category__headphones"><a class="accent" href="catalogue-headphones.html">Headphones</a></li>
 						<li class="navbar__item category__speakers"><a href="catalogue-speakers.html">Speakers</a></li>
 						<li class="navbar__item category__earphones"><a href="catalogue-earphones.html">Earphoness</a></li>
 					</ul>
@@ -177,7 +175,7 @@
 					</div>
 					<div class="about-right">
 						<picture>
-							<source media="(min-width: 768px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
+							<source media="(min-width: 1440px)" srcset="../assets/shared/desktop/image-best-gear.jpg" />
 							<source media="(min-width: 375px)" srcset="../assets/shared/tablet/image-best-gear.jpg" />
 							<img src="../assets/shared/mobile/image-best-gear.jpg" alt="" />
 						</picture>
@@ -201,7 +199,7 @@
 
 				<nav class="navbar footer__navbar">
 					<ul class="navbar__list">
-						<li class="navbar__item"><a href="index.html">Home</a></li>
+						<li class="navbar__item"><a href="main.html">Home</a></li>
 						<li class="navbar__item"><a href="catalogue-headphones.html">Headphones</a></li>
 						<li class="navbar__item"><a href="catalogue-speakers.html">Speakers</a></li>
 						<li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
@@ -243,5 +241,12 @@
 				</div>
 			</div>
 		</footer>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script type="module" src="../js/catalalogue-headphones.js"></script>
 	</body>
 </html>

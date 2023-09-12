@@ -1,15 +1,16 @@
 .burger__menu {
-  position: absolute;
-  display: none;
-  width: 100%;
-  & .catalogue {
-    background-color: $color-white;
-    padding-top: 10rem ;
-    padding-bottom: 7rem;
+	position: absolute;
+	display: none;
+	width: 100%;
+	z-index: 999;
+	& .catalogue {
+		background-color: $color-white;
+		padding-top: 6rem;
+		padding-bottom: 3.5rem;
 
-    @include respond (phone) {
-      padding-top: 6rem;
-      padding-bottom: 3.5rem;
-    }
-  } 
+		@media screen and (min-width: 767px) {
+			padding-top: 10rem;
+			padding-bottom: 7rem;
+		}
+	}
 }

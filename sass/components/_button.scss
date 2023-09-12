@@ -3,13 +3,13 @@
 	padding: 1.5rem 3rem;
 	text-decoration: none;
 	color: white;
-	text-align: center;
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 1.3rem;
 	line-height: 1.8rem;
 	letter-spacing: 1px;
 	width: 16rem;
+	text-align: center;
 
 	&-orange {
 		background-color: $color-orange;
@@ -81,7 +81,7 @@
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background: orange;
+	background: $color-orange;
 	position: absolute;
 	bottom: 100%;
 	left: 100%;

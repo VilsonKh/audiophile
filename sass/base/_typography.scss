@@ -59,15 +59,15 @@ body {
 	}
 
 	&__category {
-		font-size: 1.8rem;
+		font-size: 1.5rem;
+		line-height: 2rem;
 		font-weight: 700;
-		line-height: 2.5rem;
 		text-transform: uppercase;
 		letter-spacing: 1.2px;
-
-		@include respond(tab) {
-			font-size: 1.5rem;
-			line-height: 2rem;
+		
+		@media screen and (min-width: 767px) {
+			font-size: 1.8rem;
+			line-height: 2.5rem;
 		}
 	}
 }
@@ -122,18 +122,22 @@ body {
 .about {
 	&__heading {
 		font-weight: 700;
-		font-size: 4rem;
-		line-height: 4.4rem;
 		letter-spacing: 1.4px;
 		text-transform: uppercase;
+		text-align: center;
+		font-size: 2.8rem;
+		line-height: 3.8rem;
 
-		@include respond(tab) {
-			text-align: center;
+		@media screen and (min-width: 767px) {
+			font-size: 4rem;
+			line-height: 4.4rem;
+		}
+
+		@media screen and (min-width: 1440px) {
+			text-align: left;
 		}
 
 		@include respond(phone) {
-			font-size: 2.8rem;
-			line-height: 3.8rem;
 		}
 	}
 
@@ -142,9 +146,10 @@ body {
 		font-size: 1.5rem;
 		line-height: 2.5rem;
 		opacity: 0.5;
+		text-align: center;
 
-		@include respond(tab) {
-			text-align: center;
+		@media screen and (min-width: 1440px) {
+			text-align: left;
 		}
 	}
 }
@@ -180,14 +185,14 @@ body {
 .category {
 	text-align: center;
 	font-weight: 700;
-	font-size: 4rem;
 	text-transform: uppercase;
-	line-height: 4.4rem;
+	line-height: 1.2;
 	letter-spacing: 1.4px;
 	color: $color-white;
-
-	@include respond(phone) {
-		font-size: 2.8rem;
+	font-size: 2.8rem;
+	
+	@media screen and (min-width: 767px) {
+		font-size: 4rem;
 	}
 }
 
@@ -206,15 +211,14 @@ body {
 
 	&__name {
 		font-weight: 700;
-		font-size: 4rem;
-		line-height: 4.4rem;
+		font-size: 2.8rem;
+		line-height: 1.2;
 		letter-spacing: 1.4px;
-      text-align: center;
+		text-align: center;
 
-		@media screen and (min-width: 767px){
-			font-size: 2.8rem;
-			line-height: 3.8rem;
-
+		@media screen and (min-width: 767px) {
+			font-size: 4rem;
+			text-align: left;
 		}
 	}
 
@@ -446,4 +450,8 @@ body {
 		opacity: 0.5;
 		text-transform: uppercase;
 	}
+}
+
+.accent {
+	color: $color-orange !important;
 }
