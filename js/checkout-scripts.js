@@ -1,4 +1,15 @@
-import { cleanLocalStorage, createBusketItems, createSummaryBasketItem, onBurgerMenuOpen, onBusketClose, onBusketOpen, setCurrentProduct } from "./index.js";
+import {
+	cleanLocalStorage,
+	confirmtionPopupClose,
+	createBusketItems,
+	createSummaryBasketItem,
+	onBurgerMenuOpen,
+	onBusketClose,
+	onBusketOpen,
+	onConfirmClick,
+	setCurrentProduct,
+	toggleInputs,
+} from "./index.js";
 
 $(function () {
 	//opens and closes burger menu
@@ -16,13 +27,12 @@ $(function () {
 	$(".busket__remove").on("click", cleanLocalStorage);
 
 	createBusketItems();
-	$(".checkout__radio-label").first().focus();
-	const checkbox = document.querySelector(".checkout__right");
-	checkbox.addEventListener("click", function (e) {
-		if (e.target.getAttribute("for") === "cash") {
-			$(".checkout__payment-info").hide();
-		} else if (e.target.getAttribute("for") === "eMoney") {
-			$(".checkout__payment-info").show();
-		}
-	});
+
+	$("#confirm").on("click", onConfirmClick);
+
+	$(".popup-confirmation").on("click", (e) => confirmtionPopupClose(e));
+
+	$(".checkout__radio-label").first().trigger("click");
+
+	$(".checkout__right").on("click", (e) => toggleInputs(e));
 });

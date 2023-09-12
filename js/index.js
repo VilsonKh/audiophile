@@ -1,4 +1,4 @@
-import { goods } from "./const.js";
+import { goods } from "../data.js";
 import { getRandomNum, findTotalQuantity, countTotalQuantityFromLocalStorage } from "./helpers.js";
 
 const newProd = $('<p class="product__heading-new accent">new product</p>');
@@ -102,7 +102,6 @@ export function setCurrentProduct() {
 export function addBusketItemsToLocalStorage(evt) {
 	evt.preventDefault();
 	let currentModelName = localStorage.getItem("currentProduct"); //undefined
-	console.log(currentModelName);
 	let modelQuantity = $("#detailed__input").attr("value");
 
 	let isNew = false;
@@ -134,7 +133,6 @@ export function addBusketItemsToLocalStorage(evt) {
 
 export function itemIncrement() {
 	let quantityDetailed = parseFloat($("#detailed__input").attr("value"));
-	console.log(quantityDetailed);
 	if (quantityDetailed < 9) $("#detailed__input").attr("value", ++quantityDetailed);
 }
 
@@ -155,7 +153,6 @@ export function createSummaryBasketItem() {
 				$(checkoutItem).find(".busket__img").attr("src", goods[i].busketImg.src);
 				$(checkoutItem).find(".busket__name").text(goods[i].busketName);
 				$(checkoutItem).find(".busket-price").text(goods[i].price);
-				console.log(checkoutItem);
 				$(checkoutItem)
 					.find(".busket__finalNumber")
 					.text(localStorage.getItem(`busket-${goods[i].slug}`));
@@ -220,7 +217,6 @@ function getBusketItemSum() {
 
 export function cleanLocalStorage() {
 	for (let j = 0; j < localStorage.length; j++) {
-		console.log(localStorage.key(j));
 		if (localStorage.key(j) !== "currentProduct") {
 			localStorage.removeItem(localStorage.key(j));
 		}
@@ -236,7 +232,6 @@ export function cleanLocalStorage() {
 }
 
 export function createBusketItems(isUpdate = false, name = null) {
-	console.log(countTotalQuantityFromLocalStorage() > 0);
 	if (countTotalQuantityFromLocalStorage() > 0) {
 		$(".busket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
 	} else {
@@ -308,7 +303,6 @@ function addListenersToBusketCards(id) {
 			$(".busket-indicator").text(totalQuantityBusket);
 		}
 		$("#busket-count").attr("value", totalQuantityBusket);
-		console.log(totalQuantityBusket);
 	});
 
 	//busket item decrement
@@ -332,43 +326,31 @@ function addListenersToBusketCards(id) {
 			$(".busket-indicator").text(totalQuantityBusket).hide();
 		}
 	});
-
-	// let sum = 0;
-	// $(document).on("input", "#busket__input-" + id, function () {
-	//    let count = localStorage.getItem($(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
-	//    sum += parseFloat(count);
-	//    $(".busket-count").text(sum);
-	//    console.log('test')
-	// });
 }
 
 export function closeConfirmationPopup(e) {
-	console.log(e.target.className);
 	if (e.target.className === "popup-confirmation") {
 		$(".popup-confirmation").css("visibility", "hidden").css("opacity", "0");
 	}
 }
 
-//???????????????????????????????????????????????????????????????????////
-$(function () {
-	//  Изменяет карточку каждого товара
-	//Добавляет в localStorage товар для корзины
-	//Добавляет интерактивность каунтеру в detailed card
-	//Добавляет слушателей на кнопки количества товаров в корзине
-	//Добавляет элемент в корзину
-	//Очищает localStorage по нажатию на кнопку
-
-	function onConfirmClick() {
-		if ($(".checkout__form").valid()) {
-			$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
-		}
+export function onConfirmClick() {
+	if ($(".checkout__form").valid()) {
+		$(".popup-confirmation").css("visibility", "visible").css("opacity", "1");
 	}
+}
 
-	$("#confirm").on("click", onConfirmClick);
+export function confirmtionPopupClose(e) {
+	if (e.target.className === "overlay") {
+		$(".popup-confirmation").css("visibility", "hidden").css("opacity", "0");
+	}
+}
 
-	$(".popup-confirmation").on("click", function (e) {
-		if (e.target.className === "overlay") {
-			$(".popup-confirmation").css("visibility", "hidden").css("opacity", "0");
-		}
-	});
-});
+export function toggleInputs(e) {
+	console.log("info");
+	if (e.target.getAttribute("for") === "cash") {
+		$(".checkout__payment-info").hide();
+	} else if (e.target.getAttribute("for") === "eMoney") {
+		$(".checkout__payment-info").show();
+	}
+}

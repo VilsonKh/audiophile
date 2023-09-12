@@ -79,7 +79,4 @@ $(function () {
 
 		messages: {},
 	});
-	$("#confirm").on("click", function () {
-		console.log($(".checkout__form").valid());
-	});
 });
