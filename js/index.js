@@ -2,22 +2,22 @@ import { goods } from "../data.js";
 import { getRandomNum, findTotalQuantity, countTotalQuantityFromLocalStorage } from "./helpers.js";
 
 const newProd = $('<p class="product__heading-new accent">new product</p>');
-let totalQuantityBusket = parseFloat($("#busket-count").attr("value"));
+let totalQuantitybasket = parseFloat($("#basket-count").attr("value"));
 //open burger menu
 export function onBurgerMenuOpen() {
 	$("body").toggleClass("scrollLock");
 	$(".burger__menu").toggle();
 }
 
-//opens busket
-export function onBusketOpen() {
-	$(".popup-busket").toggle();
+//opens basket
+export function onbasketOpen() {
+	$(".popup-basket").toggle();
 }
 
-//closes busket popup
-export function onBusketClose(e) {
-	if (!e.target.closest(".busket__inner")) {
-		$(".popup-busket").hide();
+//closes basket popup
+export function onbasketClose(e) {
+	if (!e.target.closest(".basket__inner")) {
+		$(".popup-basket").hide();
 	}
 }
 
@@ -102,29 +102,29 @@ export function setCurrentProduct() {
 	localStorage.setItem("currentProduct", $(this).attr("id"));
 }
 
-export function addBusketItemsToLocalStorage(evt) {
+export function addbasketItemsToLocalStorage(evt) {
 	evt.preventDefault();
 	let currentModelName = localStorage.getItem("currentProduct"); //undefined
 	let modelQuantity = $("#detailed__input").attr("value");
 
 	let isNew = false;
 
-	localStorage.setItem("busket-" + currentModelName, modelQuantity);
+	localStorage.setItem("basket-" + currentModelName, modelQuantity);
 
-	for (let i = 0; i < $(".busket__list > li").length; i++) {
-		if ($(".busket__list > li")[i].id.slice(12) === currentModelName) {
-			$(".busket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
+	for (let i = 0; i < $(".basket__list > li").length; i++) {
+		if ($(".basket__list > li")[i].id.slice(12) === currentModelName) {
+			$(".basket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
 			isNew = true;
-			$("#busket-count").attr("value", getBusketItemSum());
-			$("#busket-totalPrice").text(getBusketSum());
+			$("#basket-count").attr("value", getbasketItemSum());
+			$("#basket-totalPrice").text(getbasketSum());
 		}
 	}
 
 	if (!isNew) {
-		createBusketItems(true, currentModelName);
-		getBusketSum();
-		$("#busket-count").attr("value", getBusketItemSum());
-		$("#busket-totalPrice").text(getBusketSum());
+		createbasketItems(true, currentModelName);
+		getbasketSum();
+		$("#basket-count").attr("value", getbasketItemSum());
+		$("#basket-totalPrice").text(getbasketSum());
 	}
 
 	$(".product__addCard .btn").text("ADDED");
@@ -151,21 +151,21 @@ export function itemDecrement() {
 //add items in basket in checkout page
 export function createSummaryBasketItem() {
 	for (let j = 0; j < localStorage.length; j++) {
-		let busketKey = localStorage.key(j).slice(7);
+		let basketKey = localStorage.key(j).slice(7);
 		for (let i in goods) {
-			if (goods[i].slug === busketKey) {
+			if (goods[i].slug === basketKey) {
 				let checkoutItem = $.parseHTML($(".template__checkout-listItem").clone().html());
-				$(checkoutItem).find(".busket__img").attr("src", goods[i].busketImg.src);
-				$(checkoutItem).find(".busket__name").text(goods[i].busketName);
-				$(checkoutItem).find(".busket-price").text(goods[i].price);
+				$(checkoutItem).find(".basket__img").attr("src", goods[i].basketImg.src);
+				$(checkoutItem).find(".basket__name").text(goods[i].basketName);
+				$(checkoutItem).find(".basket-price").text(goods[i].price);
 				$(checkoutItem)
-					.find(".busket__finalNumber")
-					.text(localStorage.getItem(`busket-${goods[i].slug}`));
+					.find(".basket__finalNumber")
+					.text(localStorage.getItem(`basket-${goods[i].slug}`));
 
-				$(".busketSummary__list").append(checkoutItem);
+				$(".basketSummary__list").append(checkoutItem);
 
-				let total = getBusketSum();
-				let vat = Math.round(getBusketSum() * 0.2);
+				let total = getbasketSum();
+				let vat = Math.round(getbasketSum() * 0.2);
 				let shipping = parseFloat($(".checkout__shipping").text());
 				let grandTotal = total + shipping;
 
@@ -178,18 +178,18 @@ export function createSummaryBasketItem() {
 					$(".confirmation__list").append($(checkoutItem).clone()); //последний элемент не добавляется в конзину перед конфирмэйшн
 				}
 
-				$(".confirmation-count").text(getBusketItemSum() - 1);
+				$(".confirmation-count").text(getbasketItemSum() - 1);
 			}
 		}
 	}
 }
 
 // Считает итоговую сумму в корзине
-function getBusketSum() {
+function getbasketSum() {
 	let totalSum = 0;
 
 	for (let i = 0; i < localStorage.length; i++) {
-		let modelName = localStorage.key(i).replace(/busket-/g, "");
+		let modelName = localStorage.key(i).replace(/basket-/g, "");
 		let modelQuantity = localStorage.getItem(localStorage.key(i));
 		let modelSum = 0;
 
@@ -205,17 +205,17 @@ function getBusketSum() {
 }
 
 //Считает количество товара в корзине из localStorage
-function getBusketItemSum() {
-	totalQuantityBusket = 0;
+function getbasketItemSum() {
+	totalQuantitybasket = 0;
 
 	for (let i = 0; i < localStorage.length; i++) {
 		let key = localStorage.key(i);
 		let value = localStorage.getItem(key);
-		if (key.startsWith("busket")) {
-			totalQuantityBusket += parseFloat(value);
+		if (key.startsWith("basket")) {
+			totalQuantitybasket += parseFloat(value);
 		}
 	}
-	return totalQuantityBusket;
+	return totalQuantitybasket;
 }
 
 export function cleanLocalStorage() {
@@ -225,109 +225,109 @@ export function cleanLocalStorage() {
 		}
 	}
 
-	$(".busket__item").each(function () {
+	$(".basket__item").each(function () {
 		$(this).remove();
 	});
 
-	$("#busket-count").attr("value", 0);
-	$("#busket-totalPrice").text(getBusketSum());
-	$(".busket-indicator").hide();
+	$("#basket-count").attr("value", 0);
+	$("#basket-totalPrice").text(getbasketSum());
+	$(".basket-indicator").hide();
 }
 
-//creates busket items
-export function createBusketItems(isUpdate = false, name = null) {
+//creates basket items
+export function createbasketItems(isUpdate = false, name = null) {
 	if (countTotalQuantityFromLocalStorage() > 0) {
-		$(".busket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
+		$(".basket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
 	} else {
-		$(".busket-indicator").css("display", "none");
+		$(".basket-indicator").css("display", "none");
 	}
 
 	if (!isUpdate) {
 		for (let j = 0; j < localStorage.length; j++) {
-			let busketKey = localStorage.key(j).slice(7);
-			let busketValue = localStorage.getItem(localStorage.key(j));
+			let basketKey = localStorage.key(j).slice(7);
+			let basketValue = localStorage.getItem(localStorage.key(j));
 
 			for (let i in goods) {
-				if (goods[i].slug === busketKey) {
-					let newBusketItem = $.parseHTML($(".template__busket-item").clone().html());
-					$(newBusketItem).attr("id", `busketItem__${goods[i].slug}`);
-					$(newBusketItem).find(".busket__img").attr("src", goods[i].busketImg.src);
-					$(newBusketItem).find(".busket__name").text(goods[i].busketName);
-					$(newBusketItem).find(".busket-price").text(goods[i].price);
-					$(newBusketItem).find(".product__quantity").attr("value", busketValue);
-					$(newBusketItem).find(".product__increment").attr("id", `busket__increment-${i}`);
-					$(newBusketItem).find(".product__decrement").attr("id", `busket__decrement-${i}`);
-					$(newBusketItem).find(".product__quantity").attr("id", `busket__input-${i}`);
+				if (goods[i].slug === basketKey) {
+					let newbasketItem = $.parseHTML($(".template__basket-item").clone().html());
+					$(newbasketItem).attr("id", `basketItem__${goods[i].slug}`);
+					$(newbasketItem).find(".basket__img").attr("src", goods[i].basketImg.src);
+					$(newbasketItem).find(".basket__name").text(goods[i].basketName);
+					$(newbasketItem).find(".basket-price").text(goods[i].price);
+					$(newbasketItem).find(".product__quantity").attr("value", basketValue);
+					$(newbasketItem).find(".product__increment").attr("id", `basket__increment-${i}`);
+					$(newbasketItem).find(".product__decrement").attr("id", `basket__decrement-${i}`);
+					$(newbasketItem).find(".product__quantity").attr("id", `basket__input-${i}`);
 					$(function () {
-						$(".busket__heading").find(".busket-count").text(findTotalQuantity());
+						$(".basket__heading").find(".basket-count").text(findTotalQuantity());
 					});
-					$(".busket__list").append(newBusketItem);
-					addListenersToBusketCards(i);
+					$(".basket__list").append(newbasketItem);
+					addListenersTobasketCards(i);
 				}
 			}
 		}
-		$("#busket-count").attr("value", getBusketItemSum());
-		$("#busket-totalPrice").text(getBusketSum());
+		$("#basket-count").attr("value", getbasketItemSum());
+		$("#basket-totalPrice").text(getbasketSum());
 	} else if (isUpdate) {
 		let addedCount = $("#detailed__input").attr("value");
 		for (let i in goods) {
 			if (goods[i].slug === name) {
-				let newBusketItem = $.parseHTML($(".template__busket-item").clone().html());
-				$(newBusketItem).attr("id", `busketItem__${goods[i].slug}`);
-				$(newBusketItem).find(".busket__img").attr("src", goods[i].busketImg.src);
-				$(newBusketItem).find(".busket__name").text(goods[i].busketName);
-				$(newBusketItem).find(".busket-price").text(goods[i].price);
-				$(newBusketItem).find(".product__quantity").attr("value", addedCount);
-				$(newBusketItem).find(".product__increment").attr("id", `busket__increment-${i}`);
-				$(newBusketItem).find(".product__decrement").attr("id", `busket__decrement-${i}`);
-				$(newBusketItem).find(".product__quantity").attr("id", `busket__input-${i}`);
+				let newbasketItem = $.parseHTML($(".template__basket-item").clone().html());
+				$(newbasketItem).attr("id", `basketItem__${goods[i].slug}`);
+				$(newbasketItem).find(".basket__img").attr("src", goods[i].basketImg.src);
+				$(newbasketItem).find(".basket__name").text(goods[i].basketName);
+				$(newbasketItem).find(".basket-price").text(goods[i].price);
+				$(newbasketItem).find(".product__quantity").attr("value", addedCount);
+				$(newbasketItem).find(".product__increment").attr("id", `basket__increment-${i}`);
+				$(newbasketItem).find(".product__decrement").attr("id", `basket__decrement-${i}`);
+				$(newbasketItem).find(".product__quantity").attr("id", `basket__input-${i}`);
 				$(function () {
-					$(".busket__heading").find(".busket-count").text(findTotalQuantity());
+					$(".basket__heading").find(".basket-count").text(findTotalQuantity());
 				});
 
-				$(".busket__list").append(newBusketItem);
-				addListenersToBusketCards(i);
+				$(".basket__list").append(newbasketItem);
+				addListenersTobasketCards(i);
 			}
 		}
 	}
 }
 
-//busket item increment
-function addListenersToBusketCards(id) {
-	$(document).on("click", "#busket__increment-" + id, function () {
-		//$(this).parent('.product__counter').children('#busket__input').attr('value')
-		let key = $(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
+//basket item increment
+function addListenersTobasketCards(id) {
+	$(document).on("click", "#basket__increment-" + id, function () {
+		//$(this).parent('.product__counter').children('#basket__input').attr('value')
+		let key = $(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
 		let value = parseFloat(localStorage.getItem(key));
 
 		if (value < 9) {
-			totalQuantityBusket += 1;
+			totalQuantitybasket += 1;
 			localStorage.setItem(key, ++value);
-			$("#busket__input-" + id).attr("value", +value);
-			$("#busket-totalPrice").text(getBusketSum());
-			$(".busket-indicator").text(totalQuantityBusket);
+			$("#basket__input-" + id).attr("value", +value);
+			$("#basket-totalPrice").text(getbasketSum());
+			$(".basket-indicator").text(totalQuantitybasket);
 		}
-		$("#busket-count").attr("value", totalQuantityBusket);
+		$("#basket-count").attr("value", totalQuantitybasket);
 	});
 
-	//busket item decrement
-	$(document).on("click", "#busket__decrement-" + id, function () {
-		let key = $(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
+	//basket item decrement
+	$(document).on("click", "#basket__decrement-" + id, function () {
+		let key = $(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
 		let value = parseFloat(localStorage.getItem(key));
 
 		localStorage.setItem(key, --value);
 
 		if (value > 0) {
-			$("#busket__input-" + id).attr("value", +value);
-			$("#busket-count").attr("value", --totalQuantityBusket);
-			$("#busket-totalPrice").text(getBusketSum());
-			$(".busket-indicator").text(totalQuantityBusket);
+			$("#basket__input-" + id).attr("value", +value);
+			$("#basket-count").attr("value", --totalQuantitybasket);
+			$("#basket-totalPrice").text(getbasketSum());
+			$(".basket-indicator").text(totalQuantitybasket);
 		}
 		if (value == 0) {
-			$(this).closest(".busket__item").remove();
-			localStorage.removeItem($(this).closest(".busket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
-			$("#busket-totalPrice").text(getBusketSum());
-			$("#busket-count").attr("value", --totalQuantityBusket);
-			$(".busket-indicator").text(totalQuantityBusket).hide();
+			$(this).closest(".basket__item").remove();
+			localStorage.removeItem($(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
+			$("#basket-totalPrice").text(getbasketSum());
+			$("#basket-count").attr("value", --totalQuantitybasket);
+			$(".basket-indicator").text(totalQuantitybasket).hide();
 		}
 	});
 }

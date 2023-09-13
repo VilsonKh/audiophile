@@ -82,13 +82,13 @@
 		padding: 0;
 		position: unset;
 
-		& .busket__text {
+		& .basket__text {
 			@include respond(phone) {
 				margin-right: auto;
 			}
 		}
 
-		& .busket__img {
+		& .basket__img {
 			position: relative;
 			top: -10px;
 		}

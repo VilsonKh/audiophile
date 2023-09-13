@@ -1,14 +1,14 @@
 import {
-	addBusketItemsToLocalStorage,
+	addbasketItemsToLocalStorage,
 	cleanLocalStorage,
-	createBusketItems,
+	createbasketItems,
 	createDetailedCard,
 	createSummaryBasketItem,
 	itemDecrement,
 	itemIncrement,
 	onBurgerMenuOpen,
-	onBusketClose,
-	onBusketOpen,
+	onbasketClose,
+	onbasketOpen,
 	setCurrentProduct,
 } from "./index.js";
 
@@ -16,9 +16,9 @@ $(function () {
 	//opens and closes burger menu
 	$(".header__burger").on("click", onBurgerMenuOpen);
 
-	//opens and closes busket menu
-	$(".btn-busket").on("click", onBusketOpen);
-	$(".popup-busket").on("click", (e) => onBusketClose(e));
+	//opens and closes basket menu
+	$(".btn-basket").on("click", onbasketOpen);
+	$(".popup-basket").on("click", (e) => onbasketClose(e));
 
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
@@ -27,16 +27,16 @@ $(function () {
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
 	//clean local storage and basket
-	$(".busket__remove").on("click", cleanLocalStorage);
+	$(".basket__remove").on("click", cleanLocalStorage);
 
-	//fills busket if localStorage is not empty
-	createBusketItems();
+	//fills basket if localStorage is not empty
+	createbasketItems();
 
 	//creates product details card
 	createDetailedCard("#product-details");
 
 	//adds items to localStorage
-	$(".product-details .product .btn").on("click", addBusketItemsToLocalStorage);
+	$(".product-details .product .btn").on("click", addbasketItemsToLocalStorage);
 
 	//increment product counter
 	$(document).on("click", "#detailed__increment", itemIncrement);

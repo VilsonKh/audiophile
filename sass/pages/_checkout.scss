@@ -162,11 +162,11 @@
       }
    }
 
-   & .busket__text {
+   & .basket__text {
       margin-right: auto;
    }
 
-   &__busket {
+   &__basket {
       min-width: 327px;
       max-width: 350px;
 
@@ -175,7 +175,7 @@
       }
    }
 
-   &__busket-inner {
+   &__basket-inner {
       background: white;
       border-radius: 8px;
       padding: 32px 24px;
@@ -198,12 +198,12 @@
    display: none;
 }
 
-.busket__summary {
+.basket__summary {
    flex-basis: 31%;
    border-radius: 8px;
    background-color: $color-white;
 
-   .busket__inner {
+   .basket__inner {
       margin-top: 0;
       max-width: 35rem;
 
@@ -218,13 +218,13 @@
    }
 }
 
-.busketSummary__list {
+.basketSummary__list {
    display: flex;
    flex-direction: column;
    row-gap: 2.5rem;
    margin-bottom: 3.2rem;
 
-   & .busket__img {
+   & .basket__img {
       border-radius: 8px;
    }
 }

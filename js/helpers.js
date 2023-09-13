@@ -20,7 +20,7 @@ export function getRandomNum(goods) {
 //find total items number in basket
 export function findTotalQuantity() {
 	let total = 0;
-	let inputs = $(".busket__quantity");
+	let inputs = $(".basket__quantity");
 	inputs.each(function () {
 		total += parseFloat($(this).val());
 	});
@@ -36,10 +36,10 @@ export function onBackButtonClick() {
 export function countTotalQuantityFromLocalStorage() {
 	let total = 0;
 	for (let j = 0; j < localStorage.length; j++) {
-		let busketKey = localStorage.key(j);
-		let busketValue = localStorage.getItem(localStorage.key(j));
-		if (busketKey.startsWith("busket")) {
-			total += parseFloat(busketValue);
+		let basketKey = localStorage.key(j);
+		let basketValue = localStorage.getItem(localStorage.key(j));
+		if (basketKey.startsWith("basket")) {
+			total += parseFloat(basketValue);
 		}
 	}
 

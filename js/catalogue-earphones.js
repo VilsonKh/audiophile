@@ -1,12 +1,12 @@
-import { cleanLocalStorage, createBusketItems, createCard, createSummaryBasketItem, onBurgerMenuOpen, onBusketClose, onBusketOpen, setCurrentProduct } from "./index.js";
+import { cleanLocalStorage, createbasketItems, createCard, createSummaryBasketItem, onBurgerMenuOpen, onbasketClose, onbasketOpen, setCurrentProduct } from "./index.js";
 
 $(function () {
 	//opens and closes burger menu
 	$(".header__burger").on("click", onBurgerMenuOpen);
 
-	//opens and closes busket menu
-	$(".btn-busket").on("click", onBusketOpen);
-	$(".popup-busket").on("click", (e) => onBusketClose(e));
+	//opens and closes basket menu
+	$(".btn-basket").on("click", onbasketOpen);
+	$(".popup-basket").on("click", (e) => onbasketClose(e));
 
 	//creates certain catalogues
 	createCard("earphones", "#catalogue-earphones");
@@ -18,8 +18,8 @@ $(function () {
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
 	//clean local storage and basket
-	$(".busket__remove").on("click", cleanLocalStorage);
+	$(".basket__remove").on("click", cleanLocalStorage);
 
-	//fills busket if localStorage is not empty
-	createBusketItems();
+	//fills basket if localStorage is not empty
+	createbasketItems();
 });

@@ -28,7 +28,7 @@
                   <li class="navbar__item"><a href="catalogue-earphones.html">Earphoness</a></li>
                </ul>
             </nav>
-            <button class="btn-busket">
+            <button class="btn-basket">
                <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
                   <path
                      d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
@@ -36,40 +36,40 @@
                      fill-rule="nonzero"
                   />
                </svg>
-               <div class="busket-indicator"></div>
+               <div class="basket-indicator"></div>
             </button>
          </div>
       </header>
 
-      <div class="popup-busket busket-category">
+      <div class="popup-basket basket-category">
 <div class="container">
-            <div class="busket__inner">
-               <div class="busket__heading">
-                  <p class="busket__title">cart (<input id="busket-count" value="0" />)</p>
-                  <button class="busket__remove">Remove all</button>
+            <div class="basket__inner">
+               <div class="basket__heading">
+                  <p class="basket__title">cart (<input id="basket-count" value="0" />)</p>
+                  <button class="basket__remove">Remove all</button>
                </div>
-               <ul class="busket__list">
-                  <template class="template__busket-item">
-                     <li class="busket__item">
-                        <div class="busket__itemInner">
-                           <img class="busket__img" src="" alt="" />
-                           <div class="busket__text">
-                              <p class="busket__name"></p>
-                              <p class="busket__price">$ <span class="busket-price"></span></p>
+               <ul class="basket__list">
+                  <template class="template__basket-item">
+                     <li class="basket__item">
+                        <div class="basket__itemInner">
+                           <img class="basket__img" src="" alt="" />
+                           <div class="basket__text">
+                              <p class="basket__name"></p>
+                              <p class="basket__price">$ <span class="basket-price"></span></p>
                            </div>
    
                            <div class="product__counter">
-                              <button id="busket__decrement" class="product__decrement">-</button>
-                              <input id="busket__input" class="product__quantity busket__input" value="1" />
-                              <button id="busket__increment" class="product__increment">+</button>
+                              <button id="basket__decrement" class="product__decrement">-</button>
+                              <input id="basket__input" class="product__quantity basket__input" value="1" />
+                              <button id="basket__increment" class="product__increment">+</button>
                            </div>
                         </div>
                      </li>
                   </template>
                </ul>
-               <div class="busket__total">
-                  <p class="busket__totalText">total</p>
-                  <p class="busket__total-price">$<span id="busket-totalPrice"></span></p>
+               <div class="basket__total">
+                  <p class="basket__totalText">total</p>
+                  <p class="basket__total-price">$<span id="basket-totalPrice"></span></p>
                </div>
                <a class="btn btn-orange" id="btn-checkout" href="checkout.html">chechout</a>
             </div>
@@ -85,15 +85,15 @@
                <p class="confirmation__info">You will receive an email confirmation shortly.</p>
                <div class="confirmation__review">
                   <div class="confirmation__goods">
-                     <div class="busket__inner confirmation__list">
+                     <div class="basket__inner confirmation__list">
                       <template class="template__finalCard">
-                           <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                           <div class="busket__text">
-                              <p class="busket__name"></p>
-                              <p class="busket__price">$ <span class="confirmation__price"></spn ></p>
+                           <img class="basket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                           <div class="basket__text">
+                              <p class="basket__name"></p>
+                              <p class="basket__price">$ <span class="confirmation__price"></spn ></p>
                            </div>
    
-                           <p class="busket__finalCount">x<span class="busket__finalNumber"></span></p>
+                           <p class="basket__finalCount">x<span class="basket__finalNumber"></span></p>
                       </template>
                      </div>
                      <p class="confirmation__hiddenList">and over <span class="confirmation-count">2</span> other item(s)</p>
@@ -199,45 +199,45 @@
                   </div>
                </div>
 
-               <sidebar class="checkout__busket">
-                  <div class="checkout__busket-inner">
-                     <div class="busket__heading">
-                        <p class="busket__title">summary</p>
+               <sidebar class="checkout__basket">
+                  <div class="checkout__basket-inner">
+                     <div class="basket__heading">
+                        <p class="basket__title">summary</p>
                      </div>
 
-                     <ul class="busketSummary__list">
+                     <ul class="basketSummary__list">
                        <template class="template__checkout-listItem">
-                           <li class="busket__item">
-                              <div class="busket__itemInner">
-                                 <img class="busket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
-                                 <div class="busket__text">
-                                    <p class="busket__name">XX99 MK II</p>
-                                    <p class="busket__price">$ 2,999</p>
+                           <li class="basket__item">
+                              <div class="basket__itemInner">
+                                 <img class="basket__img" src="../assets/cart/image-xx99-mark-two-headphones.jpg" alt="" />
+                                 <div class="basket__text">
+                                    <p class="basket__name">XX99 MK II</p>
+                                    <p class="basket__price">$ 2,999</p>
                                  </div>
    
-                                 <p class="busket__finalCount">x<span class="busket__finalNumber">1</span></p>
+                                 <p class="basket__finalCount">x<span class="basket__finalNumber">1</span></p>
                               </div>
                            </li>
                        </template>
                      </ul>
-                     <div class="busket__total">
-                        <p class="busket__totalText">total</p>
-                        <p class="busket__total-price">$ <span class="checkout__sum">0</spn ></p>
+                     <div class="basket__total">
+                        <p class="basket__totalText">total</p>
+                        <p class="basket__total-price">$ <span class="checkout__sum">0</spn ></p>
                      </div>
 
-                     <div class="busket__total">
-                        <p class="busket__totalText">shipping</p>
-                        <p class="busket__total-price">$<span class="checkout__shipping"> 50</span></p>
+                     <div class="basket__total">
+                        <p class="basket__totalText">shipping</p>
+                        <p class="basket__total-price">$<span class="checkout__shipping"> 50</span></p>
                      </div>
 
-                     <div class="busket__total">
-                        <p class="busket__totalText">vat (included)</p>
-                        <p class="busket__total-price">$ <span class="checkout__vat">0</span></p>
+                     <div class="basket__total">
+                        <p class="basket__totalText">vat (included)</p>
+                        <p class="basket__total-price">$ <span class="checkout__vat">0</span></p>
                      </div>
 
-                     <div class="busket__total">
-                        <p class="busket__totalText">grand total</p>
-                        <p class="busket__total-price accent">$ <span class="checkout__grandTotal">0</span></p>
+                     <div class="basket__total">
+                        <p class="basket__totalText">grand total</p>
+                        <p class="basket__total-price accent">$ <span class="checkout__grandTotal">0</span></p>
                      </div>
 
                      <button class="btn btn-orange" id="confirm">continue</button>

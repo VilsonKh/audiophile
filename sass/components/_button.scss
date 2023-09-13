@@ -52,7 +52,7 @@
 		}
 	}
 
-	&-busket {
+	&-basket {
 		position: relative;
 		right: 5%;
 		&:hover svg path {
@@ -70,14 +70,14 @@
 	}
 }
 
-.popup-busket__remove {
+.popup-basket__remove {
 	&:hover {
 		color: $color-orange;
 		opacity: 1;
 	}
 }
 
-.busket-indicator {
+.basket-indicator {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
