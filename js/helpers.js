@@ -1,3 +1,4 @@
+//creates an array with no repeating 3 numbers
 export function getRandomNum(goods) {
 	let randNumbArr = [];
 	while (randNumbArr.length < 3) {
@@ -16,6 +17,7 @@ export function getRandomNum(goods) {
 	return randNumbArr;
 }
 
+//find total items number in basket
 export function findTotalQuantity() {
 	let total = 0;
 	let inputs = $(".busket__quantity");
@@ -25,10 +27,12 @@ export function findTotalQuantity() {
 	return total;
 }
 
+//forward back in browser history
 export function onBackButtonClick() {
 	window.history.back();
 }
 
+//find total items number from localStorage
 export function countTotalQuantityFromLocalStorage() {
 	let total = 0;
 	for (let j = 0; j < localStorage.length; j++) {

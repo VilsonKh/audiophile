@@ -23,17 +23,24 @@ $(function () {
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
 
+	//creates basket with items in checkout page
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
+	//clean local storage and basket
 	$(".busket__remove").on("click", cleanLocalStorage);
 
+	//fills busket if localStorage is not empty
 	createBusketItems();
 
+	//creates product details card
 	createDetailedCard("#product-details");
 
+	//adds items to localStorage
 	$(".product-details .product .btn").on("click", addBusketItemsToLocalStorage);
 
+	//increment product counter
 	$(document).on("click", "#detailed__increment", itemIncrement);
 
+	//decrement product counter
 	$(document).on("click", "#detailed__decrement", itemDecrement);
 });

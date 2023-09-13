@@ -8,14 +8,18 @@ $(function () {
 	$(".btn-busket").on("click", onBusketOpen);
 	$(".popup-busket").on("click", (e) => onBusketClose(e));
 
+	//creates certain catalogues
 	createCard("earphones", "#catalogue-earphones");
 
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
 
+	//creates basket with items in checkout page
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
+	//clean local storage and basket
 	$(".busket__remove").on("click", cleanLocalStorage);
 
+	//fills busket if localStorage is not empty
 	createBusketItems();
 });

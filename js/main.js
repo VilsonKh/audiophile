@@ -11,8 +11,10 @@ $(function () {
 	//sets current product in local storage
 	$(".btn").on("click", setCurrentProduct);
 
+	//creates basket with items in checkout page
 	$(".btn-checkout").on("click", createSummaryBasketItem);
 
+	//clean local storage and basket
 	$(".busket__remove").on("click", cleanLocalStorage);
 
 	createBusketItems();

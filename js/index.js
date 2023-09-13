@@ -21,7 +21,7 @@ export function onBusketClose(e) {
 	}
 }
 
-//creates catalog with items
+//creates catalog of certain category
 export function createCard(category, id) {
 	$(".skeleton").hide();
 	let isLeft = true;
@@ -35,6 +35,7 @@ export function createCard(category, id) {
 	}
 }
 
+//creates catalogue items
 function createNewCard(id, template, data, isDetailed = false) {
 	$(template).find("img").attr("src", data.categoryImage.desktop);
 	$(template).find(".product__name").text(data.name);
@@ -52,6 +53,7 @@ function createNewCard(id, template, data, isDetailed = false) {
 	}
 }
 
+//creates detailed item card
 export function createDetailedCard(id) {
 	$(".skeleton").hide();
 	for (let i in goods) {
@@ -80,6 +82,7 @@ export function createDetailedCard(id) {
 	}
 }
 
+//create random cards in suggestion section
 function addRandomCards() {
 	let randIndexes = getRandomNum(goods);
 
@@ -131,11 +134,13 @@ export function addBusketItemsToLocalStorage(evt) {
 	}, 2000);
 }
 
+//increments counter in detailed card
 export function itemIncrement() {
 	let quantityDetailed = parseFloat($("#detailed__input").attr("value"));
 	if (quantityDetailed < 9) $("#detailed__input").attr("value", ++quantityDetailed);
 }
 
+//decrements counter in detailed card
 export function itemDecrement() {
 	let quantityDetailed = parseFloat($("#detailed__input").attr("value"));
 	if (quantityDetailed > 0) {
@@ -143,7 +148,7 @@ export function itemDecrement() {
 	}
 }
 
-//Добавляет на страницу checkout товары из корзины
+//add items in basket in checkout page
 export function createSummaryBasketItem() {
 	for (let j = 0; j < localStorage.length; j++) {
 		let busketKey = localStorage.key(j).slice(7);
@@ -178,8 +183,6 @@ export function createSummaryBasketItem() {
 		}
 	}
 }
-
-createSummaryBasketItem();
 
 // Считает итоговую сумму в корзине
 function getBusketSum() {
@@ -231,6 +234,7 @@ export function cleanLocalStorage() {
 	$(".busket-indicator").hide();
 }
 
+//creates busket items
 export function createBusketItems(isUpdate = false, name = null) {
 	if (countTotalQuantityFromLocalStorage() > 0) {
 		$(".busket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
