@@ -47,7 +47,7 @@
    }
 
    &__text {
-      margin-right: 6rem;
+      margin-right: auto;
 
       @include respond(phone) {
          margin: 0;

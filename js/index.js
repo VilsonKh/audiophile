@@ -85,8 +85,6 @@ export function createDetailedCard(id) {
 //create random cards in suggestion section
 function addRandomCards() {
 	let randIndexes = getRandomNum(goods);
-
-	//Добавляет рандомные карточки
 	for (let index of randIndexes) {
 		let selectionItem = $.parseHTML($(".template-selection").clone().html());
 
@@ -110,6 +108,7 @@ export function addbasketItemsToLocalStorage(evt) {
 	let isNew = false;
 
 	localStorage.setItem("basket-" + currentModelName, modelQuantity);
+	$(".basket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
 
 	for (let i = 0; i < $(".basket__list > li").length; i++) {
 		if ($(".basket__list > li")[i].id.slice(12) === currentModelName) {
@@ -125,6 +124,7 @@ export function addbasketItemsToLocalStorage(evt) {
 		getbasketSum();
 		$("#basket-count").attr("value", getbasketItemSum());
 		$("#basket-totalPrice").text(getbasketSum());
+	} else {
 	}
 
 	$(".product__addCard .btn").text("ADDED");
@@ -143,7 +143,7 @@ export function itemIncrement() {
 //decrements counter in detailed card
 export function itemDecrement() {
 	let quantityDetailed = parseFloat($("#detailed__input").attr("value"));
-	if (quantityDetailed > 0) {
+	if (quantityDetailed > 1) {
 		$("#detailed__input").attr("value", --quantityDetailed);
 	}
 }
@@ -157,10 +157,14 @@ export function createSummaryBasketItem() {
 				let checkoutItem = $.parseHTML($(".template__checkout-listItem").clone().html());
 				$(checkoutItem).find(".basket__img").attr("src", goods[i].basketImg.src);
 				$(checkoutItem).find(".basket__name").text(goods[i].basketName);
-				$(checkoutItem).find(".basket-price").text(goods[i].price);
+				$(checkoutItem)
+					.find(".basket__price")
+					.text("$" + goods[i].price);
 				$(checkoutItem)
 					.find(".basket__finalNumber")
 					.text(localStorage.getItem(`basket-${goods[i].slug}`));
+
+				console.log(goods[i].price);
 
 				$(".basketSummary__list").append(checkoutItem);
 
@@ -220,8 +224,11 @@ function getbasketItemSum() {
 
 export function cleanLocalStorage() {
 	for (let j = 0; j < localStorage.length; j++) {
+		console.log(localStorage.key(3));
+		console.log(localStorage.key(j));
 		if (localStorage.key(j) !== "currentProduct") {
 			localStorage.removeItem(localStorage.key(j));
+			cleanLocalStorage();
 		}
 	}
 
@@ -317,6 +324,7 @@ function addListenersTobasketCards(id) {
 		localStorage.setItem(key, --value);
 
 		if (value > 0) {
+			console.log(id);
 			$("#basket__input-" + id).attr("value", +value);
 			$("#basket-count").attr("value", --totalQuantitybasket);
 			$("#basket-totalPrice").text(getbasketSum());
