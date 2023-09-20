@@ -102,10 +102,10 @@ export function setCurrentProduct() {
 
 export function addbasketItemsToLocalStorage(evt) {
 	evt.preventDefault();
-	let currentModelName = localStorage.getItem("currentProduct"); //undefined
+	let currentModelName = localStorage.getItem("currentProduct");
 	let modelQuantity = $("#detailed__input").attr("value");
 
-	let isNew = false;
+	let isNew = true;
 
 	localStorage.setItem("basket-" + currentModelName, modelQuantity);
 	$(".basket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
@@ -113,18 +113,25 @@ export function addbasketItemsToLocalStorage(evt) {
 	for (let i = 0; i < $(".basket__list > li").length; i++) {
 		if ($(".basket__list > li")[i].id.slice(12) === currentModelName) {
 			$(".basket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
-			isNew = true;
+			isNew = false;
 			$("#basket-count").attr("value", getbasketItemSum());
 			$("#basket-totalPrice").text(getbasketSum());
+			console.log("current product");
 		}
 	}
 
-	if (!isNew) {
+	if (isNew) {
+		createbasketItems(false, currentModelName);
+		getbasketSum();
+		$("#basket-count").attr("value", getbasketItemSum());
+		$("#basket-totalPrice").text(getbasketSum());
+		console.log("new");
+	} else {
 		createbasketItems(true, currentModelName);
 		getbasketSum();
 		$("#basket-count").attr("value", getbasketItemSum());
 		$("#basket-totalPrice").text(getbasketSum());
-	} else {
+		console.log("old");
 	}
 
 	$(".product__addCard .btn").text("ADDED");
@@ -223,9 +230,8 @@ function getbasketItemSum() {
 }
 
 export function cleanLocalStorage() {
+	// $(".product__increment").off('click', '');
 	for (let j = 0; j < localStorage.length; j++) {
-		console.log(localStorage.key(3));
-		console.log(localStorage.key(j));
 		if (localStorage.key(j) !== "currentProduct") {
 			localStorage.removeItem(localStorage.key(j));
 			cleanLocalStorage();
@@ -261,60 +267,51 @@ export function createbasketItems(isUpdate = false, name = null) {
 					$(newbasketItem).find(".basket__img").attr("src", goods[i].basketImg.src);
 					$(newbasketItem).find(".basket__name").text(goods[i].basketName);
 					$(newbasketItem).find(".basket-price").text(goods[i].price);
-					$(newbasketItem).find(".product__quantity").attr("value", basketValue);
+					$(newbasketItem).find(".product__quantity").text(basketValue);
 					$(newbasketItem).find(".product__increment").attr("id", `basket__increment-${i}`);
 					$(newbasketItem).find(".product__decrement").attr("id", `basket__decrement-${i}`);
 					$(newbasketItem).find(".product__quantity").attr("id", `basket__input-${i}`);
 					$(function () {
-						$(".basket__heading").find(".basket-count").text(findTotalQuantity());
+						$(".basket__heading").find(".basket-count").attr("value", findTotalQuantity());
 					});
 					$(".basket__list").append(newbasketItem);
 					addListenersTobasketCards(i);
 				}
 			}
 		}
+
 		$("#basket-count").attr("value", getbasketItemSum());
 		$("#basket-totalPrice").text(getbasketSum());
 	} else if (isUpdate) {
 		let addedCount = $("#detailed__input").attr("value");
-		for (let i in goods) {
-			if (goods[i].slug === name) {
-				let newbasketItem = $.parseHTML($(".template__basket-item").clone().html());
-				$(newbasketItem).attr("id", `basketItem__${goods[i].slug}`);
-				$(newbasketItem).find(".basket__img").attr("src", goods[i].basketImg.src);
-				$(newbasketItem).find(".basket__name").text(goods[i].basketName);
-				$(newbasketItem).find(".basket-price").text(goods[i].price);
-				$(newbasketItem).find(".product__quantity").attr("value", addedCount);
-				$(newbasketItem).find(".product__increment").attr("id", `basket__increment-${i}`);
-				$(newbasketItem).find(".product__decrement").attr("id", `basket__decrement-${i}`);
-				$(newbasketItem).find(".product__quantity").attr("id", `basket__input-${i}`);
-				$(function () {
-					$(".basket__heading").find(".basket-count").text(findTotalQuantity());
-				});
-
-				$(".basket__list").append(newbasketItem);
-				addListenersTobasketCards(i);
+		for (let i = 0; i < $(".basket__list > li").length; i++) {
+			if ($(".basket__list > li")[i].getAttribute("id").slice(12) === name) {
+				$(".basket__list > li")[i].querySelector(".product__quantity").textContent = addedCount;
 			}
 		}
 	}
 }
 
+function basketIncrement(id, ref) {
+	//$(this).parent('.product__counter').children('#basket__input').attr('value')
+	let key = ref.target.closest(".basket__item").getAttribute("id").replace(/Item/g, "").replace(/__/g, "-");
+	let value = parseFloat(localStorage.getItem(key));
+
+	if (value < 9) {
+		totalQuantitybasket += 1;
+		localStorage.setItem(key, ++value);
+		$("#basket__input-" + id).text(+value);
+		$("#basket-totalPrice").text(getbasketSum());
+		$(".basket-indicator").text(totalQuantitybasket);
+		console.log(value);
+	}
+	$("#basket-count").attr("value", totalQuantitybasket);
+}
+
 //basket item increment
 function addListenersTobasketCards(id) {
-	$(document).on("click", "#basket__increment-" + id, function () {
-		//$(this).parent('.product__counter').children('#basket__input').attr('value')
-		let key = $(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
-		let value = parseFloat(localStorage.getItem(key));
-
-		if (value < 9) {
-			totalQuantitybasket += 1;
-			localStorage.setItem(key, ++value);
-			$("#basket__input-" + id).attr("value", +value);
-			$("#basket-totalPrice").text(getbasketSum());
-			$(".basket-indicator").text(totalQuantitybasket);
-		}
-		$("#basket-count").attr("value", totalQuantitybasket);
-	});
+	console.log("added listener to basket increment " + id);
+	$(document).on("click", "#basket__increment-" + id, (e) => basketIncrement(id, e));
 
 	//basket item decrement
 	$(document).on("click", "#basket__decrement-" + id, function () {
@@ -325,7 +322,7 @@ function addListenersTobasketCards(id) {
 
 		if (value > 0) {
 			console.log(id);
-			$("#basket__input-" + id).attr("value", +value);
+			$("#basket__input-" + id).text(+value);
 			$("#basket-count").attr("value", --totalQuantitybasket);
 			$("#basket-totalPrice").text(getbasketSum());
 			$(".basket-indicator").text(totalQuantitybasket);
