@@ -105,33 +105,19 @@ export function addbasketItemsToLocalStorage(evt) {
 	let currentModelName = localStorage.getItem("currentProduct");
 	let modelQuantity = $("#detailed__input").attr("value");
 
-	let isNew = true;
-
-	localStorage.setItem("basket-" + currentModelName, modelQuantity);
 	$(".basket-indicator").css("display", "flex").text(countTotalQuantityFromLocalStorage());
+	localStorage.setItem("basket-" + currentModelName, modelQuantity);
 
-	for (let i = 0; i < $(".basket__list > li").length; i++) {
-		if ($(".basket__list > li")[i].id.slice(12) === currentModelName) {
-			$(".basket__list > li")[i].children[0].children[2].children[1].value = modelQuantity;
-			isNew = false;
-			$("#basket-count").attr("value", getbasketItemSum());
-			$("#basket-totalPrice").text(getbasketSum());
-			console.log("current product");
+	for (let j = 0; j < localStorage.length; j++) {
+		console.log(localStorage.length);
+		let basketKey = localStorage.key(j);
+		if (basketKey.startsWith("basket")) {
+			$(".basket__item").each(function () {
+				console.log("удаляю содержимое корзины");
+				$(this).remove();
+			});
+			createbasketItems(false, basketKey);
 		}
-	}
-
-	if (isNew) {
-		createbasketItems(false, currentModelName);
-		getbasketSum();
-		$("#basket-count").attr("value", getbasketItemSum());
-		$("#basket-totalPrice").text(getbasketSum());
-		console.log("new");
-	} else {
-		createbasketItems(true, currentModelName);
-		getbasketSum();
-		$("#basket-count").attr("value", getbasketItemSum());
-		$("#basket-totalPrice").text(getbasketSum());
-		console.log("old");
 	}
 
 	$(".product__addCard .btn").text("ADDED");
@@ -184,12 +170,15 @@ export function createSummaryBasketItem() {
 				$(".checkout__vat").text(vat);
 				$(".checkout__grandTotal").text(grandTotal);
 				$(".confirmation__grandTotal").text(grandTotal);
+
+				const lastItem = $(checkoutItem).clone();
+				console.log(lastItem.find(".basket__finalNumber").text());
 				//Добавляет последний выбранный элемент в confirmation
 				if (j == localStorage.length - 1 || localStorage.length === 1) {
-					$(".confirmation__list").append($(checkoutItem).clone()); //последний элемент не добавляется в конзину перед конфирмэйшн
+					$(".confirmation__list").append(lastItem); //последний элемент не добавляется в конзину перед конфирмэйшн
 				}
 
-				$(".confirmation-count").text(getbasketItemSum() - 1);
+				$(".confirmation-count").text(getbasketItemSum() - +lastItem.find(".basket__finalNumber").text());
 			}
 		}
 	}
@@ -256,6 +245,7 @@ export function createbasketItems(isUpdate = false, name = null) {
 	}
 
 	if (!isUpdate) {
+		console.log("adding new item");
 		for (let j = 0; j < localStorage.length; j++) {
 			let basketKey = localStorage.key(j).slice(7);
 			let basketValue = localStorage.getItem(localStorage.key(j));
@@ -269,13 +259,19 @@ export function createbasketItems(isUpdate = false, name = null) {
 					$(newbasketItem).find(".basket-price").text(goods[i].price);
 					$(newbasketItem).find(".product__quantity").text(basketValue);
 					$(newbasketItem).find(".product__increment").attr("id", `basket__increment-${i}`);
+					$(newbasketItem)
+						.find(".product__increment")
+						.on("click", (e) => basketIncrement(i, e));
 					$(newbasketItem).find(".product__decrement").attr("id", `basket__decrement-${i}`);
+					$(newbasketItem)
+						.find(".product__decrement")
+						.on("click", (e) => basketDecrement(i, e));
 					$(newbasketItem).find(".product__quantity").attr("id", `basket__input-${i}`);
 					$(function () {
 						$(".basket__heading").find(".basket-count").attr("value", findTotalQuantity());
 					});
 					$(".basket__list").append(newbasketItem);
-					addListenersTobasketCards(i);
+					// addListenersTobasketCards(i);
 				}
 			}
 		}
@@ -303,10 +299,35 @@ function basketIncrement(id, ref) {
 		$("#basket__input-" + id).text(+value);
 		$("#basket-totalPrice").text(getbasketSum());
 		$(".basket-indicator").text(totalQuantitybasket);
-		console.log(value);
+		console.log(value, id);
 	}
 	$("#basket-count").attr("value", totalQuantitybasket);
 }
+
+const basketDecrement = (id, ref) => {
+	let key = $(ref.target).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
+	let value = parseFloat(localStorage.getItem(key));
+
+	localStorage.setItem(key, --value);
+
+	if (value > 0) {
+		$("#basket__input-" + id).text(+value);
+		$("#basket-count").attr("value", --totalQuantitybasket);
+		$("#basket-totalPrice").text(getbasketSum());
+		$(".basket-indicator").text(totalQuantitybasket);
+	}
+	if (value == 0) {
+		$(ref.target).closest(".basket__item").remove();
+		localStorage.removeItem($(ref.target).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
+		$("#basket-totalPrice").text(getbasketSum());
+		$("#basket-count").attr("value", --totalQuantitybasket);
+		if (parseFloat($("#basket-count").attr("value")) === 0) {
+			$(".basket-indicator").hide();
+		} else {
+			$(".basket-indicator").text(countTotalQuantityFromLocalStorage());
+		}
+	}
+};
 
 //basket item increment
 function addListenersTobasketCards(id) {
@@ -314,27 +335,7 @@ function addListenersTobasketCards(id) {
 	$(document).on("click", "#basket__increment-" + id, (e) => basketIncrement(id, e));
 
 	//basket item decrement
-	$(document).on("click", "#basket__decrement-" + id, function () {
-		let key = $(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-");
-		let value = parseFloat(localStorage.getItem(key));
-
-		localStorage.setItem(key, --value);
-
-		if (value > 0) {
-			console.log(id);
-			$("#basket__input-" + id).text(+value);
-			$("#basket-count").attr("value", --totalQuantitybasket);
-			$("#basket-totalPrice").text(getbasketSum());
-			$(".basket-indicator").text(totalQuantitybasket);
-		}
-		if (value == 0) {
-			$(this).closest(".basket__item").remove();
-			localStorage.removeItem($(this).closest(".basket__item").attr("id").replace(/Item/g, "").replace(/__/g, "-"));
-			$("#basket-totalPrice").text(getbasketSum());
-			$("#basket-count").attr("value", --totalQuantitybasket);
-			$(".basket-indicator").text(totalQuantitybasket).hide();
-		}
-	});
+	// $(document).on("click", "#basket__decrement-" + id, );
 }
 
 export function closeConfirmationPopup(e) {

@@ -45,3 +45,20 @@ export function countTotalQuantityFromLocalStorage() {
 
 	return total;
 }
+
+function getBasketObject() {
+	const basketObject = {};
+
+	for (let j = 0; j < localStorage.length; j++) {
+		if (localStorage.key(j).startsWith("basket")) {
+			let basketKey = localStorage.key(j).slice(7);
+			let basketValue = localStorage.getItem(localStorage.key(j));
+
+			basketObject[basketKey] = basketValue;
+		}
+	}
+
+	return basketObject;
+}
+
+getBasketObject();
