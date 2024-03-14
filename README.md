@@ -2,7 +2,7 @@
 
 The Audiophile is a JavaScript-based e-commerce website dedicated to audio equipment. This user-friendly web app offers a vast catalog of audio equipment, including headphones, speakers, and earphones.
 
-The **Audiophile** project can be accessed vie [this link]()
+The **Audiophile** project can be accessed vie [this link](https://projects.devilson.me/audiophile)
 
 ## Project Functionality
 
