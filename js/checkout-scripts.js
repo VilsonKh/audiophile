@@ -45,4 +45,6 @@ $(function () {
 
 	//hide eMoney fields, then cash button pressed
 	$(".checkout__right").on("click", (e) => toggleInputs(e));
+
+	$('.backHomeButton').on('click', cleanLocalStorage)
 });
